@@ -130,4 +130,5 @@ exports.getCurrentTime = timer.getCurrentTime;
 exports.getCustomCurrentTime = timer.getCustomCurrentTime;
 exports.getFormattedTime = timer.getFormattedTime;
 exports.COLORS_SEKAI_KEYS = sekaiColors.COLORS_SEKAI_KEYS;
+exports.colorSekaiKeyList = sekaiColors.colorSekaiKeyList;
 exports.colorsSekai = sekaiColors.colorsSekai;

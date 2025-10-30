@@ -1,5 +1,9 @@
 import type { ValueOf } from '@/utils/type'
 
+/**
+ * Sekai colors keys
+ * @example 'Miku'
+ */
 // prettier-ignore
 export const COLORS_SEKAI_KEYS = {
   Miku:                  'Miku',
@@ -36,8 +40,22 @@ export const COLORS_SEKAI_KEYS = {
   Nightcode:             'Nightcode'
 } as const
 
+/**
+ * Type of sekai colors keys
+ * @example 'Miku'
+ */
 export type ColorsSekaiKey = keyof typeof COLORS_SEKAI_KEYS
 
+/**
+ * List of sekai colors keys
+ * @example ['Miku', 'Rin', 'Len', ...]
+ */
+export const colorSekaiKeyList = Object.keys(COLORS_SEKAI_KEYS) as ColorsSekaiKey[]
+
+/**
+ * Sekai colors
+ * @example { Miku: '#33ccba', Rin: '#ffcc10', ... }
+ */
 // prettier-ignore
 export const colorsSekai = {
   /** Character */
@@ -76,6 +94,14 @@ export const colorsSekai = {
   Nightcode:             '#884499'
 } as const
 
+/**
+ * Type of sekai colors
+ * @example { Miku: '#33ccba', Rin: '#ffcc10', ... }
+ */
 export type ColorsSekai = typeof colorsSekai
 
+/**
+ * Type of sekai colors values
+ * @example '#33ccba'
+ */
 export type ColorsSekaiCode = ValueOf<typeof colorsSekai>
