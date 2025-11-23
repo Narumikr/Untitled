@@ -1,6 +1,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
- * Generated at: 2025-11-17 23:53:00
+ * Generated at: 2025-11-21 21:34:10
  */
 
 export * from './useCreateSekai'

@@ -1,0 +1,27 @@
+@use '../../styles/global.module.scss' as global;
+
+.sekai-breadcrumb {
+  ol {
+    display: flex;
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 8px;
+    margin-right: 8px;
+  }
+
+  &-text-light > * {
+    color: global.$color-text-light;
+  }
+  &-text-dark > * {
+    color: global.$color-text-dark;
+  }
+
+  &-separator {
+    color: var(--sekai-color);
+  }
+}

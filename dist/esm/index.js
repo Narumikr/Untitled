@@ -1,5 +1,6 @@
 export { Accordion } from './components/accordion/Accordion.js';
 export { Backdrop } from './components/backdrop/Backdrop.js';
+export { Breadcrumb } from './components/breadcrumb/Breadcrumb.js';
 export { BasicButton } from './components/button/BasicButton.js';
 export { HamburgerButton } from './components/button/HamburgerButton.js';
 export { ScrollTopButton } from './components/button/ScrollTopButton.js';

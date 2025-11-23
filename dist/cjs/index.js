@@ -2,6 +2,7 @@
 
 var Accordion = require('./components/accordion/Accordion.js');
 var Backdrop = require('./components/backdrop/Backdrop.js');
+var Breadcrumb = require('./components/breadcrumb/Breadcrumb.js');
 var BasicButton = require('./components/button/BasicButton.js');
 var HamburgerButton = require('./components/button/HamburgerButton.js');
 var ScrollTopButton = require('./components/button/ScrollTopButton.js');
@@ -56,6 +57,7 @@ var sekaiColors = require('./styles/sekai-colors.js');
 
 exports.Accordion = Accordion.Accordion;
 exports.Backdrop = Backdrop.Backdrop;
+exports.Breadcrumb = Breadcrumb.Breadcrumb;
 exports.BasicButton = BasicButton.BasicButton;
 exports.HamburgerButton = HamburgerButton.HamburgerButton;
 exports.ScrollTopButton = ScrollTopButton.ScrollTopButton;
