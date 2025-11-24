@@ -60,7 +60,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-storybook": "^10.0.7",
+    "eslint-plugin-storybook": "^10.0.8",
     "eslint-plugin-unused-imports": "^4.2.0",
     "plop": "^4.0.1",
     "postcss": "^8.5.6",
