@@ -20,10 +20,10 @@
 }
 
 .sekai-annotation-text-light {
-  color: color.mix(white, global.$color-text-light, 25%);
+  color: color.mix(white, global.$color-text-light, 50%);
   margin: 0;
 }
 .sekai-annotation-text-dark {
-  color: color.mix(black, global.$color-text-dark, 25%);
+  color: color.mix(black, global.$color-text-dark, 50%);
   margin: 0;
 }

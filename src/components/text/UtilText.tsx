@@ -122,7 +122,7 @@ export interface SekaiAnnotationTextProps extends AnnotationTextProps {
 
 export const SekaiAnnotationText = ({ sekai, children, ...rest }: SekaiAnnotationTextProps) => {
   const { sekaiColor, isLight } = useOptionalSekai({ sekai })
-  const annotationColor = convertHexToRgbaMixWithBlackOrWhite(sekaiColor, 0.7, isLight)
+  const annotationColor = convertHexToRgbaMixWithBlackOrWhite(sekaiColor, 0.5, isLight)
 
   const colorStyle = {
     color: annotationColor,

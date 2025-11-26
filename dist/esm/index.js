@@ -1,5 +1,6 @@
 export { Accordion } from './components/accordion/Accordion.js';
 export { Backdrop } from './components/backdrop/Backdrop.js';
+export { Breadcrumb } from './components/breadcrumb/Breadcrumb.js';
 export { BasicButton } from './components/button/BasicButton.js';
 export { HamburgerButton } from './components/button/HamburgerButton.js';
 export { ScrollTopButton } from './components/button/ScrollTopButton.js';
@@ -32,6 +33,7 @@ export { NamePlate } from './components/text/NamePlate.js';
 export { OutlineText } from './components/text/OutlineText.js';
 export { TypewriterText } from './components/text/TypewriterText.js';
 export { AnnotationText, BodyText, DetailText, SekaiAnnotationText, SekaiBodyText, SekaiDetailText } from './components/text/UtilText.js';
+export { TextArea } from './components/textfield/TextArea.js';
 export { TextField } from './components/textfield/TextField.js';
 export { Toast } from './components/toast/Toast.js';
 export { Tooltip } from './components/tooltip/Tooltip.js';

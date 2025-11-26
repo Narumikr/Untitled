@@ -2,6 +2,7 @@
 
 var Accordion = require('./components/accordion/Accordion.js');
 var Backdrop = require('./components/backdrop/Backdrop.js');
+var Breadcrumb = require('./components/breadcrumb/Breadcrumb.js');
 var BasicButton = require('./components/button/BasicButton.js');
 var HamburgerButton = require('./components/button/HamburgerButton.js');
 var ScrollTopButton = require('./components/button/ScrollTopButton.js');
@@ -34,6 +35,7 @@ var NamePlate = require('./components/text/NamePlate.js');
 var OutlineText = require('./components/text/OutlineText.js');
 var TypewriterText = require('./components/text/TypewriterText.js');
 var UtilText = require('./components/text/UtilText.js');
+var TextArea = require('./components/textfield/TextArea.js');
 var TextField = require('./components/textfield/TextField.js');
 var Toast = require('./components/toast/Toast.js');
 var Tooltip = require('./components/tooltip/Tooltip.js');
@@ -55,6 +57,7 @@ var sekaiColors = require('./styles/sekai-colors.js');
 
 exports.Accordion = Accordion.Accordion;
 exports.Backdrop = Backdrop.Backdrop;
+exports.Breadcrumb = Breadcrumb.Breadcrumb;
 exports.BasicButton = BasicButton.BasicButton;
 exports.HamburgerButton = HamburgerButton.HamburgerButton;
 exports.ScrollTopButton = ScrollTopButton.ScrollTopButton;
@@ -101,6 +104,7 @@ exports.DetailText = UtilText.DetailText;
 exports.SekaiAnnotationText = UtilText.SekaiAnnotationText;
 exports.SekaiBodyText = UtilText.SekaiBodyText;
 exports.SekaiDetailText = UtilText.SekaiDetailText;
+exports.TextArea = TextArea.TextArea;
 exports.TextField = TextField.TextField;
 exports.Toast = Toast.Toast;
 exports.Tooltip = Tooltip.Tooltip;

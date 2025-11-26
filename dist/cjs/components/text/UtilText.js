@@ -94,7 +94,7 @@ var SekaiAnnotationText = function SekaiAnnotationText(_ref6) {
     }),
     sekaiColor = _useOptionalSekai6.sekaiColor,
     isLight = _useOptionalSekai6.isLight;
-  var annotationColor = converter.convertHexToRgbaMixWithBlackOrWhite(sekaiColor, 0.7, isLight);
+  var annotationColor = converter.convertHexToRgbaMixWithBlackOrWhite(sekaiColor, 0.5, isLight);
   var colorStyle = {
     color: annotationColor
   };
