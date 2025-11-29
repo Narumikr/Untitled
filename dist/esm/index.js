@@ -18,6 +18,7 @@ export { Drawer } from './components/drawer/Drawer.js';
 export { Dropdown, DropdownContent } from './components/dropdown/Dropdown.js';
 export { DoReMeetEffect } from './components/effect/DoReMeetEffect.js';
 export { IntoTheSekai } from './components/effect/IntoTheSekai.js';
+export { SekaiBackground } from './components/effect/SekaiBackground.js';
 export { TextLink } from './components/link/TextLink.js';
 export { List, ListContext } from './components/list/List.js';
 export { ListItemButton } from './components/list/ListItemButton.js';
