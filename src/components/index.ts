@@ -1,6 +1,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
- * Generated at: 2025-11-26 20:14:17
+ * Generated at: 2025-11-29 21:34:24
  */
 
 export * from './accordion/Accordion'
@@ -23,6 +23,7 @@ export * from './drawer/Drawer'
 export * from './dropdown/Dropdown'
 export * from './effect/DoReMeetEffect'
 export * from './effect/IntoTheSekai'
+export * from './effect/SekaiBackground'
 export * from './link/TextLink'
 export * from './list/List'
 export * from './list/ListItemButton'
