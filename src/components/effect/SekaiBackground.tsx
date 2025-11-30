@@ -21,10 +21,13 @@ class PieceOfSekai {
   rotationSpeed = 0
   opacity = 0
   age = 0
+  vertex1Y = 0
+  vertex2X = 0
+  vertex3X = 0
 
-  fadeInDuration = 5000
-  fullOpacityDuration = 5000
-  fadeOutDuration = 5000
+  fadeInDuration = 2500
+  fullOpacityDuration = 2000 * (2 + Math.random() * 4)
+  fadeOutDuration = 2500
   lifetime = this.fadeInDuration + this.fullOpacityDuration + this.fadeOutDuration
 
   color = ''
@@ -47,6 +50,10 @@ class PieceOfSekai {
     this.opacity = 0
     this.age = 0
     this.color = getColor()
+
+    this.vertex1Y = -(this.size / 6 + Math.random() * this.size * 0.7)
+    this.vertex2X = -(this.size / 3 + Math.random() * this.size * 0.9)
+    this.vertex3X = this.size / 8 + Math.random() * this.size * 0.5
   }
 
   update(deltaTime: number) {
@@ -77,9 +84,9 @@ class PieceOfSekai {
     this.ctx.globalAlpha = this.opacity
 
     this.ctx.beginPath()
-    this.ctx.moveTo(0, -this.size / 2)
-    this.ctx.lineTo(-this.size / 2, this.size / 2)
-    this.ctx.lineTo(this.size / 2, this.size / 2)
+    this.ctx.moveTo(0, this.vertex1Y)
+    this.ctx.lineTo(this.vertex2X, this.size / 2)
+    this.ctx.lineTo(this.vertex3X, this.size / 2)
     this.ctx.closePath()
 
     this.ctx.fillStyle = this.color + this.opacity + ')'

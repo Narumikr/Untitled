@@ -30,9 +30,12 @@ var PieceOfSekai = /*#__PURE__*/function () {
     _defineProperty(this, "rotationSpeed", 0);
     _defineProperty(this, "opacity", 0);
     _defineProperty(this, "age", 0);
-    _defineProperty(this, "fadeInDuration", 5000);
-    _defineProperty(this, "fullOpacityDuration", 5000);
-    _defineProperty(this, "fadeOutDuration", 5000);
+    _defineProperty(this, "vertex1Y", 0);
+    _defineProperty(this, "vertex2X", 0);
+    _defineProperty(this, "vertex3X", 0);
+    _defineProperty(this, "fadeInDuration", 2500);
+    _defineProperty(this, "fullOpacityDuration", 2000 * (2 + Math.random() * 4));
+    _defineProperty(this, "fadeOutDuration", 2500);
     _defineProperty(this, "lifetime", this.fadeInDuration + this.fullOpacityDuration + this.fadeOutDuration);
     _defineProperty(this, "color", '');
     this.canvas = canvas;
@@ -52,6 +55,9 @@ var PieceOfSekai = /*#__PURE__*/function () {
       this.opacity = 0;
       this.age = 0;
       this.color = getColor();
+      this.vertex1Y = -(this.size / 6 + Math.random() * this.size * 0.7);
+      this.vertex2X = -(this.size / 3 + Math.random() * this.size * 0.9);
+      this.vertex3X = this.size / 8 + Math.random() * this.size * 0.5;
     }
   }, {
     key: "update",
@@ -80,9 +86,9 @@ var PieceOfSekai = /*#__PURE__*/function () {
       this.ctx.rotate(this.rotation);
       this.ctx.globalAlpha = this.opacity;
       this.ctx.beginPath();
-      this.ctx.moveTo(0, -this.size / 2);
-      this.ctx.lineTo(-this.size / 2, this.size / 2);
-      this.ctx.lineTo(this.size / 2, this.size / 2);
+      this.ctx.moveTo(0, this.vertex1Y);
+      this.ctx.lineTo(this.vertex2X, this.size / 2);
+      this.ctx.lineTo(this.vertex3X, this.size / 2);
       this.ctx.closePath();
       this.ctx.fillStyle = this.color + this.opacity + ')';
       this.ctx.fill();
