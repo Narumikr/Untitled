@@ -70,7 +70,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "rollup-plugin-typescript2": "^0.36.0",
-    "sass": "^1.90.0",
+    "sass": "^1.94.2",
     "storybook": "^10.0.7",
     "typescript": "^5.9.2",
     "typescript-plugin-css-modules": "^5.2.0",
