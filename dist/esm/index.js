@@ -29,6 +29,7 @@ export { Pagination } from './components/pagination/Pagination.js';
 export { createSharedValueProvider } from './components/provider/StoreValueContext.js';
 export { YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider } from './components/provider/YourSekaiProvider.js';
 export { Checkbox } from './components/select/Checkbox.js';
+export { Chip } from './components/select/Chip.js';
 export { MarqueeText } from './components/text/MarqueeText.js';
 export { NamePlate } from './components/text/NamePlate.js';
 export { OutlineText } from './components/text/OutlineText.js';
