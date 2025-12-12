@@ -88,7 +88,7 @@ describe('Accordion Component', () => {
     })
 
     it('should wrap string details in DetailText component', () => {
-      const { container } = render(<Accordion {...defaultProps} details="Test Detail" />)
+      render(<Accordion {...defaultProps} details="Test Detail" />)
       const detailParagraph = screen.getByText('Test Detail')
       expect(detailParagraph.tagName).toBe('P')
     })
@@ -167,7 +167,7 @@ describe('Accordion Component', () => {
     })
 
     it('should apply correct icon class when closed', async () => {
-      const { container } = render(<Accordion {...defaultProps} defaultOpen={false} />)
+      render(<Accordion {...defaultProps} defaultOpen={false} />)
       const icon = screen.getByTestId('chevron-icon')
       await waitFor(() => {
         expect(icon.getAttribute('class')).toMatch(/sekai-icon-close/)
@@ -175,7 +175,7 @@ describe('Accordion Component', () => {
     })
 
     it('should apply correct icon class when open', async () => {
-      const { container } = render(<Accordion {...defaultProps} defaultOpen={true} />)
+      render(<Accordion {...defaultProps} defaultOpen={true} />)
       const icon = screen.getByTestId('chevron-icon')
       await waitFor(() => {
         expect(icon.getAttribute('class')).toMatch(/sekai-icon-open/)
