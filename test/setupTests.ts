@@ -1,10 +1,9 @@
 import '@testing-library/jest-dom'
 
 // Mock requestAnimationFrame to run synchronously
-global.requestAnimationFrame = (cb: FrameRequestCallback): number => {
-  const id = Math.random()
-  Promise.resolve().then(() => cb(0))
-  return id
+global.requestAnimationFrame = (cb) => {
+  cb(0)
+  return 0
 }
 
 global.cancelAnimationFrame = (id: number): void => {

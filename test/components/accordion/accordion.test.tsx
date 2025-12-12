@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import React from 'react'
 
 import { render, screen, waitFor } from '@testing-library/react'
