@@ -20,6 +20,6 @@
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "include": ["src/**/*", ".storybook/**/*", "stories/**/*"],
+  "include": ["src/**/*", ".storybook/**/*", "stories/**/*", "test/**/*"],
   "exclude": ["node_modules", "dist"]
 }
