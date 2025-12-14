@@ -1,4 +1,4 @@
-import { create } from '@storybook/theming/create'
+import { create } from 'storybook/theming/create'
 import untitledImage from './public/untitled.png'
 
 export default create({

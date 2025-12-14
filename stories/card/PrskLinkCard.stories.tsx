@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 import { PrskLinkCard } from '@/components/card/PrskLinkCard'
 
@@ -8,7 +8,7 @@ import { ProfileSvg } from '@/img/profile'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'Special/PrskLinkCard',
@@ -23,11 +23,24 @@ const meta = {
   parameters: {},
   tags: ['autodocs'],
   argTypes: {
+    id: {
+      description: 'Unique Id',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
     className: {
       description: 'Custom styles',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '' },
+      },
+      control: false,
+    },
+    style: {
+      description: 'Style object',
+      table: {
+        type: { summary: 'React.CSSProperties' },
       },
       control: false,
     },
@@ -100,6 +113,7 @@ type Story = StoryObj<typeof meta>
 
 export const DefaultLight: Story = {
   args: {
+    id: 'prsk-link-card-default-light',
     sekai: 'Miku',
     themeMode: 'light',
     height: 85,
@@ -117,6 +131,7 @@ export const DefaultLight: Story = {
 
 export const DefaultDark: Story = {
   args: {
+    id: 'prsk-link-card-default-dark',
     sekai: 'Miku',
     themeMode: 'dark',
     height: 85,

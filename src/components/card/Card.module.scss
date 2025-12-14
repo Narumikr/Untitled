@@ -8,7 +8,12 @@ $card-border-radius: 5px;
     0px -0.5px 1px 0px var(--sekai-color-shadow);
   border-radius: $card-border-radius;
   background-clip: padding-box;
-  width: fit-content;
+  width: auto;
+
+  &:focus-visible {
+    outline: 1px solid var(--sekai-color);
+    outline-offset: 3px;
+  }
 }
 
 .sekai-card-content {

@@ -2,7 +2,7 @@ import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
 import { Character } from './Character'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'Special/SekaiCharacter',

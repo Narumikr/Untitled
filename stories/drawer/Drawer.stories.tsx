@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 import { Drawer } from '@/components/drawer/Drawer'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/Drawer',

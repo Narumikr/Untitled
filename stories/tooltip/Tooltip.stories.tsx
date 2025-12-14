@@ -4,7 +4,7 @@ import { Tooltip } from '@/components/tooltip/Tooltip'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/Tooltip',
@@ -55,6 +55,14 @@ const meta = {
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
       table: { type: { summary: 'React.ReactNode' } },
+    },
+    text: {
+      description: 'Tooltip text',
+      // @ts-expect-error Storybook's typing issue
+      type: { required: true },
+      table: {
+        type: { summary: 'string' },
+      },
     },
     pos: {
       description: 'Tooltip position',

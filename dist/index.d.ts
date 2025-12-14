@@ -57,6 +57,10 @@ type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
  */
 type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
+/**
+ * Sekai colors keys
+ * @example 'Miku'
+ */
 declare const COLORS_SEKAI_KEYS: {
     readonly Miku: "Miku";
     readonly Rin: "Rin";
@@ -91,7 +95,20 @@ declare const COLORS_SEKAI_KEYS: {
     readonly Wonderlandsshowtime: "Wonderlandsshowtime";
     readonly Nightcode: "Nightcode";
 };
+/**
+ * Type of sekai colors keys
+ * @example 'Miku'
+ */
 type ColorsSekaiKey = keyof typeof COLORS_SEKAI_KEYS;
+/**
+ * List of sekai colors keys
+ * @example ['Miku', 'Rin', 'Len', ...]
+ */
+declare const colorSekaiKeyList: ColorsSekaiKey[];
+/**
+ * Sekai colors
+ * @example { Miku: '#33ccba', Rin: '#ffcc10', ... }
+ */
 declare const colorsSekai: {
     /** Character */
     readonly Miku: "#33ccba";
@@ -128,7 +145,15 @@ declare const colorsSekai: {
     readonly Wonderlandsshowtime: "#ff9900";
     readonly Nightcode: "#884499";
 };
+/**
+ * Type of sekai colors
+ * @example { Miku: '#33ccba', Rin: '#ffcc10', ... }
+ */
 type ColorsSekai = typeof colorsSekai;
+/**
+ * Type of sekai colors values
+ * @example '#33ccba'
+ */
 type ColorsSekaiCode = ValueOf<typeof colorsSekai>;
 
 interface AccordionProps {
@@ -156,6 +181,18 @@ interface BackdropProps {
     centered?: boolean;
 }
 declare const Backdrop: ({ sekai, themeMode, open, children, containerComponent, centered, ...rest }: BackdropProps) => React__default.ReactPortal | null;
+
+type SeparatorVariant = 'slash' | 'arrow' | 'chevron' | 'dot' | 'pipe';
+interface BreadcrumbProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    sekai?: ColorsSekaiKey;
+    themeMode?: PaletteMode;
+    children: React__default.ReactNode;
+    separator?: SeparatorVariant;
+}
+declare const Breadcrumb: ({ sekai, themeMode, children, separator, ...rest }: BreadcrumbProps) => React__default.JSX.Element;
 
 type BasicButtonProps = {
     id?: string;
@@ -217,15 +254,15 @@ interface StylishButtonProps {
 }
 declare const StylishButton: ({ sekai, themeMode, children, disabled, arrowIcon, ...rest }: StylishButtonProps) => React__default.JSX.Element;
 
-interface CardProps {
+type CardProps = {
     id?: string;
     className?: string;
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
     children: React__default.ReactNode;
-}
-declare const Card: ({ sekai, themeMode, children, ...rest }: CardProps) => React__default.JSX.Element;
+} & React__default.HTMLAttributes<HTMLDivElement>;
+declare const Card: ({ id, className, style, sekai, themeMode, children, ...divProps }: CardProps) => React__default.JSX.Element;
 interface CardContentProps {
     id?: string;
     className?: string;
@@ -233,7 +270,7 @@ interface CardContentProps {
     themeMode?: PaletteMode;
     children: React__default.ReactNode;
 }
-declare const CardContent: ({ themeMode, children, ...rest }: CardContentProps) => React__default.JSX.Element;
+declare const CardContent: ({ id, className, style, themeMode, children, }: CardContentProps) => React__default.JSX.Element;
 interface CardTitleProps {
     id?: string;
     className?: string;
@@ -244,6 +281,24 @@ interface CardTitleProps {
     underline?: true;
 }
 declare const CardTitle: ({ sekai, themeMode, title, underline, ...rest }: CardTitleProps) => React__default.JSX.Element;
+
+type MusicBannerCardVariants = 'default' | 'view-all';
+interface MusicBannerCardProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    sekai?: ColorsSekaiKey;
+    themeMode?: PaletteMode;
+    musicTitle: string;
+    artist: string;
+    selected?: boolean;
+    onSelect?: (select: boolean) => void;
+    onClick?: () => void;
+    onBlur?: () => void;
+    onMouseLeave?: () => void;
+    variants?: MusicBannerCardVariants;
+}
+declare const MusicBannerCard: ({ sekai, themeMode, musicTitle, artist, selected, onSelect, onClick, onBlur, onMouseLeave, variants, ...rest }: MusicBannerCardProps) => React__default.JSX.Element;
 
 interface PrskLinkCardProps {
     id?: string;
@@ -412,6 +467,15 @@ interface IntoTheSekaiProps {
 }
 declare const IntoTheSekai: ({ execEvent, containerComponent, ...rest }: IntoTheSekaiProps) => React__default.ReactPortal | null;
 
+interface SekaiBackgroundProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    containerComponent?: HTMLElement;
+    bgOpacity?: number;
+}
+declare const SekaiBackground: ({ containerComponent, bgOpacity, ...rest }: SekaiBackgroundProps) => React__default.ReactPortal | null;
+
 interface TextLinkProps {
     id?: string;
     className?: string;
@@ -566,6 +630,20 @@ type CheckboxProps = {
 } & Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'checked' | 'disabled'>;
 declare const Checkbox: ({ sekai, themeMode, checked, disabled, onChange, filling, ...rest }: CheckboxProps) => React__default.JSX.Element;
 
+interface ChipProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    sekai?: ColorsSekaiKey;
+    themeMode?: PaletteMode;
+    label: string;
+    onClick?: () => void;
+    onDelete?: () => void;
+    size?: 'small' | 'medium' | 'large';
+    variant?: 'filled' | 'outlined';
+}
+declare const Chip: ({ sekai, themeMode, label, onClick, onDelete, size, variant, ...rest }: ChipProps) => React__default.JSX.Element;
+
 interface MarqueeTextProps {
     id?: string;
     className?: string;
@@ -652,6 +730,22 @@ interface SekaiAnnotationTextProps extends AnnotationTextProps {
 }
 declare const SekaiAnnotationText: ({ sekai, children, ...rest }: SekaiAnnotationTextProps) => React__default.JSX.Element;
 
+type ResizeVariant = 'none' | 'both' | 'horizontal' | 'vertical';
+interface TextAreaProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    sekai?: ColorsSekaiKey;
+    themeMode?: PaletteMode;
+    value?: string;
+    onChange?: (value: string) => void;
+    placeholder?: string;
+    disabled?: boolean;
+    maxLength?: number;
+    resize?: ResizeVariant;
+}
+declare const TextArea: ({ sekai, themeMode, value, onChange, placeholder, disabled, maxLength, resize, ...rest }: TextAreaProps) => React__default.JSX.Element;
+
 interface TextFieldProps extends React__default.InputHTMLAttributes<HTMLInputElement> {
     id?: string;
     className?: string;
@@ -677,7 +771,7 @@ interface ToastProps {
     open: boolean;
     onClose: () => void;
     pos?: ToastPosition;
-    message: string[] | string;
+    message: string | string[];
     isError?: boolean;
     duration?: number;
     containerComponent?: HTMLElement;
@@ -696,6 +790,20 @@ interface TooltipProps {
     pos?: TooltipPosition;
 }
 declare const Tooltip: ({ sekai, themeMode, children, text, pos, ...rest }: TooltipProps) => React__default.JSX.Element;
+
+interface PictureViewerProps {
+    id?: string;
+    className?: string;
+    style?: React__default.CSSProperties;
+    sekai?: ColorsSekaiKey;
+    themeMode?: PaletteMode;
+    imgSrc: string;
+    alt?: string;
+    width?: number;
+    objectFit?: 'contain' | 'cover';
+    containerComponent?: HTMLElement;
+}
+declare const PictureViewer: ({ sekai, themeMode, imgSrc, alt, width, objectFit, containerComponent, ...rest }: PictureViewerProps) => React__default.JSX.Element | null;
 
 declare const useCreateSekai: () => YourSekaiContextProps;
 
@@ -832,5 +940,5 @@ declare const getFormattedTime: (now: Date, format?: string, locale?: string) =>
  */
 declare const getCustomCurrentTime: (now: Date, pattern?: string) => string;
 
-export { Accordion, AnnotationText, Backdrop, BasicButton, BodyText, COLORS_SEKAI_KEYS, Card, CardContent, CardTitle, Checkbox, DARK_MODE, DetailText, Dialog, DialogButtons, DialogTitleHeader, Divider, DoReMeetEffect, Drawer, Dropdown, DropdownContent, HamburgerButton, IntoTheSekai, LIGHT_MODE, List, ListContext, ListItemButton, ListItemText, Loading, MarqueeText, NamePlate, ORIENTATION, OutlineText, Pagination, PrskLinkCard, ScrollTopButton, SekaiAnnotationText, SekaiBodyText, SekaiDetailText, StickyNote, StrongButton, StylishButton, TextField, TextLink, Toast, Tooltip, TypewriterText, WindowDialog, XoMikuDialog, XxMikuDialog, YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider, colorsSekai, convertHexToRgb, convertHexToRgba, convertHexToRgbaMixWithBlackOrWhite, createSekai, createSharedValueProvider, deserializeData, deserializeDataWithTemplate, fireOnEnterKey, fireOnEscapeKey, fireOnSpaceKey, getCurrentTime, getCustomCurrentTime, getFormattedTime, getSekaiCharacterName, isValidDateString, serializeData, shuffleArray, useCreateSekai, useCurrentTime, useInnerSize, useLocalStorage, useOrientation, useSessionStorage, useTabletSize, useThemeMode };
-export type { AccordionProps, AnnotationTextProps, ArrayElement, BackdropProps, BasicButtonProps, BodyTextProps, CardContentProps, CardProps, CardTitleProps, CheckboxProps, ColorsSekai, ColorsSekaiCode, ColorsSekaiKey, DeepPartial, DeepRequired, DetailTextProps, DialogButton, DialogButtonType, DialogButtonsProps, DialogProps, DialogSize, DialogTitleHeaderProps, DividerProps, DoReMeetEffectProps, DrawerPosition, DrawerProps, DropdownOption, DropdownProps, HamburgerButtonProps, IntoTheSekaiProps, ListItemButtonProps, ListItemTextProps, ListProps, LoadingProps, MarqueeTextProps, NamePlateProps, Orientation, OutlineTextProps, PaginationProps, PaginationSize, PaletteMode, PartialBy, PrskLinkCardProps, RequiredBy, ScrollTopButtonProps, ScrollTopPos, SekaiAnnotationTextProps, SekaiBodyTextProps, SekaiDetailTextProps, SekaiTheme, SekaiThemeProps, SharedValueContextProps, SharedValueProviderProps, StickyNoteProps, StrongButtonProps, StylishButtonProps, TextFieldProps, TextLinkProps, ToastPosition, ToastProps, TooltipPosition, TooltipProps, TypewriterTextOptions, TypewriterTextProps, ValueOf, WindowDialogProps, XoMikuDialogProps, XxMikuDialogProps, YourSekaiContextProps, YourSekaiProviderProps };
+export { Accordion, AnnotationText, Backdrop, BasicButton, BodyText, Breadcrumb, COLORS_SEKAI_KEYS, Card, CardContent, CardTitle, Checkbox, Chip, DARK_MODE, DetailText, Dialog, DialogButtons, DialogTitleHeader, Divider, DoReMeetEffect, Drawer, Dropdown, DropdownContent, HamburgerButton, IntoTheSekai, LIGHT_MODE, List, ListContext, ListItemButton, ListItemText, Loading, MarqueeText, MusicBannerCard, NamePlate, ORIENTATION, OutlineText, Pagination, PictureViewer, PrskLinkCard, ScrollTopButton, SekaiAnnotationText, SekaiBackground, SekaiBodyText, SekaiDetailText, StickyNote, StrongButton, StylishButton, TextArea, TextField, TextLink, Toast, Tooltip, TypewriterText, WindowDialog, XoMikuDialog, XxMikuDialog, YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider, colorSekaiKeyList, colorsSekai, convertHexToRgb, convertHexToRgba, convertHexToRgbaMixWithBlackOrWhite, createSekai, createSharedValueProvider, deserializeData, deserializeDataWithTemplate, fireOnEnterKey, fireOnEscapeKey, fireOnSpaceKey, getCurrentTime, getCustomCurrentTime, getFormattedTime, getSekaiCharacterName, isValidDateString, serializeData, shuffleArray, useCreateSekai, useCurrentTime, useInnerSize, useLocalStorage, useOrientation, useSessionStorage, useTabletSize, useThemeMode };
+export type { AccordionProps, AnnotationTextProps, ArrayElement, BackdropProps, BasicButtonProps, BodyTextProps, BreadcrumbProps, CardContentProps, CardProps, CardTitleProps, CheckboxProps, ChipProps, ColorsSekai, ColorsSekaiCode, ColorsSekaiKey, DeepPartial, DeepRequired, DetailTextProps, DialogButton, DialogButtonType, DialogButtonsProps, DialogProps, DialogSize, DialogTitleHeaderProps, DividerProps, DoReMeetEffectProps, DrawerPosition, DrawerProps, DropdownOption, DropdownProps, HamburgerButtonProps, IntoTheSekaiProps, ListItemButtonProps, ListItemTextProps, ListProps, LoadingProps, MarqueeTextProps, MusicBannerCardProps, NamePlateProps, Orientation, OutlineTextProps, PaginationProps, PaginationSize, PaletteMode, PartialBy, PictureViewerProps, PrskLinkCardProps, RequiredBy, ScrollTopButtonProps, ScrollTopPos, SekaiAnnotationTextProps, SekaiBackgroundProps, SekaiBodyTextProps, SekaiDetailTextProps, SekaiTheme, SekaiThemeProps, SharedValueContextProps, SharedValueProviderProps, StickyNoteProps, StrongButtonProps, StylishButtonProps, TextAreaProps, TextFieldProps, TextLinkProps, ToastPosition, ToastProps, TooltipPosition, TooltipProps, TypewriterTextOptions, TypewriterTextProps, ValueOf, WindowDialogProps, XoMikuDialogProps, XxMikuDialogProps, YourSekaiContextProps, YourSekaiProviderProps };

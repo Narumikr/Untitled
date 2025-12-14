@@ -1,0 +1,80 @@
+@use '../../styles/global.module.scss' as global;
+
+$icon-size: 24px;
+$padding-side: 8px;
+
+.sekai-music-banner-card {
+  transition: transform 0.2s ease-in-out;
+  &.sekai-music-card-selected,
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    transform: scale(1.05);
+  }
+}
+.sekai-music-banner-card-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 45px;
+  padding: 2px $padding-side;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.sekai-music-details {
+  max-width: calc(100% - $icon-size - $padding-side * 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  .sekai-music-card-detail-title {
+    max-width: 100%;
+    line-height: 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .sekai-music-card-detail-artist {
+    max-width: 100%;
+    font-size: 12px;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      height 0.2s ease-in-out,
+      transform 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+
+    &.sekai-music-card-detail-artist-selected {
+      height: 15px;
+      opacity: 1;
+      line-height: 15px;
+    }
+  }
+}
+
+.sekai-music-card-icon-wrapper {
+  position: relative;
+  height: $icon-size;
+  width: $icon-size;
+}
+.sekai-music-card-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px !important;
+  width: 24px !important;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+
+  &-visible {
+    opacity: 1;
+    visibility: visible;
+    // pointer-events: none;
+  }
+}

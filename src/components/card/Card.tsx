@@ -12,19 +12,27 @@ import styles from './Card.module.scss'
 import type { PaletteMode } from '@/hooks/useThemeMode'
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
 
-export interface CardProps {
+export type CardProps = {
   id?: string
   className?: string
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
   children: React.ReactNode
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
-export const Card = ({ sekai, themeMode, children, ...rest }: CardProps) => {
+export const Card = ({
+  id,
+  className,
+  style,
+  sekai,
+  themeMode,
+  children,
+  ...divProps
+}: CardProps) => {
   const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
 
-  const sekaiColoShadow = convertHexToRgba(sekaiColor, 0.25)
+  const sekaiColoShadow = convertHexToRgba(sekaiColor, 0.75)
 
   const optionStyle = {
     '--sekai-color': sekaiColor,
@@ -33,13 +41,14 @@ export const Card = ({ sekai, themeMode, children, ...rest }: CardProps) => {
 
   return (
     <div
-      {...rest}
+      {...divProps}
+      id={id}
       className={clsx(
         styles['sekai-card'],
         globalStyles[`sekai-color-${modeTheme}`],
-        rest.className,
+        className,
       )}
-      style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
+      style={{ ...(optionStyle as React.CSSProperties), ...style }}>
       {children}
     </div>
   )
@@ -53,16 +62,23 @@ export interface CardContentProps {
   children: React.ReactNode
 }
 
-export const CardContent = ({ themeMode, children, ...rest }: CardContentProps) => {
+export const CardContent = ({
+  id,
+  className,
+  style,
+  themeMode,
+  children,
+}: CardContentProps) => {
   const { modeTheme } = useOptionalSekai({ mode: themeMode })
 
   return (
     <div
-      {...rest}
+      id={id}
+      style={style}
       className={clsx(
         styles['sekai-card-content'],
         globalStyles[`sekai-color-${modeTheme}`],
-        rest.className,
+        className,
       )}>
       {children}
     </div>

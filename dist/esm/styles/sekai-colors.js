@@ -1,3 +1,7 @@
+/**
+ * Sekai colors keys
+ * @example 'Miku'
+ */
 // prettier-ignore
 var COLORS_SEKAI_KEYS = {
   Miku: 'Miku',
@@ -33,6 +37,15 @@ var COLORS_SEKAI_KEYS = {
   Wonderlandsshowtime: 'Wonderlandsshowtime',
   Nightcode: 'Nightcode'
 };
+/**
+ * List of sekai colors keys
+ * @example ['Miku', 'Rin', 'Len', ...]
+ */
+var colorSekaiKeyList = Object.keys(COLORS_SEKAI_KEYS);
+/**
+ * Sekai colors
+ * @example { Miku: '#33ccba', Rin: '#ffcc10', ... }
+ */
 // prettier-ignore
 var colorsSekai = {
   /** Character */
@@ -71,4 +84,4 @@ var colorsSekai = {
   Nightcode: '#884499'
 };
 
-export { COLORS_SEKAI_KEYS, colorsSekai };
+export { COLORS_SEKAI_KEYS, colorSekaiKeyList, colorsSekai };

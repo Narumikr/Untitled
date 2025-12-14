@@ -2,7 +2,7 @@ import { NamePlate } from '@/components/text/NamePlate'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/NamePlate',
@@ -50,6 +50,8 @@ const meta = {
     },
     text: {
       description: 'Text to display',
+      // @ts-expect-error Storybook's typing issue
+      type: { required: true },
       table: {
         type: { summary: 'string' },
       },
@@ -74,6 +76,7 @@ export const DefaultLight: Story = {
     sekai: 'Miku',
     themeMode: 'light',
     text: '初音ミク',
+    colorCount: 1,
   },
   parameters: {
     sekai: 'Miku',
@@ -87,6 +90,7 @@ export const DefaultDark: Story = {
     sekai: 'Miku',
     themeMode: 'dark',
     text: '初音ミク',
+    colorCount: 1,
   },
   parameters: {
     sekai: 'Miku',

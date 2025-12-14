@@ -6,7 +6,7 @@ import { ListItemText } from '@/components/list/ListItemText'
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
 import type { ListItemTextProps } from '@/components/list/ListItemText'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/ListItemText',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 import { List } from '@/components/list/List'
 import { ListItemButton } from '@/components/list/ListItemButton'
@@ -8,7 +8,7 @@ import { ListItemButton } from '@/components/list/ListItemButton'
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
 import type { ListItemButtonProps } from '@/components/list/ListItemButton'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/ListItemButton',
