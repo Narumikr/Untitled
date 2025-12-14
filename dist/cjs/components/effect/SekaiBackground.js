@@ -2,6 +2,7 @@
 'use strict';
 
 var _extends = require('@babel/runtime/helpers/extends');
+var _slicedToArray = require('@babel/runtime/helpers/slicedToArray');
 var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
 var _classCallCheck = require('@babel/runtime/helpers/classCallCheck');
 var _createClass = require('@babel/runtime/helpers/createClass');
@@ -9,7 +10,6 @@ var _defineProperty = require('@babel/runtime/helpers/defineProperty');
 var React = require('react');
 var clsx = require('clsx');
 var reactDom = require('react-dom');
-var usePortalContainer = require('../../internal/usePortalContainer.js');
 var SekaiBackground_module = require('./SekaiBackground.module.scss.js');
 
 var _excluded = ["containerComponent", "bgOpacity"];
@@ -18,6 +18,20 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
 var PINK = "rgba(255, 186, 241, ";
 var YELLOW = "rgba(255, 247, 148, ";
 var AQUA = "rgba(149, 253, 255, ";
+var getCreateBackgroundRoot = function getCreateBackgroundRoot() {
+  var root = document.getElementById('sekai-background-root');
+  if (!root) {
+    root = document.createElement('div');
+    root.id = 'sekai-background-root';
+    root.style.cssText = "\n      position: fixed;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      pointer-events: none;\n      z-index: -1;    \n";
+    if (document.body.firstChild) {
+      document.body.insertBefore(root, document.body.firstChild);
+    } else {
+      document.body.appendChild(root);
+    }
+  }
+  return root;
+};
 var PieceOfSekai = /*#__PURE__*/function () {
   function PieceOfSekai(canvas, ctx) {
     _classCallCheck(this, PieceOfSekai);
@@ -115,8 +129,15 @@ var SekaiBackground = function SekaiBackground(_ref) {
   var containerComponent = _ref.containerComponent,
     bgOpacity = _ref.bgOpacity,
     rest = _objectWithoutProperties(_ref, _excluded);
-  var portalContainer = usePortalContainer.usePortalContainer(containerComponent);
+  var _useState = React.useState(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    portalContainer = _useState2[0],
+    setPortalContainer = _useState2[1];
   var canvasRef = React.useRef(null);
+  React.useEffect(function () {
+    var container = containerComponent || getCreateBackgroundRoot();
+    setPortalContainer(container);
+  }, [containerComponent]);
   React.useEffect(function () {
     var canvas = canvasRef.current;
     var ctx = canvas === null || canvas === void 0 ? void 0 : canvas.getContext('2d');
