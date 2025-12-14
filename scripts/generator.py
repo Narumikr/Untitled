@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 
 # ✅ get the current directory path
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -51,20 +52,24 @@ def outputIndexFile(output_file_path, output_text):
     print(f"✅ Completed!! generate `index.ts`\n📁 output file path: {output_file_path}")
 
 if __name__ == "__main__":
+    # common file header
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    generated_text = f'/**\n * This file is auto-generated. Do not edit manually.\n * Generated at: {current_time}\n */\n\n'
+
     # generate components indexfile
     checkDirectoryExist(components_dir)
     components_list = getFolderAndTsxFileNameList(components_dir)
-    exports_components = "".join([f"export * from './{folder}/{file_name}'\n" for folder, file_name in components_list])
+    exports_components = generated_text + "".join([f"export * from './{folder}/{file_name}'\n" for folder, file_name in components_list])
     outputIndexFile(components_index_file, exports_components)
 
     # generate hooks indexfile
     checkDirectoryExist(hooks_dir)
     hooks_list = getTsFileNameList(hooks_dir)
-    exports_hooks = "".join([f"export * from './{file_name}'\n" for file_name in hooks_list])
+    exports_hooks = generated_text + "".join([f"export * from './{file_name}'\n" for file_name in hooks_list])
     outputIndexFile(hooks_index_file, exports_hooks)
 
     # generate utils indexfile
     checkDirectoryExist(utils_dir)
     utils_list = getTsFileNameList(utils_dir)
-    exports_utils = "".join([f"export * from './{file_name}'\n" for file_name in utils_list])
+    exports_utils = generated_text + "".join([f"export * from './{file_name}'\n" for file_name in utils_list])
     outputIndexFile(utils_index_file, exports_utils)

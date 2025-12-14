@@ -1,10 +1,10 @@
-import { fn } from '@storybook/test'
+import { fn } from 'storybook/test'
 
 import { TextField } from '@/components/textfield/TextField'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/TextField',
@@ -41,7 +41,6 @@ const meta = {
       control: { type: 'select' },
       options: [...Object.keys(COLORS_SEKAI_KEYS)],
     },
-
     themeMode: {
       description: 'Light or Dark mode',
       table: {
@@ -50,6 +49,45 @@ const meta = {
       },
       control: { type: 'select' },
       options: ['light', 'dark'],
+    },
+    placeholder: {
+      description: 'Placeholder text',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    clearButton: {
+      description: 'Show clear button',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    onChangeInput: {
+      description: 'Callback when input changes',
+      table: {
+        type: { summary: '(value: string) => void' },
+      },
+      control: false,
+    },
+    isError: {
+      description: 'Whether the TextField is in error state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    errorMessage: {
+      description: 'Error message to display',
+      table: {
+        type: { summary: 'string' },
+      },
+    },
+    maxLength: {
+      description: 'Maximum input length',
+      table: {
+        type: { summary: 'number' },
+      },
     },
   },
   args: { onChangeInput: fn() },
@@ -67,6 +105,7 @@ export const DefaultLight: Story = {
     placeholder: 'Input text here',
     isError: false,
     errorMessage: '',
+    maxLength: 25,
   },
   parameters: {
     sekai: 'Miku',
@@ -83,6 +122,7 @@ export const DefaultDark: Story = {
     placeholder: 'Input text here',
     isError: false,
     errorMessage: '',
+    maxLength: 25,
   },
   parameters: {
     sekai: 'Miku',
@@ -99,6 +139,7 @@ export const ErrorLight: Story = {
     placeholder: 'Input text here',
     isError: true,
     errorMessage: 'The value you entered is not valid',
+    maxLength: 25,
   },
   parameters: {
     sekai: 'Miku',
@@ -115,6 +156,7 @@ export const ErrorDark: Story = {
     placeholder: 'Input text here',
     isError: true,
     errorMessage: 'The value you entered is not valid',
+    maxLength: 25,
   },
   parameters: {
     sekai: 'Miku',

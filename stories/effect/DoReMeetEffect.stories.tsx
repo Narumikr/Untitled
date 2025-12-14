@@ -1,6 +1,6 @@
 import { DoReMeetEffect } from '@/components/effect/DoReMeetEffect'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'Special/DoReMeetEffect',
@@ -70,7 +70,7 @@ export const DefaultLight: Story = {
     id: 'do-re-meet-effect-default-light',
     sekaiKeys: ['Miku', 'Kanade', 'Haruka', 'Nene', 'An', 'Saki'],
     themeMode: 'light',
-    text: '劇場版プロセカのエンドロールでのドレミファソラシド〜🎶演出をイメージ',
+    text: '劇場版プロセカのエンドロールでのドレミファソラシド〜🎶演出をイメージ! Click me!',
     duration: 250,
   },
   parameters: {
@@ -84,7 +84,7 @@ export const DefaultDark: Story = {
     id: 'do-re-meet-effect-default-dark',
     sekaiKeys: ['Miku', 'Kanade', 'Haruka', 'Nene', 'An', 'Saki'],
     themeMode: 'dark',
-    text: '劇場版プロセカのエンドロールでのドレミファソラシド〜🎶演出をイメージ',
+    text: '劇場版プロセカのエンドロールでのドレミファソラシド〜🎶演出をイメージ! Click me!',
     duration: 250,
   },
   parameters: {

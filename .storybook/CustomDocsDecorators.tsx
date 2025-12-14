@@ -9,7 +9,7 @@ import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
 import type { PaletteMode } from '@/hooks/useThemeMode'
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
-import type { StoryContext, StoryFn } from '@storybook/react'
+import type { StoryContext, StoryFn } from '@storybook/react-vite'
 
 interface CustomDocsDecoratorsProps {
   story: StoryFn

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { DocsContainer } from '@storybook/blocks'
+import { DocsContainer } from '@storybook/addon-docs/blocks'
 
 import { DARK_MODE, LIGHT_MODE } from '@/hooks/useThemeMode'
 import {
@@ -11,7 +11,7 @@ import {
 } from '@/internal/color.constant'
 
 import type { PaletteMode } from '@/hooks/useThemeMode'
-import type { DocsContextProps } from '@storybook/blocks'
+import type { DocsContextProps } from '@storybook/addon-docs/blocks'
 
 interface CustomDocsContainerProps {
   children: React.ReactNode

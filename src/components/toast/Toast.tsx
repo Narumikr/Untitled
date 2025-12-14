@@ -28,7 +28,7 @@ export interface ToastProps {
   open: boolean
   onClose: () => void
   pos?: ToastPosition
-  message: string[] | string
+  message: string | string[]
   isError?: boolean
   duration?: number
   containerComponent?: HTMLElement

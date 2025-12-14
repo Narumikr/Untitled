@@ -14,7 +14,7 @@ jobs:
       new_version: ${{ steps.check.outputs.new_version }}
       version_type: ${{ steps.check.outputs.version_type }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -84,7 +84,7 @@ jobs:
     steps:
       - name: Add version label to PR
         if: needs.check-version.outputs.version_changed == 'true'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const versionType = '${{ needs.check-version.outputs.version_type }}';
@@ -164,7 +164,7 @@ jobs:
       pull-requests: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Create Release Draft
         uses: release-drafter/release-drafter@v6

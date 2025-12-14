@@ -4,7 +4,7 @@ import { CustomDocsContainer } from './CustomDocsContainer'
 import { CustomDocsDecorators } from './CustomDocsDecorators'
 import './storybook.css'
 
-import type { Preview, StoryContext, StoryFn } from '@storybook/react'
+import type { Preview, StoryContext, StoryFn } from '@storybook/react-vite'
 
 const preview: Preview = {
   parameters: {

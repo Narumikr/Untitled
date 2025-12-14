@@ -4,7 +4,7 @@ import { MarqueeText } from '@/components/text/MarqueeText'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
   title: 'UI/MarqueeText',
@@ -76,6 +76,7 @@ const meta = {
         type: { summary: 'number' },
         defaultValue: { summary: 'calculated based on text width' },
       },
+      control: { type: 'number' },
     },
     parentBackgroundColor: {
       description: 'Background color of the parent element',
@@ -103,7 +104,7 @@ export const StringLight: Story = {
     sekai: 'Miku',
     themeMode: 'light',
     children: StringChildren,
-    duration: undefined,
+    duration: 0,
     parentBackgroundColor: undefined,
   },
   parameters: {
@@ -118,7 +119,7 @@ export const StringDark: Story = {
     sekai: 'Miku',
     themeMode: 'dark',
     children: StringChildren,
-    duration: undefined,
+    duration: 0,
     parentBackgroundColor: undefined,
   },
   parameters: {
@@ -133,7 +134,7 @@ export const ComponentLight: Story = {
     sekai: 'Miku',
     themeMode: 'light',
     children: ComponentChildren,
-    duration: undefined,
+    duration: 0,
     parentBackgroundColor: undefined,
   },
   parameters: {
@@ -148,7 +149,7 @@ export const ComponentDark: Story = {
     sekai: 'Miku',
     themeMode: 'dark',
     children: ComponentChildren,
-    duration: undefined,
+    duration: 0,
     parentBackgroundColor: undefined,
   },
   parameters: {
