@@ -39,6 +39,7 @@ export { TextArea } from './components/textfield/TextArea.js';
 export { TextField } from './components/textfield/TextField.js';
 export { Toast } from './components/toast/Toast.js';
 export { Tooltip } from './components/tooltip/Tooltip.js';
+export { PictureViewer } from './components/viewer/PictureViewer.js';
 export { useCreateSekai } from './hooks/useCreateSekai.js';
 export { useCurrentTime } from './hooks/useCurrectTime.js';
 export { useLocalStorage } from './hooks/useLocalStorage.js';

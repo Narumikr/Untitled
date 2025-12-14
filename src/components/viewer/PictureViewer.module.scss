@@ -1,0 +1,74 @@
+@use '../../styles/global.module.scss' as global;
+
+$image-border-radius: 8px;
+
+.sekai-picture-viewer-thumbnail {
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+  outline: 2px solid var(--sekai-color);
+  border-radius: $image-border-radius;
+  &-light {
+    border: 2px solid global.$color-bg-light;
+  }
+  &-dark {
+    border: 2px solid global.$color-bg-dark;
+  }
+}
+
+.sekai-thumbnail-image {
+  object-fit: contain;
+  display: block;
+  max-width: 90vw;
+}
+
+.sekai-preview-container {
+  position: fixed;
+  inset: 0;
+  z-index: global.$modal-z-index;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.sekai-preview-image-wrapper {
+  width: auto;
+  height: auto;
+  pointer-events: auto;
+
+  .sekai-preview-image {
+    width: 50vw;
+    object-fit: contain;
+    outline: 2px solid var(--sekai-color);
+    border-radius: $image-border-radius;
+    &-light {
+      border: 2px solid global.$color-bg-light;
+    }
+    &-dark {
+      border: 2px solid global.$color-bg-dark;
+    }
+  }
+}
+
+.sekai-preview-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+
+  &:focus-visible,
+  &:hover {
+    outline: 1px solid var(--sekai-color);
+  }
+}
