@@ -86,6 +86,15 @@ const meta = {
         defaultValue: { summary: '210' },
       },
     },
+    objectFit: {
+      description: 'The CSS object-fit property value.',
+      table: {
+        type: { summary: 'contain | cover' },
+        defaultValue: { summary: 'contain' },
+      },
+      control: { type: 'select' },
+      options: ['contain', 'cover'],
+    },
     containerComponent: {
       description: 'Target element where the portal content will be rendered',
       table: {

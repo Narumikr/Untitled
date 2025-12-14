@@ -800,9 +800,10 @@ interface PictureViewerProps {
     imgSrc: string;
     alt?: string;
     width?: number;
+    objectFit?: 'contain' | 'cover';
     containerComponent?: HTMLElement;
 }
-declare const PictureViewer: ({ sekai, themeMode, imgSrc, alt, width, containerComponent, ...rest }: PictureViewerProps) => React__default.JSX.Element | null;
+declare const PictureViewer: ({ sekai, themeMode, imgSrc, alt, width, objectFit, containerComponent, ...rest }: PictureViewerProps) => React__default.JSX.Element | null;
 
 declare const useCreateSekai: () => YourSekaiContextProps;
 

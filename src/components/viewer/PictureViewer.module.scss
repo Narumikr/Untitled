@@ -17,7 +17,7 @@ $image-border-radius: 8px;
 }
 
 .sekai-thumbnail-image {
-  object-fit: contain;
+  // object-fit: contain;
   display: block;
   max-width: 90vw;
 }
@@ -33,13 +33,16 @@ $image-border-radius: 8px;
 }
 
 .sekai-preview-image-wrapper {
-  width: auto;
+  width: 90vw;
   height: auto;
+  max-width: 720px;
   pointer-events: auto;
 
   .sekai-preview-image {
-    width: 50vw;
-    object-fit: contain;
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
     outline: 2px solid var(--sekai-color);
     border-radius: $image-border-radius;
     &-light {

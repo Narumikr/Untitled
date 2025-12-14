@@ -1,4 +1,4 @@
-import React, { useId, useState } from 'react'
+import React, { useState } from 'react'
 
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -24,6 +24,7 @@ export interface PictureViewerProps {
   imgSrc: string
   alt?: string
   width?: number
+  objectFit?: 'contain' | 'cover'
   containerComponent?: HTMLElement
 }
 
@@ -33,12 +34,12 @@ export const PictureViewer = ({
   imgSrc,
   alt = '',
   width = 210,
+  objectFit = 'contain',
   containerComponent,
   ...rest
 }: PictureViewerProps) => {
   const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
   const portalContainer = usePortalContainer(containerComponent)
-  const uniqueId = useId()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -56,7 +57,6 @@ export const PictureViewer = ({
       {/* Thumbnail */}
       <motion.div
         {...rest}
-        layoutId={`preview-image-${uniqueId}`}
         className={clsx(
           styles['sekai-picture-viewer-thumbnail'],
           styles[`sekai-picture-viewer-thumbnail-${modeTheme}`],
@@ -70,6 +70,7 @@ export const PictureViewer = ({
           src={imgSrc}
           alt={alt}
           className={clsx(styles['sekai-thumbnail-image'])}
+          style={{ objectFit: objectFit }}
           width={width}
         />
       </motion.div>
@@ -93,8 +94,14 @@ export const PictureViewer = ({
                   ...(posAbsoluteStyle as React.CSSProperties),
                 }}>
                 <motion.div
-                  layoutId={`preview-image-${uniqueId}`}
-                  className={clsx(styles['sekai-preview-image-wrapper'])}>
+                  className={clsx(styles['sekai-preview-image-wrapper'])}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.5 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.4, 0, 0.2, 1],
+                  }}>
                   <img
                     src={imgSrc}
                     alt={alt}
@@ -102,6 +109,7 @@ export const PictureViewer = ({
                       styles['sekai-preview-image'],
                       styles[`sekai-preview-image-${modeTheme}`],
                     )}
+                    style={{ objectFit: objectFit }}
                   />
                 </motion.div>
                 <motion.button
