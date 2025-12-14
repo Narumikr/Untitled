@@ -1,15 +1,39 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import clsx from 'clsx'
 import { createPortal } from 'react-dom'
-
-import { usePortalContainer } from '@/internal/usePortalContainer'
 
 import styles from './SekaiBackground.module.scss'
 
 const PINK = `rgba(255, 186, 241, `
 const YELLOW = `rgba(255, 247, 148, `
 const AQUA = `rgba(149, 253, 255, `
+
+const getCreateBackgroundRoot = () => {
+  let root = document.getElementById('sekai-background-root')
+
+  if (!root) {
+    root = document.createElement('div')
+    root.id = 'sekai-background-root'
+    root.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;    
+`
+
+    if (document.body.firstChild) {
+      document.body.insertBefore(root, document.body.firstChild)
+    } else {
+      document.body.appendChild(root)
+    }
+  }
+
+  return root
+}
 
 class PieceOfSekai {
   x = 0
@@ -126,9 +150,13 @@ export const SekaiBackground = ({
   bgOpacity,
   ...rest
 }: SekaiBackgroundProps) => {
-  const portalContainer = usePortalContainer(containerComponent)
-
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const container = containerComponent || getCreateBackgroundRoot()
+    setPortalContainer(container)
+  }, [containerComponent])
 
   useEffect(() => {
     const canvas = canvasRef.current
