@@ -1,20 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks'
 
-import Github from './assets/github.svg'
-import Discord from './assets/discord.svg'
-import Youtube from './assets/youtube.svg'
-import Tutorials from './assets/tutorials.svg'
-import Styling from './assets/styling.png'
-import Context from './assets/context.png'
-import Assets from './assets/assets.png'
-import Docs from './assets/docs.png'
-import Share from './assets/share.png'
-import FigmaPlugin from './assets/figma-plugin.png'
-import Testing from './assets/testing.png'
-import Accessibility from './assets/accessibility.png'
-import Theming from './assets/theming.png'
-import AddonLibrary from './assets/addon-library.png'
-
 export const RightArrow = () => (
   <svg
     viewBox="0 0 14 14"
@@ -32,181 +17,265 @@ export const RightArrow = () => (
   </svg>
 )
 
-<Meta title="Untitled/Configure your project" />
+<Meta title="Untitled/Welcome" />
 
 <div className="sb-container">
   <div className='sb-section-title'>
-    # Configure your project
+    # Welcome to Untitled UI Library 💫
 
-    Because Storybook works separately from your app, you'll need to configure it for your specific stack and setup. Below, explore guides for configuring Storybook with popular frameworks and tools. If you get stuck, learn how you can ask for help from our community.
+    **きっと...**
+
+    プロセカ(Project SEKAI)をコンセプトにしたReact UIコンポーネントライブラリです。
+    40+のテーマカラーと、ライト/ダークモード対応のコンポーネントを提供しています。
+
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## 🎨 What we provide
 
   </div>
   <div className="sb-section">
     <div className="sb-section-item">
-      <img
-        src={Styling}
-        alt="A wall of logos representing different styling technologies"
-      />
-      <h4 className="sb-section-item-heading">Add styling and CSS</h4>
-      <p className="sb-section-item-paragraph">Like with web applications, there are many ways to include CSS within Storybook. Learn more about setting up styling within Storybook.</p>
-      <a
-        href="https://storybook.js.org/docs/configure/styling-and-css/?renderer=react"
-        target="_blank"
-      >Learn more<RightArrow /></a>
+      <h4 className="sb-section-item-heading">🌈 SEKAI Colors</h4>
+      <p className="sb-section-item-paragraph">
+        40+のプロセカキャラクター・ユニットカラーをTypeScriptとCSSカスタムプロパティで提供。
+        hex形式のカラーコードに加え、RGB/RGBA変換ユーティリティも用意しています。
+      </p>
+      <a href="?path=/docs/special-color--docs">
+        Explore Colors<RightArrow />
+      </a>
     </div>
     <div className="sb-section-item">
-      <img
-        src={Context}
-        alt="An abstraction representing the composition of data for a component"
-      />
-      <h4 className="sb-section-item-heading">Provide context and mocking</h4>
-      <p className="sb-section-item-paragraph">Often when a story doesn't render, it's because your component is expecting a specific environment or context (like a theme provider) to be available.</p>
-      <a
-        href="https://storybook.js.org/docs/writing-stories/decorators/?renderer=react#context-for-mocking"
-        target="_blank"
-      >Learn more<RightArrow /></a>
+      <h4 className="sb-section-item-heading">🎭 UI Components</h4>
+      <p className="sb-section-item-paragraph">
+        Button、Dialog、Card、Effectなど、40+のReactコンポーネント。
+        すべてのコンポーネントがSEKAIテーマとライト/ダークモードに対応しています。
+      </p>
+      <a href="?path=/docs/button-basicbutton--docs">
+        Browse Components<RightArrow />
+      </a>
     </div>
     <div className="sb-section-item">
-      <img src={Assets} alt="A representation of typography and image assets" />
-      <div>
-        <h4 className="sb-section-item-heading">Load assets and resources</h4>
-        <p className="sb-section-item-paragraph">To link static files (like fonts) to your projects and stories, use the
-        `staticDirs` configuration option to specify folders to load when
-        starting Storybook.</p>
-        <a
-          href="https://storybook.js.org/docs/configure/images-and-assets/?renderer=react"
-          target="_blank"
-        >Learn more<RightArrow /></a>
-      </div>
+      <h4 className="sb-section-item-heading">🎪 Theme Provider</h4>
+      <p className="sb-section-item-paragraph">
+        YourSekaiProviderでアプリ全体のテーマを管理。
+        セカイの持ち主の変更やライト/ダークモード切り替えが簡単に実装できます。
+      </p>
+      <a href="https://github.com/Narumikr/Untitled#readme" target="_blank">
+        Learn More<RightArrow />
+      </a>
     </div>
   </div>
 </div>
+
 <div className="sb-container">
   <div className='sb-section-title'>
-    # Do more with Storybook
+    ## ✨ Featured Components (Special)
 
-    Now that you know the basics, let's explore other parts of Storybook that will improve your experience. This list is just to get you started. You can customise Storybook in many ways to fit your needs.
+    力を入れて作成したコンポーネントたちです。ぜひ使ってみてください！
 
   </div>
 
   <div className="sb-section">
     <div className="sb-features-grid">
       <div className="sb-grid-item">
-        <img src={Docs} alt="A screenshot showing the autodocs tag being set, pointing a docs page being generated" />
-        <h4 className="sb-section-item-heading">Autodocs</h4>
-        <p className="sb-section-item-paragraph">Auto-generate living,
-          interactive reference documentation from your components and stories.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-docs/autodocs/?renderer=react"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">🎬 IntoTheSekai</h4>
+        <p className="sb-section-item-paragraph">
+          SEKAIへ飛び込むような演出エフェクト。ページ遷移やアプリ起動時に最適なアニメーションコンポーネントです。
+        </p>
+        <a href="?path=/docs/special-intothesekai--docs">
+          View Story<RightArrow />
+        </a>
       </div>
       <div className="sb-grid-item">
-        <img src={Share} alt="A browser window showing a Storybook being published to a chromatic.com URL" />
-        <h4 className="sb-section-item-heading">Publish to Chromatic</h4>
-        <p className="sb-section-item-paragraph">Publish your Storybook to review and collaborate with your entire team.</p>
-        <a
-          href="https://storybook.js.org/docs/sharing/publish-storybook/?renderer=react#publish-storybook-with-chromatic"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">🌟 SekaiBackground</h4>
+        <p className="sb-section-item-paragraph">
+          SEKAIの世界観を表現する背景エフェクト。アプリの背景として設置することで、没入感のあるUIを実現できます。
+        </p>
+        <a href="?path=/docs/special-sekaibackground--docs">
+          View Story<RightArrow />
+        </a>
       </div>
       <div className="sb-grid-item">
-        <img src={FigmaPlugin} alt="Windows showing the Storybook plugin in Figma" />
-        <h4 className="sb-section-item-heading">Figma Plugin</h4>
-        <p className="sb-section-item-paragraph">Embed your stories into Figma to cross-reference the design and live
-          implementation in one place.</p>
-        <a
-          href="https://storybook.js.org/docs/sharing/design-integrations/?renderer=react#embed-storybook-in-figma-with-the-plugin"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">🎵 DoReMeetEffect</h4>
+        <p className="sb-section-item-paragraph">
+          音楽的な演出を加えるエフェクトコンポーネント。インタラクティブな体験を提供します。
+        </p>
+        <a href="?path=/docs/special-doremeeteffect--docs">
+          View Story<RightArrow />
+        </a>
       </div>
       <div className="sb-grid-item">
-        <img src={Testing} alt="Screenshot of tests passing and failing" />
-        <h4 className="sb-section-item-heading">Testing</h4>
-        <p className="sb-section-item-paragraph">Use stories to test a component in all its variations, no matter how
-          complex.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-tests/?renderer=react"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">💬 XoMikuDialog</h4>
+        <p className="sb-section-item-paragraph">
+          開かれた窓のセカイのミクをイメージしたコンセプトダイアログ。独特なデザインが特徴です。
+        </p>
+        <a href="?path=/docs/special-xomikudialog--docs">
+          View Story<RightArrow />
+        </a>
       </div>
       <div className="sb-grid-item">
-        <img src={Accessibility} alt="Screenshot of accessibility tests passing and failing" />
-        <h4 className="sb-section-item-heading">Accessibility</h4>
-        <p className="sb-section-item-paragraph">Automatically test your components for a11y issues as you develop.</p>
-        <a
-          href="https://storybook.js.org/docs/writing-tests/accessibility-testing/?renderer=react"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">✖️ XxMikuDialog</h4>
+        <p className="sb-section-item-paragraph">
+          もう一つのミクダイアログバリエーション。異なる雰囲気のUIが楽しめます。
+        </p>
+        <a href="?path=/docs/special-xxmikudialog--docs">
+          View Story<RightArrow />
+        </a>
       </div>
       <div className="sb-grid-item">
-        <img src={Theming} alt="Screenshot of Storybook in light and dark mode" />
-        <h4 className="sb-section-item-heading">Theming</h4>
-        <p className="sb-section-item-paragraph">Theme Storybook's UI to personalize it to your project.</p>
-        <a
-          href="https://storybook.js.org/docs/configure/theming/?renderer=react"
-          target="_blank"
-        >Learn more<RightArrow /></a>
+        <h4 className="sb-section-item-heading">🎴 MusicBannerCard</h4>
+        <p className="sb-section-item-paragraph">
+          楽曲バナーをイメージしたカードコンポーネント。プロセカらしいデザインを簡単に実装できます。
+        </p>
+        <a href="?path=/docs/special-musicbannercard--docs">
+          View Story<RightArrow />
+        </a>
+      </div>
+      <div className="sb-grid-item">
+        <h4 className="sb-section-item-heading">🔗 PrskLinkCard</h4>
+        <p className="sb-section-item-paragraph">
+          プロセカスタイルのリンクカード。外部リンクやナビゲーションに最適です。
+        </p>
+        <a href="?path=/docs/special-prsklinkcard--docs">
+          View Story<RightArrow />
+        </a>
+      </div>
+      <div className="sb-grid-item">
+        <h4 className="sb-section-item-heading">👥 Character</h4>
+        <p className="sb-section-item-paragraph">
+          キャラクター情報を表示するコンポーネント。カラーテーマと連動した表現が可能です。
+        </p>
+        <a href="?path=/docs/special-character--docs">
+          View Story<RightArrow />
+        </a>
       </div>
     </div>
   </div>
 </div>
-<div className='sb-addon'>
-  <div className='sb-addon-text'>
-    <h4>Addons</h4>
-    <p className="sb-section-item-paragraph">Integrate your tools with Storybook to connect workflows.</p>
-    <a
-        href="https://storybook.js.org/addons/"
-        target="_blank"
-      >Discover all addons<RightArrow /></a>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## 📦 Installation
+
   </div>
-  <div className='sb-addon-img'>
-    <img src={AddonLibrary} alt="Integrate your tools with Storybook to connect workflows." />
+  <div className="sb-code-block">
+    ```bash
+    npm install github:Narumikr/Untitled#release/untitled
+    ```
+
+    または yarn の場合：
+
+    ```bash
+    yarn add github:Narumikr/Untitled#release/untitled
+    ```
+
+    **Notice:** React 18で作成されているため、最新のReact環境では `--legacy-peer-deps` オプションが必要な場合があります。
+
   </div>
 </div>
 
-<div className="sb-section sb-socials">
-    <div className="sb-section-item">
-      <img src={Github} alt="Github logo" className="sb-explore-image"/>
-      Join our contributors building the future of UI development.
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## 🚀 Quick Start
 
-      <a
-        href="https://github.com/storybookjs/storybook"
-        target="_blank"
-      >Star on GitHub<RightArrow /></a>
-    </div>
-    <div className="sb-section-item">
-      <img src={Discord} alt="Discord logo" className="sb-explore-image"/>
-      <div>
-        Get support and chat with frontend developers.
+  </div>
+  <div className="sb-code-block">
+    ### 基本的な使い方
 
-        <a
-          href="https://discord.gg/storybook"
-          target="_blank"
-        >Join Discord server<RightArrow /></a>
+    ```tsx
+    import { BasicButton, COLORS_SEKAI_KEYS } from '@naru/untitled-ui-library'
+
+    export const App = () => {
+      return (
+        <BasicButton sekai={COLORS_SEKAI_KEYS.Miku}>
+          Hello SEKAI!
+        </BasicButton>
+      )
+    }
+    ```
+
+    ### Theme Providerの使用
+
+    ```tsx
+    import {
+      YourSekaiProvider,
+      createSekai,
+      COLORS_SEKAI_KEYS,
+      LIGHT_MODE
+    } from '@naru/untitled-ui-library'
+
+    const theme = createSekai({
+      palette: {
+        sekai: COLORS_SEKAI_KEYS.Miku,
+        mode: LIGHT_MODE
+      }
+    })
+
+    export const App = ({ children }) => {
+      return (
+        <YourSekaiProvider sekaiTheme={theme}>
+          {children}
+        </YourSekaiProvider>
+      )
+    }
+    ```
+
+  </div>
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    ## 🎯 Component Categories
+
+  </div>
+  <div className="sb-section">
+    <div className="sb-category-grid">
+      <div className="sb-category-item">
+        <h4>Button</h4>
+        <p>BasicButton, StrongButton, StylishButton, HamburgerButton, ScrollTopButton</p>
+      </div>
+      <div className="sb-category-item">
+        <h4>Card</h4>
+        <p>Card, MusicBannerCard, PrskLinkCard</p>
+      </div>
+      <div className="sb-category-item">
+        <h4>Dialog</h4>
+        <p>Dialog, WindowDialog, XoMikuDialog, XxMikuDialog</p>
+      </div>
+      <div className="sb-category-item">
+        <h4>Effect</h4>
+        <p>IntoTheSekai, SekaiBackground, DoReMeetEffect</p>
+      </div>
+      <div className="sb-category-item">
+        <h4>Text</h4>
+        <p>TypewriterText, MarqueeText, OutlineText, NamePlate</p>
+      </div>
+      <div className="sb-category-item">
+        <h4>Others</h4>
+        <p>Accordion, Backdrop, Breadcrumb, Divider, Drawer, Dropdown, TextField, Toast, Tooltip, and more...</p>
       </div>
     </div>
-    <div className="sb-section-item">
-      <img src={Youtube} alt="Youtube logo" className="sb-explore-image"/>
-      <div>
-        Watch tutorials, feature previews and interviews.
+  </div>
+</div>
 
-        <a
-          href="https://www.youtube.com/@chromaticui"
-          target="_blank"
-        >Watch on YouTube<RightArrow /></a>
-      </div>
-    </div>
-    <div className="sb-section-item">
-      <img src={Tutorials} alt="A book" className="sb-explore-image"/>
-      <p>Follow guided walkthroughs on for key workflows.</p>
-
-      <a
-          href="https://storybook.js.org/tutorials/"
-          target="_blank"
-        >Discover tutorials<RightArrow /></a>
-    </div>
-
+<div className='sb-footer'>
+  <p>
+    ※ファンメイド作品です。本リポジトリはプロセカ公式とは一切関係ありません。
+  </p>
+  <p>
+    私の大好きなプロセカという作品、でもイラストは描けない、書き物や工作なども難しい。
+    でも何かしら創作をしたいという想いから作り始めました💫
+  </p>
+  <a
+    href="https://github.com/Narumikr/Untitled"
+    target="_blank"
+    className="sb-github-link"
+  >
+    View on GitHub<RightArrow />
+  </a>
 </div>
 
 <style>
@@ -222,102 +291,146 @@ export const RightArrow = () => (
     gap: 20px;
   }
 
-  img {
-    object-fit: cover;
-  }
-
   .sb-section-title {
     margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .sb-section-title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #33ccba 0%, #3367cc 50%, #884499 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .sb-section-title h2 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    color: #33ccba;
   }
 
   .sb-section a:not(h1 a, h2 a, h3 a) {
     font-size: 14px;
+    color: #33ccba;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .sb-section a:hover {
+    text-decoration: underline;
   }
 
   .sb-section-item, .sb-grid-item {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(51, 204, 186, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .sb-section-item:hover, .sb-grid-item:hover {
+    background: rgba(51, 204, 186, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(51, 204, 186, 0.2);
   }
 
   .sb-section-item-heading {
-    padding-top: 20px !important;
-    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
     margin: 0 !important;
-  }
-  .sb-section-item-paragraph {
-    margin: 0;
-    padding-bottom: 10px;
+    font-size: 1.25rem;
+    color: #33aaee;
   }
 
-  .sb-chevron {
-    margin-left: 5px;
+  .sb-section-item-paragraph {
+    margin: 0;
+    padding-bottom: 15px;
+    line-height: 1.6;
+    color: #666;
   }
 
   .sb-features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 32px 20px;
-  }
-
-  .sb-socials {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .sb-socials p {
-    margin-bottom: 10px;
-  }
-
-  .sb-explore-image {
-    max-height: 32px;
-    align-self: flex-start;
-  }
-
-  .sb-addon {
+    grid-gap: 24px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    position: relative;
-    background-color: #EEF3F8;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background: #EEF3F8;
-    height: 180px;
-    margin-bottom: 48px;
-    overflow: hidden;
   }
 
-  .sb-addon-text {
-    padding-left: 48px;
-    max-width: 240px;
+  .sb-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 100%;
   }
 
-  .sb-addon-text h4 {
-    padding-top: 0px;
+  .sb-category-item {
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(136, 221, 68, 0.05);
+    border: 1px solid rgba(136, 221, 68, 0.2);
   }
 
-  .sb-addon-img {
-    position: absolute;
-    left: 345px;
-    top: 0;
-    height: 100%;
-    width: 200%;
-    overflow: hidden;
+  .sb-category-item h4 {
+    margin: 0 0 10px 0;
+    color: #88dd44;
+    font-size: 1.1rem;
   }
 
-  .sb-addon-img img {
-    width: 650px;
-    transform: rotate(-15deg);
-    margin-left: 40px;
-    margin-top: -72px;
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0);
-    backface-visibility: hidden;
+  .sb-category-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #666;
   }
 
-  @media screen and (max-width: 800px) {
-    .sb-addon-img {
-      left: 300px;
+  .sb-code-block {
+    background: #f5f5f7;
+    padding: 24px;
+    border-radius: 8px;
+    border-left: 4px solid #33ccba;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+  }
+
+  .sb-footer {
+    margin-top: 64px;
+    padding: 32px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(51, 204, 186, 0.1) 0%, rgba(51, 103, 204, 0.1) 50%, rgba(136, 68, 153, 0.1) 100%);
+    border-radius: 12px;
+    line-height: 1.8;
+  }
+
+  .sb-footer p {
+    margin: 12px 0;
+    color: #666;
+  }
+
+  .sb-github-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #33ccba;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .sb-github-link:hover {
+    background: #2ab3a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(51, 204, 186, 0.3);
+  }
+
+  @media screen and (max-width: 1024px) {
+    .sb-category-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -326,42 +439,22 @@ export const RightArrow = () => (
       flex-direction: column;
     }
 
-    .sb-features-grid {
+    .sb-features-grid,
+    .sb-category-grid {
       grid-template-columns: repeat(1, 1fr);
     }
 
-    .sb-socials {
-      grid-template-columns: repeat(2, 1fr);
+    .sb-section-title h1 {
+      font-size: 1.8rem;
     }
 
-    .sb-addon {
-      height: 280px;
-      align-items: flex-start;
-      padding-top: 32px;
-      overflow: hidden;
+    .sb-section-title h2 {
+      font-size: 1.5rem;
     }
 
-    .sb-addon-text {
-      padding-left: 24px;
-    }
-
-    .sb-addon-img {
-      right: 0;
-      left: 0;
-      top: 130px;
-      bottom: 0;
-      overflow: hidden;
-      height: auto;
-      width: 124%;
-    }
-
-    .sb-addon-img img {
-      width: 1200px;
-      transform: rotate(-12deg);
-      margin-left: 0;
-      margin-top: 48px;
-      margin-bottom: -40px;
-      margin-left: -24px;
+    .sb-code-block {
+      padding: 16px;
+      font-size: 0.8rem;
     }
   }
   `}
