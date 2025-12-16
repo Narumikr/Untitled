@@ -36,9 +36,7 @@ jest.mock('@/internal/usePortalContainer', () => ({
 
 // Mock converter
 jest.mock('@/utils/converter', () => ({
-  convertHexToRgbaMixWithBlackOrWhite: jest.fn(
-    () => 'rgba(51, 204, 186, 0.8)',
-  ),
+  convertHexToRgbaMixWithBlackOrWhite: jest.fn(() => 'rgba(51, 204, 186, 0.8)'),
 }))
 
 describe('Backdrop Component', () => {
@@ -152,10 +150,7 @@ describe('Backdrop Component', () => {
       portalMock.mockClear()
 
       render(<Backdrop {...defaultProps} />)
-      expect(portalMock).toHaveBeenCalledWith(
-        expect.anything(),
-        mockContainer,
-      )
+      expect(portalMock).toHaveBeenCalledWith(expect.anything(), mockContainer)
     })
 
     it('should not render when portal container is null', () => {
@@ -361,9 +356,7 @@ describe('Backdrop Component', () => {
       )
       expect(container.textContent).toContain('Original Content')
 
-      rerender(
-        <Backdrop {...defaultProps} children={<div>Updated Content</div>} />,
-      )
+      rerender(<Backdrop {...defaultProps} children={<div>Updated Content</div>} />)
       expect(container.textContent).toContain('Updated Content')
       expect(container.textContent).not.toContain('Original Content')
     })
@@ -384,9 +377,7 @@ describe('Backdrop Component', () => {
       const initialCallCount = portalMock.mock.calls.length
 
       rerender(<Backdrop {...defaultProps} />)
-      expect(portalMock.mock.calls.length).toBeGreaterThanOrEqual(
-        initialCallCount,
-      )
+      expect(portalMock.mock.calls.length).toBeGreaterThanOrEqual(initialCallCount)
     })
   })
 
@@ -404,14 +395,7 @@ describe('Backdrop Component', () => {
     })
 
     it('should support custom ARIA attributes via props', () => {
-      const { container } = render(
-        <Backdrop
-          {...defaultProps}
-          // @ts-expect-error - testing arbitrary props
-          aria-label="Backdrop overlay"
-          role="presentation"
-        />,
-      )
+      const { container } = render(<Backdrop {...defaultProps} aria-label="Backdrop overlay" />)
       const element = container.querySelector('[aria-label="Backdrop overlay"]')
       expect(element).toBeTruthy()
     })
@@ -429,9 +413,7 @@ describe('Backdrop Component', () => {
 
   describe('CSS Class Application', () => {
     it('should apply both sekai-overlay and custom className', () => {
-      const { container } = render(
-        <Backdrop {...defaultProps} className="my-backdrop" />,
-      )
+      const { container } = render(<Backdrop {...defaultProps} className="my-backdrop" />)
       const element = container.querySelector('.my-backdrop')
       expect(element).toBeTruthy()
       if (element) {
@@ -440,33 +422,19 @@ describe('Backdrop Component', () => {
     })
 
     it('should conditionally apply sekai-backdrop-bg class', () => {
-      const { container: withSekai } = render(
-        <Backdrop {...defaultProps} sekai="Miku" />,
-      )
-      expect(
-        withSekai.querySelector('[class*="sekai-backdrop-bg"]'),
-      ).toBeTruthy()
+      const { container: withSekai } = render(<Backdrop {...defaultProps} sekai="Miku" />)
+      expect(withSekai.querySelector('[class*="sekai-backdrop-bg"]')).toBeTruthy()
 
       const { container: withoutSekai } = render(<Backdrop {...defaultProps} />)
-      expect(
-        withoutSekai.querySelector('[class*="sekai-backdrop-bg"]'),
-      ).toBeFalsy()
+      expect(withoutSekai.querySelector('[class*="sekai-backdrop-bg"]')).toBeFalsy()
     })
 
     it('should conditionally apply sekai-backdrop-centered class', () => {
-      const { container: centered } = render(
-        <Backdrop {...defaultProps} centered={true} />,
-      )
-      expect(
-        centered.querySelector('[class*="sekai-backdrop-centered"]'),
-      ).toBeTruthy()
+      const { container: centered } = render(<Backdrop {...defaultProps} centered={true} />)
+      expect(centered.querySelector('[class*="sekai-backdrop-centered"]')).toBeTruthy()
 
-      const { container: notCentered } = render(
-        <Backdrop {...defaultProps} centered={false} />,
-      )
-      expect(
-        notCentered.querySelector('[class*="sekai-backdrop-centered"]'),
-      ).toBeFalsy()
+      const { container: notCentered } = render(<Backdrop {...defaultProps} centered={false} />)
+      expect(notCentered.querySelector('[class*="sekai-backdrop-centered"]')).toBeFalsy()
     })
   })
 
