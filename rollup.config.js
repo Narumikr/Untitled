@@ -81,13 +81,12 @@ export default [
       ...Object.keys(pkg.peerDependencies || {}),
       ...Object.keys(pkg.dependencies || {}),
       /@babel\/runtime\//,
-      // /style-inject/,
     ],
     plugins: [
       tsconfigPaths(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json', declaration: false }),
+      typescript({ tsconfig: './tsconfig.build.json', declaration: false }),
       babel({
         babelHelpers: 'runtime',
         presets: ['@babel/preset-react'],
@@ -115,6 +114,12 @@ export default [
   {
     input: 'src/index.ts',
     output: [{ file: pkg.types, format: 'es' }],
-    plugins: [tsconfigPaths(), resolve(), dts()],
+    plugins: [
+      tsconfigPaths(),
+      resolve(),
+      dts({
+        tsconfig: './tsconfig.build.json',
+      }),
+    ],
   },
 ]
