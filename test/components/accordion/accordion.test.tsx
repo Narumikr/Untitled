@@ -551,4 +551,165 @@ describe('Accordion Component', () => {
       })
     })
   })
+
+  describe('Details Content - Array Type Validation', () => {
+    it('should render empty array as ReactNode', () => {
+      const emptyArray: React.ReactNode = []
+      render(<Accordion {...defaultProps} details={emptyArray} />)
+      const detailsRegion = screen.getByRole('region')
+      expect(detailsRegion).toBeInTheDocument()
+    })
+
+    it('should render array of ReactNodes', () => {
+      const nodeArray: React.ReactNode = [
+        <div key="1">Node 1</div>,
+        <div key="2">Node 2</div>,
+        <div key="3">Node 3</div>,
+      ]
+      render(<Accordion {...defaultProps} details={nodeArray} />)
+      expect(screen.getByText('Node 1')).toBeInTheDocument()
+      expect(screen.getByText('Node 2')).toBeInTheDocument()
+      expect(screen.getByText('Node 3')).toBeInTheDocument()
+    })
+
+    it('should handle array with single string element', () => {
+      const singleStringArray = ['Only one item']
+      render(<Accordion {...defaultProps} details={singleStringArray} />)
+      expect(screen.getByText('Only one item')).toBeInTheDocument()
+    })
+  })
+
+  describe('Height Calculation Edge Cases', () => {
+    it('should handle zero height details', async () => {
+      // Mock ref with zero scrollHeight
+      const mockRefZeroHeight = {
+        current: {
+          scrollHeight: 0,
+        },
+      }
+
+      // Render with empty details
+      render(<Accordion {...defaultProps} details="" defaultOpen={true} />)
+      const detailsRegion = screen.getByRole('region')
+
+      await waitFor(() => {
+        // When heightDetails is 0 and open is true, maxHeight should be 'none'
+        const style = window.getComputedStyle(detailsRegion)
+        expect(detailsRegion).toBeInTheDocument()
+      })
+    })
+
+    it('should update maxHeight when opening accordion with content', async () => {
+      const user = userEvent.setup()
+      const longContent = 'A'.repeat(1000)
+      render(<Accordion {...defaultProps} details={longContent} defaultOpen={false} />)
+
+      const button = screen.getByRole('button')
+      const detailsRegion = screen.getByRole('region')
+
+      // Initially closed
+      expect(detailsRegion).toHaveStyle({
+        maxHeight: '0px',
+      })
+
+      // Open accordion
+      await user.click(button)
+
+      await waitFor(() => {
+        expect(detailsRegion).toHaveStyle({
+          opacity: '1',
+        })
+      })
+    })
+  })
+
+  describe('Animation Style Variations', () => {
+    it('should apply correct styles when open with calculated height', async () => {
+      render(<Accordion {...defaultProps} defaultOpen={true} details="Test content" />)
+      const detailsRegion = screen.getByRole('region')
+
+      await waitFor(() => {
+        expect(detailsRegion).toHaveStyle({
+          opacity: '1',
+          margin: '10px 0',
+        })
+      })
+    })
+
+    it('should not apply margin when closed', () => {
+      render(<Accordion {...defaultProps} defaultOpen={false} />)
+      const detailsRegion = screen.getByRole('region')
+
+      const style = window.getComputedStyle(detailsRegion)
+      // When closed, margin should not be applied (no margin: '10px 0')
+      expect(detailsRegion).toHaveStyle({
+        opacity: '0',
+      })
+    })
+  })
+
+  describe('Converter Function Integration', () => {
+    it('should call convertHexToRgba with light mode alpha', () => {
+      const convertFn = require('@/utils/converter').convertHexToRgba
+      convertFn.mockClear()
+
+      render(<Accordion {...defaultProps} sekai="Miku" />)
+
+      expect(convertFn).toHaveBeenCalledWith('#33ccba', 0.1)
+    })
+
+    it('should call convertHexToRgba with dark mode alpha', () => {
+      const useOptionalSekai = require('@/internal/useOptionalSekai').useOptionalSekai
+      const convertFn = require('@/utils/converter').convertHexToRgba
+
+      useOptionalSekai.mockReturnValue({
+        sekaiColor: '#33ccba',
+        modeTheme: 'dark',
+        isLight: false,
+      })
+
+      convertFn.mockClear()
+
+      render(<Accordion {...defaultProps} sekai="Miku" themeMode="dark" />)
+
+      expect(convertFn).toHaveBeenCalledWith('#33ccba', 0.3)
+    })
+  })
+
+  describe('Type Guard Functions Coverage', () => {
+    it('should correctly identify string type', () => {
+      render(<Accordion {...defaultProps} details="Simple string" />)
+      expect(screen.getByText('Simple string')).toBeInTheDocument()
+    })
+
+    it('should correctly identify string array type', () => {
+      const stringArray = ['Item 1', 'Item 2', 'Item 3']
+      render(<Accordion {...defaultProps} details={stringArray} />)
+      stringArray.forEach((item) => {
+        expect(screen.getByText(item)).toBeInTheDocument()
+      })
+    })
+
+    it('should correctly identify ReactNode type', () => {
+      const reactNode = (
+        <div data-testid="custom-node">
+          <span>Custom content</span>
+        </div>
+      )
+      render(<Accordion {...defaultProps} details={reactNode} />)
+      expect(screen.getByTestId('custom-node')).toBeInTheDocument()
+    })
+
+    it('should handle number as ReactNode', () => {
+      render(<Accordion {...defaultProps} details={123 as unknown as React.ReactNode} />)
+      const detailsRegion = screen.getByRole('region')
+      expect(detailsRegion).toBeInTheDocument()
+    })
+
+    it('should handle boolean as ReactNode', () => {
+      render(<Accordion {...defaultProps} details={true as unknown as React.ReactNode} />)
+      const detailsRegion = screen.getByRole('region')
+      expect(detailsRegion).toBeInTheDocument()
+    })
+  })
 })

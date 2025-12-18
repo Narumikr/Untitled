@@ -27,7 +27,16 @@ export default {
     '!src/**/*.d.ts',
     '!src/index.ts',
     '!src/**/index.ts',
+    '!src/**/*.stories.tsx',
   ],
+  coverageThreshold: {
+    global: {
+      statements: 90,
+      branches: 75,
+      functions: 85,
+      lines: 90,
+    },
+  },
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
   moduleDirectories: ['node_modules', '<rootDir>'],
 }
