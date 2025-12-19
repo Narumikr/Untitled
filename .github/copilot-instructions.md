@@ -242,24 +242,110 @@ import type React from 'react'
 import clsx from 'clsx'
 import type { ColorsSekaiKey, PaletteMode } from '@/styles/sekai-colors'
 import { useOptionalSekai } from '@/internal/useOptionalSekai'
+import { convertHexToRgba } from '@/utils/converter'
 import globalStyles from '@/styles/global.module.scss'
 import styles from './ComponentName.module.scss'
 
 export interface ComponentNameProps {
   sekai?: ColorsSekaiKey      // Theme color
   themeMode?: PaletteMode     // 'light' | 'dark'
+  id?: string
   className?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
   // ... component-specific props
 }
 
-export const ComponentName = ({ sekai, themeMode, className, ...rest }: ComponentNameProps) => {
-  const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
-  
+export const ComponentName = ({
+  sekai,
+  themeMode,
+  id,
+  className,
+  style,
+  children,
+  ...rest
+}: ComponentNameProps) => {
+  // 1. Theme resolution (REQUIRED for all themed components)
+  const { sekaiColor, modeTheme, isLight } = useOptionalSekai({
+    sekai,
+    mode: themeMode
+  })
+
+  // 2. CSS variables for dynamic theming
+  const optionStyle = {
+    '--sekai-color': sekaiColor,
+    '--sekai-color-hover': convertHexToRgba(sekaiColor, isLight ? 0.1 : 0.3),
+  }
+
+  // 3. Render with proper class composition
   return (
-    <div className={clsx(styles['component-name'], globalStyles[`sekai-color-${modeTheme}`], className)} {...rest}>
-      {/* content */}
+    <div
+      id={id}
+      className={clsx(
+        styles['component-name'],                    // Component styles
+        globalStyles[`sekai-color-${modeTheme}`],    // Global theme
+        className,                                    // User className
+      )}
+      style={{ ...(optionStyle as React.CSSProperties), ...style }}
+      {...rest}
+    >
+      {children}
     </div>
   )
+}
+```
+
+### Advanced Component Patterns
+
+**1. Portal-based Components (Dialog, Dropdown, Tooltip):**
+```typescript
+import { createPortal } from 'react-dom'
+import { usePortalContainer } from '@/internal/usePortalContainer'
+
+export const Dialog = ({ open, children }: DialogProps) => {
+  const portalContainer = usePortalContainer()
+
+  if (!open || !portalContainer) return null
+
+  return createPortal(
+    <div className={styles.dialog}>{children}</div>,
+    portalContainer
+  )
+}
+```
+
+**2. forwardRef Support:**
+```typescript
+import { forwardRef } from 'react'
+
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+  ({ sekai, themeMode, ...rest }, ref) => {
+    const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
+
+    return <input ref={ref} className={styles.input} {...rest} />
+  }
+)
+
+TextField.displayName = 'TextField'
+```
+
+**3. Context-based Components (Dropdown):**
+```typescript
+const DropdownContext = createContext<DropdownContextType | null>(null)
+
+export const Dropdown = ({ children }: DropdownProps) => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <DropdownContext.Provider value={{ open, setOpen }}>
+      {children}
+    </DropdownContext.Provider>
+  )
+}
+
+export const DropdownTrigger = ({ children }: TriggerProps) => {
+  const context = useContext(DropdownContext)
+  // Use context...
 }
 ```
 
@@ -294,10 +380,254 @@ import styles from './Component.module.scss'
 - Type-only imports for types (`import type`)
 - jsx-a11y accessibility checks
 
+---
+
+## Styling System
+
+### Global Styles (`global.module.scss`)
+
+**Z-Index Hierarchy:**
+```scss
+$overlay-z-index: 1000      // Backdrop overlays
+$dropdown-z-index: 1100     // Dropdown menus
+$scrolltop-z-index: 1150    // Scroll-to-top button
+$drawer-z-index: 1200       // Side drawers
+$tooltip-z-index: 1250      // Tooltips
+$modal-z-index: 1300        // Dialogs/modals
+```
+
+**Utility Classes:**
+```typescript
+globalStyles['sekai-flex-center']        // display: flex; align/justify center
+globalStyles['sekai-absolute-center']    // position: absolute; center with transform
+globalStyles['sekai-invisible-scroll']   // Hide scrollbars
+globalStyles['sekai-color-light']        // Light mode text color
+globalStyles['sekai-color-dark']         // Dark mode text color
+globalStyles['sekai-overlay-light']      // Light mode overlay
+globalStyles['sekai-overlay-dark']       // Dark mode overlay
+```
+
+**Typography:**
+```typescript
+globalStyles['text-xs']       // 0.75rem
+globalStyles['text-sm']       // 0.875rem
+globalStyles['text-base']     // 1rem
+globalStyles['text-lg']       // 1.125rem
+globalStyles['text-xl']       // 1.25rem
+globalStyles['text-2xl']      // 1.5rem
+globalStyles['text-base-bold']  // Bold variants available
+```
+
+### Color System
+
+**TypeScript colors (`colorsSekai`):**
+```typescript
+import { colorsSekai, COLORS_SEKAI_KEYS } from '@naru/untitled-ui-library'
+
+// Access colors
+colorsSekai.Miku        // '#33ccba'
+colorsSekai.Leoneed     // '#3367cc'
+
+// Type-safe keys
+COLORS_SEKAI_KEYS.Miku
+COLORS_SEKAI_KEYS.Nightcode
+```
+
+**CSS custom properties:**
+```scss
+// Available in any SCSS file after importing sekai-colors.css
+.container {
+  background-color: var(--sekai-miku);
+  border-color: var(--sekai-leoneed);
+}
+```
+
+**Runtime color injection:**
+```typescript
+const optionStyle = {
+  '--sekai-color': sekaiColor,
+  '--sekai-color-hover': convertHexToRgba(sekaiColor, isLight ? 0.1 : 0.3),
+}
+
+style={{ ...(optionStyle as React.CSSProperties), ...style }}
+```
+
+```scss
+// In SCSS, access runtime variables
+.button {
+  background-color: var(--sekai-color);
+
+  &:hover {
+    background-color: var(--sekai-color-hover);
+  }
+}
+```
+
+### Color Conversion Utilities
+
+```typescript
+import {
+  convertHexToRgb,
+  convertHexToRgba,
+  convertHexToRgbaMixWithBlackOrWhite
+} from '@/utils/converter'
+
+// hex → rgb
+convertHexToRgb('#33ccba')  // 'rgb(51, 204, 186)'
+
+// hex → rgba with alpha
+convertHexToRgba('#33ccba', 0.5)  // 'rgba(51, 204, 186, 0.5)'
+
+// Mix with black/white based on mode
+convertHexToRgbaMixWithBlackOrWhite('#33ccba', 0.1, true)  // Light mode
+```
+
+### TypeScript Conventions
+
+**Type Utilities (from `@/utils/type`):**
+```typescript
+ValueOf<T>              // Union of object values
+ArrayElement<T>         // Array element type
+DeepPartial<T>          // Recursive partial
+DeepRequired<T>         // Recursive required
+PartialBy<T, K>         // Partial specific keys
+RequiredBy<T, K>        // Required specific keys
+```
+
+**Props Definition:**
+```typescript
+// Always extend base HTML element props when applicable
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  sekai?: ColorsSekaiKey
+  themeMode?: PaletteMode
+}
+
+// Use destructuring with ...rest
+const Button = ({ sekai, themeMode, ...rest }: ButtonProps) => {
+  return <button {...rest} />
+}
+```
+
 ### Code Review Guidelines
 When conducting code reviews using GitHub Copilot:
 1. **Always write reviews in Japanese** - All review comments and feedback must be in Japanese
 2. **Provide specific code examples** - Include concrete code improvement suggestions with actual code snippets showing the recommended changes
+
+---
+
+## Important Patterns
+
+### 1. Theme Provider Pattern
+
+**Setup in app root:**
+```typescript
+import {
+  YourSekaiProvider,
+  createSekai,
+  COLORS_SEKAI_KEYS,
+  LIGHT_MODE
+} from '@naru/untitled-ui-library'
+
+const theme = createSekai({
+  palette: {
+    sekai: COLORS_SEKAI_KEYS.Miku,  // Required
+    mode: LIGHT_MODE,                // Optional (default: LIGHT_MODE)
+  },
+  typography: {
+    fontFamily: 'Montserrat, sans-serif'  // Optional
+  }
+})
+
+const App = ({ children }) => (
+  <YourSekaiProvider
+    sekaiTheme={theme}
+    options={{
+      disableStoreSekai: false,  // Save sekai to localStorage
+      disableStoreTheme: false,  // Save mode to localStorage
+    }}
+  >
+    {children}
+  </YourSekaiProvider>
+)
+```
+
+**Accessing theme:**
+```typescript
+import { useCreateSekai } from '@naru/untitled-ui-library'
+
+const Component = () => {
+  const { sekaiTheme, switchSekaiColor, switchColorTheme } = useCreateSekai()
+
+  // Change color
+  switchSekaiColor(COLORS_SEKAI_KEYS.Ichika)
+
+  // Toggle light/dark mode
+  switchColorTheme()
+}
+```
+
+### 2. Color Resolution Hierarchy
+
+Components resolve colors in this order:
+
+1. **Explicit prop** - `<Button sekai={COLORS_SEKAI_KEYS.Miku} />`
+2. **Provider context** - From `YourSekaiProvider`
+3. **Default fallback** - Defined in `useOptionalSekai`
+
+**Implementation:**
+```typescript
+const { sekaiColor, modeTheme, isLight } = useOptionalSekai({
+  sekai,        // Explicit prop (highest priority)
+  mode: themeMode
+})
+// If sekai is undefined, falls back to context, then default
+```
+
+### 3. Keyboard Event Handlers
+
+**Utilities from `@/utils/operation`:**
+```typescript
+import { fireOnEnterKey, fireOnEscapeKey, fireOnSpaceKey } from '@/utils/operation'
+
+<button
+  onKeyDown={(e) => fireOnEnterKey(e, () => handleSubmit())}
+/>
+
+<dialog
+  onKeyDown={(e) => fireOnEscapeKey(e, () => handleClose())}
+/>
+```
+
+### 4. LocalStorage Persistence
+
+**Using `useLocalStorage` hook:**
+```typescript
+import { useLocalStorage } from '@naru/untitled-ui-library'
+
+const [value, setValue] = useLocalStorage('key', defaultValue)
+
+// Auto-syncs across tabs
+// Handles serialization/deserialization
+// Type-safe
+```
+
+### 5. Responsive Hooks
+
+```typescript
+import { useWindowSize, useThemeMode } from '@naru/untitled-ui-library'
+
+const { width, height } = useWindowSize()
+const { isDark } = useThemeMode()
+```
+
+### 6. "use client" Directive (Next.js App Router)
+
+**Automatic injection** - Rollup plugin adds `'use client'` to:
+- All `/components/**/*.tsx`
+- All `/hooks/**/*.ts`
+
+**Do NOT manually add** - Build process handles it.
 
 ---
 
@@ -323,6 +653,89 @@ When conducting code reviews using GitHub Copilot:
 
 ### dist/ Folder Missing After Clean
 **Expected:** Run `npm run build` to regenerate
+
+---
+
+## Best Practices
+
+1. **Prefer editing over creating** - Modify existing patterns instead of creating new ones
+2. **Keep complexity low** - Cyclomatic complexity ≤ 8 (ESLint enforced)
+3. **Functions under 150 lines** - Break into smaller functions if needed
+4. **Single responsibility** - One component, one purpose
+5. **Composition over inheritance** - Use composition patterns
+6. **Explicit over implicit** - Clear prop types, no magic values
+7. **Consistent naming** - Follow established conventions (see CLAUDE.md)
+8. **Document complex logic** - Add comments explaining "why", not "what"
+9. **Type safety** - Leverage TypeScript fully, avoid `any`
+10. **Performance aware** - Memoize expensive operations when needed
+
+### Naming Conventions Summary
+
+**Files:**
+- Components: `PascalCase.tsx` (e.g., `BasicButton.tsx`)
+- Hooks: `camelCase.ts` (e.g., `useLocalStorage.ts`)
+- Utils: `camelCase.ts` (e.g., `converter.ts`)
+- Directories: `kebab-case` (e.g., `text-field/`)
+
+**Components:**
+- Function names: `PascalCase` (e.g., `const BasicButton = () => {}`)
+- Props interfaces: `{ComponentName}Props` (e.g., `BasicButtonProps`)
+- Sub-components: `{Parent}{Child}` (e.g., `DialogTitleHeader`)
+
+**CSS Classes:**
+- Component classes: `kebab-case` (e.g., `.basic-button`)
+- Global utilities: `sekai-*` prefix (e.g., `.sekai-flex-center`)
+- Theme variants: `.sekai-color-light`, `.sekai-color-dark`
+
+**Variables:**
+- Constants: `UPPER_SNAKE_CASE` (e.g., `COLORS_SEKAI_KEYS`)
+- Functions: `camelCase` (e.g., `convertHexToRgb`)
+- React components: `PascalCase`
+
+---
+
+## Notes for AI Assistants
+
+### Context Awareness
+
+- **Project theme:** Project SEKAI (Hatsune Miku) fan project
+- **Language:** Code/docs in English, PR template/README in Japanese
+- **Target users:** React developers, Next.js apps
+- **Maturity:** Production-ready library with established patterns
+
+### When Making Changes
+
+1. **Read files first** - NEVER propose changes to unread code
+2. **Follow patterns** - Match existing component structure exactly
+3. **Run tools** - Use Plop for new components, generate-index after file changes
+4. **Test thoroughly** - Storybook, accessibility (axe DevTools), build
+5. **Update exports** - ALWAYS run `npm run generate-index` after adding/removing files
+
+### Common Mistakes to Avoid
+
+- ❌ Creating new patterns instead of following existing ones
+- ❌ Over-engineering simple components
+- ❌ Skipping the build process before committing
+- ❌ Manually editing index files (auto-generated by Python script)
+- ❌ Adding files without running `npm run generate-index`
+- ❌ Forgetting accessibility attributes (required for all components)
+- ❌ Ignoring ESLint warnings (max-warnings=0 enforced)
+- ❌ Adding `'use client'` directive manually (Rollup handles it)
+
+### When Uncertain
+
+1. **Check Storybook** - See how existing components work (http://localhost:6006)
+2. **Read similar components** - Follow established patterns in codebase
+3. **Check global styles** - Utility classes might already exist
+4. **Review recent commits** - Understand project conventions (`git log`)
+5. **Refer to CLAUDE.md** - Comprehensive guide with detailed examples
+
+### Critical Reminders
+
+- This is a **production-ready library** with strong conventions
+- **Consistency** with existing code is more valuable than innovation
+- Follow established patterns, use provided tools, maintain quality standards
+- When in doubt, **read existing code** and **match its style**
 
 ---
 
@@ -359,6 +772,68 @@ These files are managed by scripts - DO NOT EDIT:
 
 ---
 
+## Quick Reference
+
+### Essential Commands
+```bash
+npm run dev              # Start Storybook (localhost:6006)
+npm run build            # Full build (clean → index → rollup → tsc)
+npm run lint             # ESLint with auto-fix
+npm run prettier         # Format code
+npm run plop             # Generate new component
+npm run generate-index   # Regenerate index files
+npm test                 # Run tests
+npm run build-storybook  # Build Storybook static site
+```
+
+### Common Import Paths
+
+**External usage (consumers of the library):**
+```typescript
+// Components
+import { BasicButton, Card, Dialog } from '@naru/untitled-ui-library'
+
+// Hooks
+import { useLocalStorage, useCreateSekai } from '@naru/untitled-ui-library'
+
+// Colors
+import { colorsSekai, COLORS_SEKAI_KEYS } from '@naru/untitled-ui-library'
+
+// Utils
+import { convertHexToRgba } from '@naru/untitled-ui-library'
+
+// Provider & Theme
+import { YourSekaiProvider, createSekai, LIGHT_MODE, DARK_MODE } from '@naru/untitled-ui-library'
+
+// CSS
+import '@naru/untitled-ui-library/color/sekai-colors.css'
+```
+
+**Internal usage (within src/):**
+```typescript
+import type { ColorsSekaiKey, PaletteMode } from '@/styles/sekai-colors'
+import { useOptionalSekai } from '@/internal/useOptionalSekai'
+import { usePortalContainer } from '@/internal/usePortalContainer'
+import { convertHexToRgba } from '@/utils/converter'
+import { fireOnEnterKey } from '@/utils/operation'
+import globalStyles from '@/styles/global.module.scss'
+import styles from './Component.module.scss'
+```
+
+### File Path Patterns
+```
+Components:    src/components/{folder}/{Component}.tsx
+Hooks:         src/hooks/useHook.ts
+Utils:         src/utils/util.ts
+Styles:        src/styles/
+Internal:      src/internal/ (not exported publicly)
+Stories:       stories/{folder}/{Component}.stories.tsx
+Config:        .storybook/, rollup.config.js, tsconfig.json
+Scripts:       scripts/generator.py, scripts/build_local.sh
+```
+
+---
+
 ## Trust These Instructions
 
 These instructions have been validated by:
@@ -369,3 +844,5 @@ These instructions have been validated by:
 5. Validating all script paths and configurations
 
 **If you encounter information not covered here or find errors, search the codebase to verify. Otherwise, trust and follow these instructions exactly.**
+
+**For comprehensive details, see [CLAUDE.md](../CLAUDE.md)**
