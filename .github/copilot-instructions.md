@@ -510,9 +510,82 @@ const Button = ({ sekai, themeMode, ...rest }: ButtonProps) => {
 ```
 
 ### Code Review Guidelines
-When conducting code reviews using GitHub Copilot:
+
+**Language & Format:**
 1. **Always write reviews in Japanese** - All review comments and feedback must be in Japanese
 2. **Provide specific code examples** - Include concrete code improvement suggestions with actual code snippets showing the recommended changes
+
+**Required Code Review Checklist:**
+
+**1. Naming Conventions**
+- ✅ No spelling mistakes in variable/function/class names
+- ✅ No confusion between singular and plural forms (e.g., `items` vs `item`)
+- ✅ Consistent naming (no different names for the same concept)
+- ✅ Follows project naming conventions (PascalCase, camelCase, kebab-case, UPPER_SNAKE_CASE)
+
+**2. Code Quality**
+- ✅ No magic numbers - use named constants instead
+- ✅ Use early returns to avoid unnecessary nesting
+  ```typescript
+  // ❌ Bad
+  if (condition) {
+    // long process...
+  } else {
+    return
+  }
+
+  // ✅ Good
+  if (!condition) return
+  // long process...
+  ```
+- ✅ No unnecessary API calls or inefficient processing in loops
+- ✅ No code duplication - follow DRY (Don't Repeat Yourself) principle
+
+**3. Comments**
+- ✅ Comments are appropriate and up-to-date (no outdated or misleading comments)
+- ✅ Complex logic has comments explaining "why" (not just "what")
+- ✅ No unnecessary commented-out code left in the codebase
+
+**4. Storybook Stories**
+- ✅ All props are defined in `argTypes`
+- ✅ Each prop has an appropriate `description`
+- ✅ Each prop has a `type` specification
+- ✅ Required props have `table: { type: { required: true } }` declaration
+  ```typescript
+  argTypes: {
+    sekai: {
+      description: 'What SEKAI color to use',
+      control: 'select',
+      options: Object.keys(COLORS_SEKAI_KEYS),
+      table: {
+        type: { summary: 'ColorsSekaiKey' },
+      },
+    },
+    children: {
+      description: 'Children contents',
+      table: {
+        type: { summary: 'React.ReactNode', required: true },
+      },
+    },
+  }
+  ```
+
+**5. TypeScript Type Definitions**
+- ✅ No use of `any` type (strict mode enforced)
+- ✅ Proper type annotations present
+- ✅ No excessive use of type assertions
+- ✅ Props interfaces properly extend base HTML element properties when applicable
+
+**6. Performance**
+- ✅ No unnecessary re-renders
+- ✅ Appropriate use of `useMemo`/`useCallback` for expensive computations
+- ✅ Dependency arrays are correctly specified (no ignored ESLint warnings)
+
+**7. Accessibility**
+- ✅ Uses semantic HTML elements
+- ✅ Necessary ARIA attributes are set
+- ✅ Keyboard navigation is supported
+- ✅ Focus management is properly handled
 
 ---
 
