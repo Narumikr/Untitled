@@ -294,6 +294,11 @@ import styles from './Component.module.scss'
 - Type-only imports for types (`import type`)
 - jsx-a11y accessibility checks
 
+### Code Review Guidelines
+When conducting code reviews using GitHub Copilot:
+1. **Always write reviews in Japanese** - All review comments and feedback must be in Japanese
+2. **Provide specific code examples** - Include concrete code improvement suggestions with actual code snippets showing the recommended changes
+
 ---
 
 ## Troubleshooting & Common Issues
