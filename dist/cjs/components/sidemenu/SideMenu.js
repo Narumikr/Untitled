@@ -12,7 +12,7 @@ var HamburgerButton = require('../button/HamburgerButton.js');
 var useOptionalSekai = require('../../internal/useOptionalSekai.js');
 var usePortalContainer = require('../../internal/usePortalContainer.js');
 var converter = require('../../utils/converter.js');
-var Global_module = require('../../styles/Global.module.scss2.js');
+var global_module = require('../../styles/global.module.scss.js');
 var SideMenu_module = require('./SideMenu.module.scss.js');
 
 var _excluded = ["sekai", "themeMode", "open", "onClick", "children", "pos", "containerComponent"];
@@ -67,7 +67,7 @@ var SideMenu = function SideMenu(_ref) {
     open: isOpen,
     onClick: handleClick
   }), /*#__PURE__*/React.createElement("div", {
-    className: clsx(Global_module['sekai-invisible-scroll'], SideMenu_module['sekai-side-menu-contents'])
+    className: clsx(global_module['sekai-invisible-scroll'], SideMenu_module['sekai-side-menu-contents'])
   }, children)), portalContainer);
 };
 

@@ -9,7 +9,7 @@ import { useOptionalSekai } from '@/internal/useOptionalSekai'
 import { usePortalContainer } from '@/internal/usePortalContainer'
 import { convertHexToRgbaMixWithBlackOrWhite } from '@/utils/converter'
 
-import globalStyles from '@/styles/Global.module.scss'
+import globalStyles from '@/styles/global.module.scss'
 
 import styles from './SideMenu.module.scss'
 

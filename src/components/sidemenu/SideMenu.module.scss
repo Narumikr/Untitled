@@ -1,7 +1,7 @@
 @use '../../styles/global.module.scss' as global;
 
 $side-menu-width: 250px;
-$humburger-size: 60px;
+$hamburger-size: 60px;
 $contents-padding: 16px;
 
 .sekai-side-menu {
@@ -10,7 +10,6 @@ $contents-padding: 16px;
   height: 100%;
   width: $side-menu-width;
   box-sizing: border-box;
-  overflow-y: auto;
   background-color: var(--sekai-color-bg);
   transition: transform 0.3s ease-out;
   z-index: global.$drawer-z-index;
@@ -25,7 +24,7 @@ $contents-padding: 16px;
   }
 
   &.sekai-side-menu-closed {
-    transform: translateX(-($side-menu-width - $humburger-size));
+    transform: translateX(-($side-menu-width - $hamburger-size));
   }
 
   .sekai-side-menu-hamburger-btn {
@@ -36,8 +35,8 @@ $contents-padding: 16px;
 
   .sekai-side-menu-contents {
     text-align: left;
-    margin: $humburger-size $contents-padding;
-    margin-right: $humburger-size;
+    margin: $hamburger-size $contents-padding;
+    margin-right: $hamburger-size;
   }
 }
 .sekai-side-menu-right {
@@ -49,7 +48,7 @@ $contents-padding: 16px;
   }
 
   &.sekai-side-menu-closed {
-    transform: translateX($side-menu-width - $humburger-size);
+    transform: translateX($side-menu-width - $hamburger-size);
   }
 
   .sekai-side-menu-hamburger-btn {
@@ -60,14 +59,14 @@ $contents-padding: 16px;
 
   .sekai-side-menu-contents {
     text-align: right;
-    margin: $humburger-size $contents-padding;
-    margin-left: $humburger-size;
+    margin: $hamburger-size $contents-padding;
+    margin-left: $hamburger-size;
   }
 }
 
 .sekai-side-menu-contents {
   display: flex;
   flex-direction: column;
-  max-height: calc(100% - $humburger-size - $contents-padding);
+  max-height: calc(100% - $hamburger-size - $contents-padding);
   overflow: scroll;
 }

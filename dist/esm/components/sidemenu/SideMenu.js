@@ -10,7 +10,7 @@ import { HamburgerButton } from '../button/HamburgerButton.js';
 import { useOptionalSekai } from '../../internal/useOptionalSekai.js';
 import { usePortalContainer } from '../../internal/usePortalContainer.js';
 import { convertHexToRgbaMixWithBlackOrWhite } from '../../utils/converter.js';
-import globalStyles from '../../styles/Global.module.scss2.js';
+import globalStyles from '../../styles/global.module.scss.js';
 import styles from './SideMenu.module.scss.js';
 
 var _excluded = ["sekai", "themeMode", "open", "onClick", "children", "pos", "containerComponent"];
