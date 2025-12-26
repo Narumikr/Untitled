@@ -76,7 +76,7 @@ describe('ScrollTopButton Component', () => {
     })
 
     it('should render when scrollY is greater than 300', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} />)
+      render(<ScrollTopButton {...defaultProps} />)
 
       await showButton()
 
@@ -86,7 +86,7 @@ describe('ScrollTopButton Component', () => {
     })
 
     it('should render with custom id', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} id="custom-scroll-button" />)
+      render(<ScrollTopButton {...defaultProps} id="custom-scroll-button" />)
 
       await showButton()
 
@@ -97,7 +97,7 @@ describe('ScrollTopButton Component', () => {
     })
 
     it('should render with custom className', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} className="custom-class" />)
+      render(<ScrollTopButton {...defaultProps} className="custom-class" />)
 
       await showButton()
 
@@ -109,7 +109,7 @@ describe('ScrollTopButton Component', () => {
 
     it('should render with custom styles', async () => {
       const customStyle = { backgroundColor: 'red' }
-      const { container } = render(<ScrollTopButton {...defaultProps} style={customStyle} />)
+      render(<ScrollTopButton {...defaultProps} style={customStyle} />)
 
       await showButton()
 
@@ -120,7 +120,7 @@ describe('ScrollTopButton Component', () => {
     })
 
     it('should render ChevronSvg icon', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} />)
+      render(<ScrollTopButton {...defaultProps} />)
 
       await showButton()
 
