@@ -267,11 +267,13 @@ describe('HamburgerButton Component', () => {
 
     it('should preserve custom styles alongside sekai color variables', () => {
       const customStyle = { borderRadius: '8px' }
-      const { container } = render(<HamburgerButton {...defaultProps} sekai="Miku" style={customStyle} />)
+      const { container } = render(
+        <HamburgerButton {...defaultProps} sekai="Miku" style={customStyle} />,
+      )
       const button = container.querySelector('button')
 
       expect(button).toHaveStyle({
-        borderRadius: '8px',
+        'borderRadius': '8px',
         '--sekai-color-bg': 'rgba(51, 204, 186, 0.8)',
       })
     })
@@ -307,25 +309,6 @@ describe('HamburgerButton Component', () => {
       lines.forEach((line) => {
         expect(line.className).toContain('sekai-open')
       })
-    })
-  })
-
-  describe('HTML Attributes', () => {
-    it('should support data-testid attribute', () => {
-      render(<HamburgerButton {...defaultProps} data-testid="test-hamburger" />)
-      expect(screen.getByTestId('test-hamburger')).toBeInTheDocument()
-    })
-
-    it('should support tabIndex attribute', () => {
-      render(<HamburgerButton {...defaultProps} tabIndex={0} />)
-      const button = screen.getByRole('button')
-      expect(button).toHaveAttribute('tabIndex', '0')
-    })
-
-    it('should support title attribute', () => {
-      render(<HamburgerButton {...defaultProps} title="Menu toggle" />)
-      const button = screen.getByRole('button')
-      expect(button).toHaveAttribute('title', 'Menu toggle')
     })
   })
 

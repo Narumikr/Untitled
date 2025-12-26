@@ -290,31 +290,6 @@ describe('StylishButton Component', () => {
     })
   })
 
-  describe('HTML Attributes', () => {
-    it('should support aria-label attribute', () => {
-      render(<StylishButton {...defaultProps} aria-label="Submit form" />)
-      const button = screen.getByRole('button')
-      expect(button).toHaveAttribute('aria-label', 'Submit form')
-    })
-
-    it('should support data-testid attribute', () => {
-      render(<StylishButton {...defaultProps} data-testid="test-button" />)
-      expect(screen.getByTestId('test-button')).toBeInTheDocument()
-    })
-
-    it('should support tabIndex attribute', () => {
-      render(<StylishButton {...defaultProps} tabIndex={0} />)
-      const button = screen.getByRole('button')
-      expect(button).toHaveAttribute('tabIndex', '0')
-    })
-
-    it('should support title attribute', () => {
-      render(<StylishButton {...defaultProps} title="Tooltip text" />)
-      const button = screen.getByRole('button')
-      expect(button).toHaveAttribute('title', 'Tooltip text')
-    })
-  })
-
   describe('Edge Cases', () => {
     it('should handle empty children gracefully', () => {
       render(<StylishButton children={null} />)

@@ -503,14 +503,14 @@ describe('ScrollTopButton Component', () => {
       await showButton()
 
       await waitFor(() => {
-        let icon = screen.getByTestId('chevron-icon')
+        const icon = screen.getByTestId('chevron-icon')
         expect(icon).toHaveAttribute('data-sekai', 'Miku')
       })
 
       rerender(<ScrollTopButton {...defaultProps} sekai="Ichika" />)
 
       await waitFor(() => {
-        let icon = screen.getByTestId('chevron-icon')
+        const icon = screen.getByTestId('chevron-icon')
         expect(icon).toHaveAttribute('data-sekai', 'Ichika')
       })
     })

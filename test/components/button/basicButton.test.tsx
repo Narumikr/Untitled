@@ -258,11 +258,13 @@ describe('BasicButton Component', () => {
 
     it('should preserve custom styles alongside sekai color variables', () => {
       const customStyle = { borderRadius: '8px' }
-      const { container } = render(<BasicButton {...defaultProps} sekai="Miku" style={customStyle} />)
+      const { container } = render(
+        <BasicButton {...defaultProps} sekai="Miku" style={customStyle} />,
+      )
       const button = container.querySelector('button')
 
       expect(button).toHaveStyle({
-        borderRadius: '8px',
+        'borderRadius': '8px',
         '--sekai-color': '#33ccba',
       })
     })
@@ -383,7 +385,7 @@ describe('BasicButton Component', () => {
     it('should update withText prop on re-render', () => {
       const { rerender, container } = render(<BasicButton {...defaultProps} withText={false} />)
       let button = container.querySelector('button')
-      let style = button?.getAttribute('style')
+      const style = button?.getAttribute('style')
       expect(style).not.toContain('color: rgb(51, 204, 186)')
 
       rerender(<BasicButton {...defaultProps} withText={true} />)
