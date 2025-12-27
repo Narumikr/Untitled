@@ -1,14 +1,17 @@
+import React from 'react'
+
 import { fn } from 'storybook/test'
 
-import { StylishButton } from '@/components/button/StylishButton'
+import { SideMenu } from '@/components/sidemenu/SideMenu'
 
 import { COLORS_SEKAI_KEYS } from '@/styles/sekai-colors'
 
-import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-  title: 'UI/StylishButton',
-  component: StylishButton,
+  title: 'UI/SideMenu',
+  component: SideMenu,
+  decorators: [],
   parameters: {},
   tags: ['autodocs'],
   argTypes: {
@@ -50,94 +53,124 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
-    children: {
-      description: 'Button contents',
-      table: { type: { summary: 'React.ReactNode' } },
-      control: false,
-    },
-    disabled: {
-      description: 'Button disabled',
+    open: {
+      description: 'SideMenu open',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
+      control: { type: 'boolean' },
     },
     onClick: {
-      description: 'Click handler',
+      description: 'Callback when hamburger button is clicked',
       table: {
         type: { summary: '() => void' },
       },
+      control: false,
     },
-    arrowIcon: {
-      description: 'Show arrow icon',
+    children: {
+      description: 'SideMenu contents',
+      // @ts-expect-error Storybook's typing issue
+      type: { required: true },
+      table: { type: { summary: 'React.ReactNode' } },
+      control: false,
+    },
+    pos: {
+      description: 'SideMenu position',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'true' },
+        type: { summary: "'left' | 'right'" },
+        defaultValue: { summary: 'left' },
       },
+      control: { type: 'select' },
+      options: ['left', 'right'],
+    },
+    containerComponent: {
+      description: 'Target element where the portal content will be rendered',
+      table: {
+        type: { summary: 'HTMLElement' },
+        defaultValue: { summary: 'document.body' },
+      },
+      control: false,
     },
   },
-  args: { onClick: fn() },
-} satisfies Meta<typeof StylishButton>
+  args: {
+    onClick: fn(),
+  },
+} satisfies Meta<typeof SideMenu>
+
+const PropsChildren = () => (
+  <div>
+    {Array.from({ length: 25 }).map((_, index) => (
+      <p key={index} style={{ margin: '8px 0', width: '100%' }}>
+        Item {index + 1}
+      </p>
+    ))}
+  </div>
+)
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const DefaultLight: Story = {
   args: {
-    id: 'stylish-button-default-light',
+    id: 'side-menu-default-light',
     sekai: 'Miku',
     themeMode: 'light',
-    children: 'Hatsune Miku',
-    disabled: false,
-    arrowIcon: true,
+    open: false,
+    children: <PropsChildren />,
+    pos: 'left',
   },
   parameters: {
     sekai: 'Miku',
     background: 'light',
+    portal: true,
   },
 }
 
 export const DefaultDark: Story = {
   args: {
-    id: 'stylish-button-default-dark',
+    id: 'side-menu-default-dark',
     sekai: 'Miku',
     themeMode: 'dark',
-    children: 'Hatsune Miku',
-    disabled: false,
-    arrowIcon: true,
+    open: false,
+    children: <PropsChildren />,
+    pos: 'left',
   },
   parameters: {
     sekai: 'Miku',
     background: 'dark',
+    portal: true,
   },
 }
 
-export const DisabledLight: Story = {
+export const PosRightLight: Story = {
   args: {
-    id: 'stylish-button-disabled-light',
+    id: 'side-menu-pos-right-light',
     sekai: 'Miku',
     themeMode: 'light',
-    children: 'Hatsune Miku',
-    disabled: true,
-    arrowIcon: true,
+    open: false,
+    children: <PropsChildren />,
+    pos: 'right',
   },
   parameters: {
     sekai: 'Miku',
     background: 'light',
+    portal: true,
   },
 }
 
-export const DisabledDark: Story = {
+export const PosRightDark: Story = {
   args: {
-    id: 'stylish-button-disabled-dark',
+    id: 'side-menu-pos-right-dark',
     sekai: 'Miku',
     themeMode: 'dark',
-    children: 'Hatsune Miku',
-    disabled: true,
-    arrowIcon: true,
+    open: false,
+    children: <PropsChildren />,
+    pos: 'right',
   },
   parameters: {
     sekai: 'Miku',
     background: 'dark',
+    portal: true,
   },
 }

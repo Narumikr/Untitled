@@ -1,6 +1,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
- * Generated at: 2025-12-16 23:06:54
+ * Generated at: 2025-12-26 22:35:07
  */
 
 export * from './accordion/Accordion'
@@ -35,6 +35,7 @@ export * from './provider/StoreValueContext'
 export * from './provider/YourSekaiProvider'
 export * from './select/Checkbox'
 export * from './select/Chip'
+export * from './sidemenu/SideMenu'
 export * from './text/MarqueeText'
 export * from './text/NamePlate'
 export * from './text/OutlineText'

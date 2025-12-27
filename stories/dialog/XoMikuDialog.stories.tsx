@@ -52,6 +52,7 @@ const meta = {
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
       table: { type: { summary: 'React.ReactNode' } },
+      control: false,
     },
     containerComponent: {
       description: 'Target element where the portal content will be rendered',
