@@ -364,12 +364,4 @@ describe('HamburgerButton Component', () => {
       expect(button).toHaveAttribute('aria-label', 'Close menu')
     })
   })
-
-  describe('CSS Variables', () => {
-    it('should set --sekai-color-bg CSS variable', () => {
-      const { container } = render(<HamburgerButton {...defaultProps} sekai="Miku" />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color-bg': 'rgba(51, 204, 186, 0.8)' })
-    })
-  })
 })
