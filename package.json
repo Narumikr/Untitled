@@ -51,7 +51,7 @@
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@storybook/addon-docs": "^10.0.7",
+    "@storybook/addon-docs": "^10.1.10",
     "@storybook/addon-onboarding": "10.1.4",
     "@storybook/react-vite": "^10.1.10",
     "@svgr/rollup": "^8.1.0",
