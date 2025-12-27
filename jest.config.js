@@ -29,5 +29,6 @@ export default {
     '!src/**/index.ts',
   ],
   coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/test/templates/'],
   moduleDirectories: ['node_modules', '<rootDir>'],
 }
