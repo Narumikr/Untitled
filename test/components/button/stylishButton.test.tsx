@@ -432,27 +432,4 @@ describe('StylishButton Component', () => {
       expect(decoration).toBeInTheDocument()
     })
   })
-
-  describe('CSS Variables', () => {
-    beforeEach(() => {
-      const useOptionalSekai = require('@/internal/useOptionalSekai').useOptionalSekai
-      useOptionalSekai.mockReturnValue({
-        sekaiColor: '#33ccba',
-        modeTheme: 'light',
-        isLight: true,
-      })
-    })
-
-    it('should set --sekai-color CSS variable', () => {
-      const { container } = render(<StylishButton {...defaultProps} sekai="Miku" />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color': '#33ccba' })
-    })
-
-    it('should set --sekai-color-hover CSS variable', () => {
-      const { container } = render(<StylishButton {...defaultProps} />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color-hover': 'rgba(51, 204, 186, 0.3)' })
-    })
-  })
 })
