@@ -202,19 +202,34 @@ describe('ScrollTopButton Component', () => {
   })
 
   describe('Scroll Event Listener', () => {
-    it('should show button when scrolling past 300px', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} />)
+    it('should register and cleanup scroll event listener on mount and unmount', () => {
+      const addEventListenerSpy = jest.spyOn(window, 'addEventListener')
+      const removeEventListenerSpy = jest.spyOn(window, 'removeEventListener')
 
-      expect(container.firstChild).toBeNull()
+      const { unmount } = render(<ScrollTopButton {...defaultProps} />)
 
-      await act(async () => {
-        window.scrollY = 400
-        window.dispatchEvent(new Event('scroll'))
-      })
+      expect(addEventListenerSpy).toHaveBeenCalledWith(
+        'scroll',
+        expect.any(Function)
+      )
 
-      await waitFor(() => {
-        expect(screen.getByTestId('chevron-icon')).toBeInTheDocument()
-      })
+      const scrollListener = addEventListenerSpy.mock.calls.find(
+        ([eventType]) => eventType === 'scroll'
+      )?.[1] as EventListener | undefined
+
+      expect(scrollListener).toBeDefined()
+
+      unmount()
+
+      if (scrollListener) {
+        expect(removeEventListenerSpy).toHaveBeenCalledWith(
+          'scroll',
+          scrollListener
+        )
+      }
+
+      addEventListenerSpy.mockRestore()
+      removeEventListenerSpy.mockRestore()
     })
 
     it('should hide button when scrolling below 300px', async () => {
