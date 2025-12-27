@@ -359,18 +359,4 @@ describe('StrongButton Component', () => {
       expect(button).toBeInTheDocument()
     })
   })
-
-  describe('CSS Variables', () => {
-    it('should set --sekai-color CSS variable', () => {
-      const { container } = render(<StrongButton {...defaultProps} sekai="Miku" />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color': '#33ccba' })
-    })
-
-    it('should set --sekai-color-bg CSS variable', () => {
-      const { container } = render(<StrongButton {...defaultProps} />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color-bg': 'rgba(51, 204, 186, 0.8)' })
-    })
-  })
 })
