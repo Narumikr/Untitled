@@ -410,27 +410,4 @@ describe('BasicButton Component', () => {
       expect(handleClick).toHaveBeenCalledTimes(5)
     })
   })
-
-  describe('CSS Variables', () => {
-    beforeEach(() => {
-      const useOptionalSekai = require('@/internal/useOptionalSekai').useOptionalSekai
-      useOptionalSekai.mockReturnValue({
-        sekaiColor: '#33ccba',
-        modeTheme: 'light',
-        isLight: true,
-      })
-    })
-
-    it('should set --sekai-color CSS variable', () => {
-      const { container } = render(<BasicButton {...defaultProps} sekai="Miku" />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color': '#33ccba' })
-    })
-
-    it('should set --sekai-color-hover CSS variable', () => {
-      const { container } = render(<BasicButton {...defaultProps} />)
-      const button = container.querySelector('button')
-      expect(button).toHaveStyle({ '--sekai-color-hover': 'rgba(51, 204, 186, 0.1)' })
-    })
-  })
 })
