@@ -22,8 +22,21 @@ jest.mock('react-dom', () => {
 
 // Mock ChevronSvg
 jest.mock('@/img/chevron', () => ({
-  ChevronSvg: ({ className, sekai, themeMode }: { className?: string; sekai?: string; themeMode?: string }) => (
-    <svg data-testid="chevron-icon" className={className} data-sekai={sekai} data-theme={themeMode} />
+  ChevronSvg: ({
+    className,
+    sekai,
+    themeMode,
+  }: {
+    className?: string
+    sekai?: string
+    themeMode?: string
+  }) => (
+    <svg
+      data-testid="chevron-icon"
+      className={className}
+      data-sekai={sekai}
+      data-theme={themeMode}
+    />
   ),
 }))
 
@@ -208,13 +221,10 @@ describe('ScrollTopButton Component', () => {
 
       const { unmount } = render(<ScrollTopButton {...defaultProps} />)
 
-      expect(addEventListenerSpy).toHaveBeenCalledWith(
-        'scroll',
-        expect.any(Function)
-      )
+      expect(addEventListenerSpy).toHaveBeenCalledWith('scroll', expect.any(Function))
 
       const scrollListener = addEventListenerSpy.mock.calls.find(
-        ([eventType]) => eventType === 'scroll'
+        ([eventType]) => eventType === 'scroll',
       )?.[1] as EventListener | undefined
 
       expect(scrollListener).toBeDefined()
@@ -222,10 +232,7 @@ describe('ScrollTopButton Component', () => {
       unmount()
 
       if (scrollListener) {
-        expect(removeEventListenerSpy).toHaveBeenCalledWith(
-          'scroll',
-          scrollListener
-        )
+        expect(removeEventListenerSpy).toHaveBeenCalledWith('scroll', scrollListener)
       }
 
       addEventListenerSpy.mockRestore()
@@ -394,14 +401,16 @@ describe('ScrollTopButton Component', () => {
 
     it('should preserve custom styles alongside sekai color variables', async () => {
       const customStyle = { borderRadius: '50%' }
-      const { container } = render(<ScrollTopButton {...defaultProps} sekai="Miku" style={customStyle} />)
+      const { container } = render(
+        <ScrollTopButton {...defaultProps} sekai="Miku" style={customStyle} />,
+      )
 
       await showButton()
 
       await waitFor(() => {
         const button = container.querySelector('button')
         expect(button).toHaveStyle({
-          borderRadius: '50%',
+          'borderRadius': '50%',
           '--sekai-color': '#33ccba',
         })
       })
@@ -530,7 +539,4 @@ describe('ScrollTopButton Component', () => {
       })
     })
   })
-
-})
-
 })
