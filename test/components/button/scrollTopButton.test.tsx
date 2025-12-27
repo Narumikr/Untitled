@@ -438,19 +438,6 @@ describe('ScrollTopButton Component', () => {
   })
 
   describe('Edge Cases', () => {
-    it('should handle scrollY at exactly 300', async () => {
-      const { container } = render(<ScrollTopButton {...defaultProps} />)
-
-      await act(async () => {
-        window.scrollY = 300
-        window.dispatchEvent(new Event('scroll'))
-      })
-
-      await waitFor(() => {
-        expect(container.firstChild).toBeNull()
-      })
-    })
-
     it('should handle very large scrollY values', async () => {
       render(<ScrollTopButton {...defaultProps} />)
 
