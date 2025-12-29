@@ -12,6 +12,10 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
+    "./sekai-style.css": {
+      "import": "./dist/esm/sekai-style.css",
+      "require": "./dist/cjs/sekai-style.css"
+    },
     "./color/sekai-colors.css": {
       "import": "./dist/color/sekai-colors.css",
       "require": "./dist/color/sekai-colors.css"
@@ -30,7 +34,8 @@
   "dependencies": {
     "@babel/runtime": "^7.28.3",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.23.26"
+    "framer-motion": "^12.23.26",
+    "swiper": "^12.0.3"
   },
   "sideEffects": [
     "dist/*.css"

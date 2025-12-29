@@ -1,6 +1,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
- * Generated at: 2025-12-29 22:36:35
+ * Generated at: 2025-12-30 05:44:49
  */
 
 export * from './accordion/Accordion'
@@ -14,6 +14,7 @@ export * from './button/StylishButton'
 export * from './card/Card'
 export * from './card/MusicBannerCard'
 export * from './card/PrskLinkCard'
+export * from './carousel/Carousel'
 export * from './dialog/Dialog'
 export * from './dialog/WindowDialog'
 export * from './dialog/XoMikuDialog'
