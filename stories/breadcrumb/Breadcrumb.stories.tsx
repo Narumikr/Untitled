@@ -58,7 +58,6 @@ const meta = {
       table: {
         type: { summary: 'React.ReactNode' },
       },
-      control: false,
     },
     separator: {
       description: 'Kind of separator',

@@ -63,5 +63,5 @@ export const convertHexToRgbaMixWithBlackOrWhite = (
   const mixR = Math.round(r * mixRatio + mixColor * (1 - mixRatio))
   const mixG = Math.round(g * mixRatio + mixColor * (1 - mixRatio))
   const mixB = Math.round(b * mixRatio + mixColor * (1 - mixRatio))
-  return `rgba(${mixR}, ${mixG}, ${mixB}, ${alpha})`
+  return `rgb(${mixR}, ${mixG}, ${mixB}, ${alpha})`
 }

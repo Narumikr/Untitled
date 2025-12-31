@@ -53,7 +53,6 @@ const meta = {
     children: {
       description: 'Button contents',
       table: { type: { summary: 'React.ReactNode' } },
-      control: false,
     },
     disabled: {
       description: 'Button disabled',

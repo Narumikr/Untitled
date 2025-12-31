@@ -71,7 +71,6 @@ const meta = {
       table: {
         type: { summary: 'React.ReactNode' },
       },
-      control: false,
     },
     pairColor: {
       description: 'What SEKAI color to use for the gradient end',

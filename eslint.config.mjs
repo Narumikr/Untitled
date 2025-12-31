@@ -9,7 +9,7 @@ import { fixupPluginRules } from '@eslint/compat'
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'src/**/index.ts', 'storybook-static', 'test/templates/**'],
+    ignores: ['dist', 'node_modules', 'src/**/index.ts', 'storybook-static'],
   },
   {
     files: ['**/*.ts', '**/*.tsx'],

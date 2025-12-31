@@ -42,7 +42,6 @@ const meta = {
       table: {
         type: { summary: 'string' },
       },
-      control: false,
     },
   },
   args: {},

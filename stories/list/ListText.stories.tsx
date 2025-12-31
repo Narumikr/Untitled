@@ -56,10 +56,7 @@ const meta = {
       description: 'ListItemText contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
-      table: {
-        type: { summary: 'React.ReactNode' },
-      },
-      control: false,
+      table: { type: { summary: 'React.ReactNode' } },
     },
     as: {
       description: 'ListItemText child component type',
