@@ -69,12 +69,15 @@ export default [
         preserveModulesRoot: 'src',
       },
     ],
-    external: [
-      ...Object.keys(pkg.devDependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
-      ...Object.keys(pkg.dependencies || {}),
-      /@babel\/runtime\//,
-    ],
+    external: (id) => {
+      if (id.endsWith('.css') || id.endsWith('.scss')) return false
+      return [
+        ...Object.keys(pkg.devDependencies || {}),
+        ...Object.keys(pkg.peerDependencies || {}),
+        ...Object.keys(pkg.dependencies || {}),
+        /@babel\/runtime\//,
+      ].some((dep) => (typeof dep === 'string' ? id.startsWith(dep) : dep.test(id)))
+    },
     plugins: [
       tsconfigPaths(),
       resolve(),
@@ -90,6 +93,8 @@ export default [
         modules: {
           auto: /\.module\.scss$/,
         },
+        include: ['**/*.css', '**/*.scss', '**/*.module.scss'],
+        inject: false,
         use: {
           sass: {
             implementation: (await import('sass')).default,
@@ -121,7 +126,7 @@ export default [
           if (source.endsWith('.css') || source.endsWith('.scss')) return source
         },
         load(id) {
-          if (id.endsWith('.css') || id.endsWith('.scss')) return '' // 空にする
+          if (id.endsWith('.css') || id.endsWith('.scss')) return ''
         },
       },
     ],

@@ -6,9 +6,11 @@ var _defineProperty = require('@babel/runtime/helpers/defineProperty');
 var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
 var React = require('react');
 var clsx = require('clsx');
-var pagination = require('../../node_modules/swiper/modules/pagination.js');
-var autoplay = require('../../node_modules/swiper/modules/autoplay.js');
-var swiperReact = require('../../node_modules/swiper/swiper-react.js');
+require('swiper/css');
+require('swiper/css/pagination');
+require('swiper/css/navigation');
+var modules = require('swiper/modules');
+var react = require('swiper/react');
 var useOptionalSekai = require('../../internal/useOptionalSekai.js');
 var converter = require('../../utils/converter.js');
 var Carousel_module = require('./Carousel.module.scss.js');
@@ -27,7 +29,7 @@ var Carousel = function Carousel(_ref) {
     _ref$loopInfinite = _ref.loopInfinite,
     loopInfinite = _ref$loopInfinite === void 0 ? true : _ref$loopInfinite,
     _ref$pagination = _ref.pagination,
-    pagination$1 = _ref$pagination === void 0 ? false : _ref$pagination,
+    pagination = _ref$pagination === void 0 ? false : _ref$pagination,
     rest = _objectWithoutProperties(_ref, _excluded);
   var _useOptionalSekai = useOptionalSekai.useOptionalSekai({
       sekai: sekai,
@@ -40,16 +42,16 @@ var Carousel = function Carousel(_ref) {
     '--sekai-color': sekaiColor,
     '--sekai-bullet-color': sekaiBulletColor
   };
-  var swiperModules = [pagination$1 ? pagination : undefined, autoPlay ? autoplay : undefined].filter(Boolean);
+  var swiperModules = [pagination ? modules.Pagination : undefined, autoPlay ? modules.Autoplay : undefined].filter(Boolean);
   var renderChildrenWithSwiperSlide = React.Children.map(children, function (child, idx) {
     if (/*#__PURE__*/React.isValidElement(child)) {
-      return /*#__PURE__*/React.createElement(swiperReact.SwiperSlide, {
+      return /*#__PURE__*/React.createElement(react.SwiperSlide, {
         key: "carousel-slide-".concat(idx)
       }, child);
     }
     return child;
   });
-  return /*#__PURE__*/React.createElement(swiperReact.Swiper, _extends({}, rest, {
+  return /*#__PURE__*/React.createElement(react.Swiper, _extends({}, rest, {
     className: clsx(Carousel_module['sekai-carousel'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     modules: swiperModules,
@@ -59,7 +61,7 @@ var Carousel = function Carousel(_ref) {
     loop: loopInfinite,
     speed: 1500,
     autoplay: autoPlaySettings(autoPlay),
-    pagination: paginationSettings(pagination$1)
+    pagination: paginationSettings(pagination)
   }), renderChildrenWithSwiperSlide);
 };
 // Helper function to determine slides per view based on size
