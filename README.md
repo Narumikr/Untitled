@@ -73,15 +73,22 @@ export const TopPage = () => {
 }
 ```
 
+### sekai-style.css
+
+ルートコンポーネントにimportしてください
+
+unitled-ui-libraryはこのsekai-style.cssのimportがない場合、スタイルが適切に反映されません
+
 ### sekai-colors.css
 
-ルートコンポーネントにimportすることでグローバルなカスタムプロパティとして利用することができる
+ルートコンポーネントにimportすることでグローバルなカスタムプロパティとして利用することができます
 
 #### \_app.tsx
 
 ```ts
 import type { AppProps } from 'next/app'
 import '@/styles/globals.scss'
+import '@naru/untitled-ui-library/sekai-style.css'
 import '@naru/untitled-ui-library/color/sekai-colors.css'
 ...
 ```
