@@ -1855,6 +1855,159 @@
 /* Styles for common color */
 /* Styles for z-index */
 /* Styles for common classes */
+.Carousel-module_sekai-text-light__M3V6r {
+  color: #212121;
+}
+
+.Carousel-module_sekai-text-dark__jwhYy {
+  color: #e0e0e0;
+}
+
+.Carousel-module_sekai-color-light__2vgwG {
+  color: #212121;
+  background-color: #ffffff;
+}
+
+.Carousel-module_sekai-color-dark__1X6VK {
+  color: #e0e0e0;
+  background-color: #121212;
+}
+
+.Carousel-module_sekai-overlay__zCPdo, .Carousel-module_sekai-overlay-dark__rq-AT, .Carousel-module_sekai-overlay-light__yxCzx {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.Carousel-module_sekai-overlay-light__yxCzx {
+  background-color: rgba(0, 0, 0, 0.3882352941);
+}
+
+.Carousel-module_sekai-overlay-dark__rq-AT {
+  background-color: rgba(255, 255, 255, 0.3019607843);
+}
+
+/* Styles for positioning */
+.Carousel-module_sekai-flex-center__DSzTY {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Carousel-module_sekai-absolute-center__N6ECW {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Styles for scroll */
+.Carousel-module_sekai-invisible-scroll__dQBQv {
+  overflow-y: scroll;
+}
+.Carousel-module_sekai-invisible-scroll__dQBQv::-webkit-scrollbar {
+  display: none;
+}
+.Carousel-module_sekai-invisible-scroll__dQBQv {
+  scrollbar-width: none;
+}
+
+/* Styles for margin space */
+.Carousel-module_sekai-mb-8__8dRLV {
+  margin-bottom: 8px;
+}
+
+.Carousel-module_sekai-mb-16__SynX0 {
+  margin-bottom: 16px;
+}
+
+.Carousel-module_sekai-mb-24__indtt {
+  margin-bottom: 24px;
+}
+
+.Carousel-module_text-responsible-body__cfUmZ {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .Carousel-module_text-responsible-body__cfUmZ {
+    font-size: 14px;
+  }
+}
+.Carousel-module_text-xs__TyYbK {
+  font-size: 12px;
+}
+
+.Carousel-module_text-sm__e6AY9 {
+  font-size: 14px;
+}
+
+.Carousel-module_text-base__p8Rqu {
+  font-size: 16px;
+}
+
+.Carousel-module_text-lg__U4KVK {
+  font-size: 18px;
+}
+
+.Carousel-module_text-xl__Edr9Q {
+  font-size: 20px;
+}
+
+.Carousel-module_text-2xl__zpQl7 {
+  font-size: 24px;
+}
+
+.Carousel-module_text-base-bold__u-5Pk {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Carousel-module_text-lg-bold__N6pO6 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Carousel-module_text-xl-bold__LMQTy {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Carousel-module_text-2xl-bold__qNeP8 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.Carousel-module_font-bold__fGDYz {
+  font-weight: bold;
+}
+
+.Carousel-module_sekai-carousel__puYzl {
+  width: 100%;
+  max-width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+  overflow: hidden;
+}
+.Carousel-module_sekai-carousel__puYzl .swiper-slide {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Carousel-module_sekai-carousel__puYzl .swiper-pagination-bullet {
+  transition: background-color 0.3s ease;
+  background-color: var(--sekai-bullet-color);
+}
+.Carousel-module_sekai-carousel__puYzl .swiper-pagination-bullet-active {
+  background-color: var(--sekai-color);
+}
+/* Styles for common color */
+/* Styles for z-index */
+/* Styles for common classes */
 .Dialog-module_sekai-text-light__Gfb2W {
   color: #212121;
 }
