@@ -50,13 +50,6 @@ const setUseClientDirective = () => {
   }
 }
 
-/**
- * Injects the provided CSS string into the document's head using a <style> tag.
- */
-const injectStyles = (css) => {
-  return `if(typeof document!=='undefined'){const s=document.createElement('style');s.innerHTML=${css};document.head.appendChild(s);}`
-}
-
 export default [
   {
     input: 'src/index.ts',
@@ -93,8 +86,10 @@ export default [
         extensions: ['.ts', '.tsx'],
       }),
       postcss({
-        inject: injectStyles,
-        modules: true,
+        extract: 'sekai-style.css',
+        modules: {
+          auto: /\.module\.scss$/,
+        },
         use: {
           sass: {
             implementation: (await import('sass')).default,
@@ -120,6 +115,15 @@ export default [
       dts({
         tsconfig: './tsconfig.build.json',
       }),
+      {
+        name: 'ignore-css',
+        resolveId(source) {
+          if (source.endsWith('.css') || source.endsWith('.scss')) return source
+        },
+        load(id) {
+          if (id.endsWith('.css') || id.endsWith('.scss')) return '' // 空にする
+        },
+      },
     ],
   },
 ]
