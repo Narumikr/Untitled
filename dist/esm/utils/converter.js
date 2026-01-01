@@ -57,7 +57,7 @@ var convertHexToRgbaMixWithBlackOrWhite = function convertHexToRgbaMixWithBlackO
   var mixR = Math.round(r * mixRatio + mixColor * (1 - mixRatio));
   var mixG = Math.round(g * mixRatio + mixColor * (1 - mixRatio));
   var mixB = Math.round(b * mixRatio + mixColor * (1 - mixRatio));
-  return "rgb(".concat(mixR, ", ").concat(mixG, ", ").concat(mixB, ", ").concat(alpha, ")");
+  return "rgba(".concat(mixR, ", ").concat(mixG, ", ").concat(mixB, ", ").concat(alpha, ")");
 };
 
 export { convertHexToRgb, convertHexToRgba, convertHexToRgbaMixWithBlackOrWhite };

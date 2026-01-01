@@ -49,7 +49,10 @@ const meta = {
       description: 'StickyNote contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
-      table: { type: { summary: 'React.ReactNode' } },
+      table: {
+        type: { summary: 'React.ReactNode' },
+      },
+      control: false,
     },
     as: {
       description: 'StickyNote as button or text',
