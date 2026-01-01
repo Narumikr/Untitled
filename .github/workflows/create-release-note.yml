@@ -167,9 +167,9 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Create Release Draft
-        uses: release-drafter/release-drafter@v6
+        uses: release-drafter/release-drafter@v5
         with:
-          config-name: release-drafter.yaml
+          config-name: release-drafter.yml
           commitish: release/untitled
           version: ${{ needs.check-version.outputs.new_version }}
           publish: false
