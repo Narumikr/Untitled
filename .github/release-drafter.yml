@@ -27,4 +27,4 @@ change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add
 template: |
   ## 🌻 What's New > (￣△￣*)
 
-  $CHANGES
+  $CATEGORIES
