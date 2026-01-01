@@ -12,6 +12,10 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
+    "./sekai-style.css": {
+      "import": "./dist/esm/sekai-style.css",
+      "require": "./dist/cjs/sekai-style.css"
+    },
     "./color/sekai-colors.css": {
       "import": "./dist/color/sekai-colors.css",
       "require": "./dist/color/sekai-colors.css"
