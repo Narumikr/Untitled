@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default from 'react';
+import React__default, { JSX } from 'react';
 
 declare const LIGHT_MODE = "light";
 declare const DARK_MODE = "dark";
@@ -683,7 +683,7 @@ interface MarqueeTextProps {
     duration?: number;
     parentBackgroundColor?: string;
 }
-declare const MarqueeText: ({ sekai, themeMode, children, duration, parentBackgroundColor, ...rest }: MarqueeTextProps) => React__default.JSX.Element;
+declare const MarqueeText: ({ sekai, themeMode, children, duration, parentBackgroundColor, ...rest }: MarqueeTextProps) => JSX.Element;
 
 interface NamePlateProps {
     id?: string;

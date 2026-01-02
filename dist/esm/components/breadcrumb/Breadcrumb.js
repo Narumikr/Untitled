@@ -30,8 +30,12 @@ var Breadcrumb = function Breadcrumb(_ref) {
     }),
     sekaiColor = _useOptionalSekai.sekaiColor,
     modeTheme = _useOptionalSekai.modeTheme;
-  var items = React.Children.toArray(children).flatMap(function (el) {
-    return /*#__PURE__*/React.isValidElement(el) && el.type === React.Fragment ? React.Children.toArray(el.props.children) : [el];
+  var items = React.Children.toArray(children).flatMap(function (child) {
+    if (/*#__PURE__*/React.isValidElement(child) && child.type === React.Fragment) {
+      var el = child;
+      return React.Children.toArray(el.props.children);
+    }
+    return [child];
   });
   var optionStyle = {
     '--sekai-color': sekaiColor

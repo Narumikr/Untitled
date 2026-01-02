@@ -46,13 +46,12 @@ var MarqueeText = function MarqueeText(_ref) {
     '--scroll-duration': "".concat(durationState, "s")
   };
   var clonedChildren = Children.map(children, function (child) {
-    if (/*#__PURE__*/React.isValidElement(child)) {
+    if (/*#__PURE__*/React.isValidElement(child) && typeof child.type === 'string') {
       return /*#__PURE__*/React.cloneElement(child, {
         ref: textWrapRef
       });
-    } else {
-      return child;
     }
+    return child;
   });
   useEffect(function () {
     if (!textWrapRef.current || !containerRef.current) return;
