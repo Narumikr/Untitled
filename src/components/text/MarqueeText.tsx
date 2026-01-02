@@ -9,6 +9,7 @@ import { useOptionalSekai } from '@/internal/useOptionalSekai'
 import styles from './MarqueeText.module.scss'
 
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
+import type { JSX } from 'react'
 
 export interface MarqueeTextProps {
   id?: string
@@ -47,13 +48,16 @@ export const MarqueeText = ({
   }
 
   const clonedChildren = Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
+    if (React.isValidElement(child) && typeof child.type === 'string') {
+      type Tag = typeof child.type
+      type Props = JSX.IntrinsicElements[Tag & keyof JSX.IntrinsicElements]
+
+      return React.cloneElement(child as React.ReactElement<React.PropsWithRef<Props>>, {
         ref: textWrapRef,
       })
-    } else {
-      return child
     }
+
+    return child
   })
 
   useEffect(() => {

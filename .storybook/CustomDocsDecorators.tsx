@@ -42,14 +42,15 @@ export const CustomDocsDecorators = ({ story: Story, context }: CustomDocsDecora
     <YourSekaiProvider
       sekaiTheme={sekaiTheme}
       options={{ disableStoreSekai: true, disableStoreTheme: true }}>
-      <Story
-        args={{
+      {Story(
+        {
           ...context.args,
           ...(isPortalDocsPreview && {
             containerComponent: getContainerPortalRoot(context, isDocs) ?? undefined,
           }),
-        }}
-      />
+        },
+        context,
+      )}
     </YourSekaiProvider>
   )
 }

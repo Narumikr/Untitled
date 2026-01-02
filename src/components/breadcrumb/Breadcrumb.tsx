@@ -37,11 +37,13 @@ export const Breadcrumb = ({
   ...rest
 }: BreadcrumbProps) => {
   const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
-  const items = React.Children.toArray(children).flatMap((el) =>
-    React.isValidElement(el) && el.type === React.Fragment
-      ? React.Children.toArray(el.props.children)
-      : [el],
-  )
+  const items = React.Children.toArray(children).flatMap((child) => {
+    if (React.isValidElement(child) && child.type === React.Fragment) {
+      const el = child as React.ReactElement<{ children?: React.ReactNode }>
+      return React.Children.toArray(el.props.children)
+    }
+    return [child]
+  })
 
   const optionStyle = {
     '--sekai-color': sekaiColor,
