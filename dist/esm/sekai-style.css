@@ -6048,6 +6048,10 @@
   padding: 0;
 }
 .TextField-module_sekai-textfield-clear-button__0lSC9 .TextField-module_sekai-textfield-clear-icon__n0vii {
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
   width: 20px;
   height: 20px;
 }
