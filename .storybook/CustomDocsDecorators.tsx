@@ -44,10 +44,12 @@ export const CustomDocsDecorators = ({ story: Story, context }: CustomDocsDecora
       options={{ disableStoreSekai: true, disableStoreTheme: true }}>
       {Story(
         {
-          ...context.args,
-          ...(isPortalDocsPreview && {
-            containerComponent: getContainerPortalRoot(context, isDocs) ?? undefined,
-          }),
+          args: {
+            ...context.args,
+            ...(isPortalDocsPreview && {
+              containerComponent: getContainerPortalRoot(context, isDocs) ?? undefined,
+            }),
+          },
         },
         context,
       )}
