@@ -39,6 +39,13 @@ const meta = {
       control: { type: 'select' },
       options: [...Object.keys(COLORS_SEKAI_KEYS)],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLDivElement>' },
+      },
+      control: false,
+    },
   },
   args: {},
 } satisfies Meta<typeof Loading>

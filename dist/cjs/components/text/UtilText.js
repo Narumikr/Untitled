@@ -56,6 +56,7 @@ var DetailText = function DetailText(_ref3) {
     }),
     modeTheme = _useOptionalSekai3.modeTheme;
   return /*#__PURE__*/React.createElement("p", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(UtilText_module["sekai-detail-text-".concat(modeTheme)], global_module['text-xs'], rest.className)
   }), children);
 };

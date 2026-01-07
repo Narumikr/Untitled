@@ -61,6 +61,7 @@ export interface DetailTextProps {
   className?: string
   style?: React.CSSProperties
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLParagraphElement>
   children?: React.ReactNode
 }
 
@@ -70,6 +71,7 @@ export const DetailText = ({ themeMode, children, ...rest }: DetailTextProps) =>
   return (
     <p
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles[`sekai-detail-text-${modeTheme}`],
         globalStyles['text-xs'],
@@ -103,6 +105,7 @@ export interface AnnotationTextProps {
   className?: string
   style?: React.CSSProperties
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLParagraphElement>
   children?: React.ReactNode
 }
 

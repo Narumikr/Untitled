@@ -15,7 +15,7 @@ import styles from './StickyNote.module.scss'
 
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
 
-export interface BaseProps {
+interface BaseProps {
   id?: string
   className?: string
   style?: React.CSSProperties
