@@ -183,7 +183,7 @@ interface BackdropProps {
     containerComponent?: HTMLElement;
     centered?: boolean;
 }
-declare const Backdrop: ({ sekai, themeMode, open, children, containerComponent, centered, ...rest }: BackdropProps) => React__default.ReactPortal | null;
+declare const Backdrop: ({ sekai, themeMode, ref, open, children, containerComponent, centered, ...rest }: BackdropProps) => React__default.ReactPortal | null;
 
 type SeparatorVariant = 'slash' | 'arrow' | 'chevron' | 'dot' | 'pipe';
 interface BreadcrumbProps {

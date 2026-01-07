@@ -30,6 +30,7 @@ export interface BackdropProps {
 export const Backdrop = ({
   sekai,
   themeMode,
+  ref,
   open,
   children,
   containerComponent,
@@ -49,7 +50,7 @@ export const Backdrop = ({
   if (!portalContainer) return null
 
   return createPortal(
-    <div className={clsx(styles[displayBackdrop])} ref={rest.ref}>
+    <div className={clsx(styles[displayBackdrop])} ref={ref}>
       <div
         {...rest}
         className={clsx(
