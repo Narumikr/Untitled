@@ -18,6 +18,7 @@ export type CardProps = {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>
 
@@ -27,6 +28,7 @@ export const Card = ({
   style,
   sekai,
   themeMode,
+  ref,
   children,
   ...divProps
 }: CardProps) => {
@@ -43,6 +45,7 @@ export const Card = ({
     <div
       {...divProps}
       id={id}
+      ref={ref}
       className={clsx(
         styles['sekai-card'],
         globalStyles[`sekai-color-${modeTheme}`],

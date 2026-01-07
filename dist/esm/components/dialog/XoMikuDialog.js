@@ -64,6 +64,7 @@ var XoMikuDialog = function XoMikuDialog(_ref) {
   if (!portalContainer) return null;
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement(Backdrop, overlayProps, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "dialog",
+    ref: rest.ref,
     className: clsx(styles["sekai-container-".concat(size)], rest.className),
     "aria-label": title || 'Dialog'
   }), /*#__PURE__*/React.createElement(XoMikuSvg, {

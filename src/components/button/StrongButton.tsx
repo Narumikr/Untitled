@@ -16,6 +16,7 @@ export type StrongButtonProps = {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLButtonElement>
   children?: React.ReactNode
   disabled?: boolean
   onClick?: () => void
@@ -40,6 +41,7 @@ export const StrongButton = ({
   return (
     <button
       {...rest}
+      ref={rest.ref}
       type="button"
       className={clsx(styles[`sekai-strong-button-${modeTheme}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}

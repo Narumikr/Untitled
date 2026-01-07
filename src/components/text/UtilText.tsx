@@ -17,6 +17,7 @@ export interface BodyTextProps {
   className?: string
   style?: React.CSSProperties
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLParagraphElement>
   children?: React.ReactNode
 }
 
@@ -26,6 +27,7 @@ export const BodyText = ({ themeMode, children, ...rest }: BodyTextProps) => {
   return (
     <p
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles[`sekai-body-text-${modeTheme}`],
         globalStyles['text-responsible-body'],

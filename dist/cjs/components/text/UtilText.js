@@ -28,6 +28,7 @@ var BodyText = function BodyText(_ref) {
     }),
     modeTheme = _useOptionalSekai.modeTheme;
   return /*#__PURE__*/React.createElement("p", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(UtilText_module["sekai-body-text-".concat(modeTheme)], global_module['text-responsible-body'], rest.className)
   }), children);
 };

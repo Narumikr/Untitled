@@ -27,6 +27,13 @@ const meta = {
       },
       control: false,
     },
+    style: {
+      description: 'Style object',
+      table: {
+        type: { summary: 'React.CSSProperties' },
+      },
+      control: false,
+    },
     sekai: {
       description: 'What SEKAI color to use',
       table: {
@@ -36,21 +43,6 @@ const meta = {
       control: { type: 'select' },
       options: [...Object.keys(COLORS_SEKAI_KEYS)],
     },
-    style: {
-      description: 'Style object',
-      table: {
-        type: { summary: 'React.CSSProperties' },
-      },
-      control: false,
-    },
-    open: {
-      description: 'Dialog open',
-      // @ts-expect-error Storybook's typing issue
-      type: { required: true },
-      table: {
-        type: { summary: 'boolean' },
-      },
-    },
     themeMode: {
       description: 'Light or Dark mode',
       table: {
@@ -59,6 +51,14 @@ const meta = {
       },
       control: { type: 'select' },
       options: ['light', 'dark'],
+    },
+    open: {
+      description: 'Dialog open',
+      // @ts-expect-error Storybook's typing issue
+      type: { required: true },
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
     children: {
       description: 'Dialog contents',

@@ -27,6 +27,7 @@ var OutlineText = function OutlineText(_ref) {
     '--sekai-color': sekaiColor
   };
   return /*#__PURE__*/React.createElement("span", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(OutlineText_module["sekai-outline-text-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     "data-text": text,

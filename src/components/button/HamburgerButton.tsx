@@ -16,6 +16,7 @@ export interface HamburgerButtonProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLButtonElement>
   open: boolean
   onClick?: () => void
 }
@@ -31,6 +32,7 @@ export const HamburgerButton = ({ sekai, themeMode, open, ...rest }: HamburgerBu
   return (
     <button
       {...rest}
+      ref={rest.ref}
       type="button"
       className={clsx(styles[`sekai-hamburger-button-${modeTheme}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}

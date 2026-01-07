@@ -29,6 +29,7 @@ var HamburgerButton = function HamburgerButton(_ref) {
     '--sekai-color-bg': sekaiColorBg
   };
   return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: rest.ref,
     type: "button",
     className: clsx(HamburgerButton_module["sekai-hamburger-button-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),

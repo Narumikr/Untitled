@@ -26,6 +26,13 @@ const meta = {
       },
       control: false,
     },
+    style: {
+      description: 'Style object',
+      table: {
+        type: { summary: 'React.CSSProperties' },
+      },
+      control: false,
+    },
     sekai: {
       description: 'What SEKAI color to use',
       table: {
@@ -34,13 +41,6 @@ const meta = {
       },
       control: { type: 'select' },
       options: [...Object.keys(COLORS_SEKAI_KEYS)],
-    },
-    style: {
-      description: 'Style object',
-      table: {
-        type: { summary: 'React.CSSProperties' },
-      },
-      control: false,
     },
     themeMode: {
       description: 'Light or Dark mode',

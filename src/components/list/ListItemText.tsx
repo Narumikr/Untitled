@@ -20,6 +20,7 @@ export interface ListItemTextProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLLIElement>
   children: React.ReactNode
   as?: 'p' | 'span'
   icon?: 'string' | React.ReactNode
@@ -48,6 +49,7 @@ export const ListItemText = ({
   return (
     <li
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles['sekai-list-item-text'],
         globalStyles[`sekai-color-${modeTheme}`],

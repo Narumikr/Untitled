@@ -17,6 +17,7 @@ export type BasicButtonProps = {
   className?: string
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
+  ref?: React.Ref<HTMLButtonElement>
   withText?: boolean
   themeMode?: PaletteMode
   children?: React.ReactNode
@@ -45,6 +46,7 @@ export const BasicButton = ({
   return (
     <button
       {...rest}
+      ref={rest.ref}
       type="button"
       className={clsx(
         styles[`sekai-basic-button-${modeTheme}`],

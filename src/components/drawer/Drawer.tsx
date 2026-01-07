@@ -22,6 +22,7 @@ export interface DrawerProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   open: boolean
   onClose: () => void
   children: React.ReactNode
@@ -56,6 +57,7 @@ export const Drawer = ({
 
   return createPortal(
     <div
+      ref={rest.ref}
       className={clsx(
         globalStyles[`sekai-overlay-${modeTheme}`],
         styles['sekai-drawer'],

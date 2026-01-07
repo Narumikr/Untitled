@@ -44,6 +44,7 @@ var MusicBannerCard = function MusicBannerCard(_ref) {
     onSelect === null || onSelect === void 0 || onSelect(select);
   };
   return /*#__PURE__*/React.createElement(Card.Card, _extends({}, rest, {
+    ref: rest.ref,
     role: "button",
     tabIndex: 0,
     sekai: sekai,

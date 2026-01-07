@@ -1,5 +1,6 @@
 import * as React from 'react';
 import React__default, { JSX } from 'react';
+import { SwiperRef } from 'swiper/react';
 
 declare const LIGHT_MODE = "light";
 declare const DARK_MODE = "dark";
@@ -162,6 +163,7 @@ interface AccordionProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     summary: string;
     summaryStyles?: string;
     defaultOpen?: boolean;
@@ -175,6 +177,7 @@ interface BackdropProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     open: boolean;
     children: React__default.ReactNode;
     containerComponent?: HTMLElement;
@@ -189,6 +192,7 @@ interface BreadcrumbProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLElement>;
     children: React__default.ReactNode;
     separator?: SeparatorVariant;
 }
@@ -199,6 +203,7 @@ type BasicButtonProps = {
     className?: string;
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
+    ref?: React__default.Ref<HTMLButtonElement>;
     withText?: boolean;
     themeMode?: PaletteMode;
     children?: React__default.ReactNode;
@@ -213,6 +218,7 @@ interface HamburgerButtonProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLButtonElement>;
     open: boolean;
     onClick?: () => void;
 }
@@ -225,6 +231,7 @@ interface ScrollTopButtonProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLButtonElement>;
     pos?: ScrollTopPos;
 }
 declare const ScrollTopButton: ({ sekai, themeMode, pos, ...rest }: ScrollTopButtonProps) => React__default.ReactPortal | null;
@@ -235,6 +242,7 @@ type StrongButtonProps = {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLButtonElement>;
     children?: React__default.ReactNode;
     disabled?: boolean;
     onClick?: () => void;
@@ -247,6 +255,7 @@ interface StylishButtonProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLButtonElement>;
     children?: React__default.ReactNode;
     disabled?: boolean;
     onClick?: () => void;
@@ -260,9 +269,10 @@ type CardProps = {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children: React__default.ReactNode;
 } & React__default.HTMLAttributes<HTMLDivElement>;
-declare const Card: ({ id, className, style, sekai, themeMode, children, ...divProps }: CardProps) => React__default.JSX.Element;
+declare const Card: ({ id, className, style, sekai, themeMode, ref, children, ...divProps }: CardProps) => React__default.JSX.Element;
 interface CardContentProps {
     id?: string;
     className?: string;
@@ -289,6 +299,7 @@ interface MusicBannerCardProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     musicTitle: string;
     artist: string;
     selected?: boolean;
@@ -306,6 +317,7 @@ interface PrskLinkCardProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     height?: number;
     width?: number;
     onClick?: () => void;
@@ -322,6 +334,7 @@ interface CarouselProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<SwiperRef>;
     children: React__default.ReactNode;
     size?: CarouselSize;
     autoPlay?: boolean;
@@ -345,8 +358,9 @@ interface DialogProps {
     className?: string;
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
-    open: boolean;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
+    open: boolean;
     children: React__default.ReactNode;
     containerComponent?: HTMLElement;
     size?: DialogSize;
@@ -356,7 +370,7 @@ interface DialogProps {
     buttons?: DialogButton[];
     dialogButtons?: React__default.ReactNode;
 }
-declare const Dialog: ({ sekai, open, themeMode, children, containerComponent, size, onClose, title, showCloseIcon, buttons, dialogButtons, ...rest }: DialogProps) => React__default.ReactPortal | null;
+declare const Dialog: ({ sekai, themeMode, open, children, containerComponent, size, onClose, title, showCloseIcon, buttons, dialogButtons, ...rest }: DialogProps) => React__default.ReactPortal | null;
 type DialogTitleHeaderProps = Pick<DialogProps, 'sekai' | 'themeMode' | 'size' | 'onClose' | 'title' | 'showCloseIcon'> & {
     id?: string;
     className?: string;
@@ -376,13 +390,14 @@ interface WindowDialogProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     open: boolean;
     children: React__default.ReactNode;
     containerComponent?: HTMLElement;
     size?: DialogSize;
     onClose: () => void;
 }
-declare const WindowDialog: ({ sekai, themeMode, open, children, containerComponent, size, onClose, ...rest }: WindowDialogProps) => React__default.ReactPortal | null;
+declare const WindowDialog: ({ sekai, themeMode, ref, open, children, containerComponent, size, onClose, ...rest }: WindowDialogProps) => React__default.ReactPortal | null;
 
 interface XoMikuDialogProps {
     open: boolean;
@@ -390,6 +405,7 @@ interface XoMikuDialogProps {
     className?: string;
     style?: React__default.CSSProperties;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children: React__default.ReactNode;
     size?: DialogSize;
     containerComponent?: HTMLElement;
@@ -405,6 +421,7 @@ interface XxMikuDialogProps {
     className?: string;
     style?: React__default.CSSProperties;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children: React__default.ReactNode;
     size?: DialogSize;
     containerComponent?: HTMLElement;
@@ -420,6 +437,7 @@ interface DividerProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children?: React__default.ReactNode;
     pairColor?: ColorsSekaiKey;
     lineHeight?: number | string;
@@ -436,6 +454,7 @@ interface DrawerProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     open: boolean;
     onClose: () => void;
     children: React__default.ReactNode;
@@ -454,13 +473,14 @@ interface DropdownProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     options: DropdownOption[];
     defaultValue?: string;
     onSelect: (value: string) => void;
     placeholder?: string;
 }
 declare const Dropdown: (props: DropdownProps) => React__default.JSX.Element;
-declare const DropdownContent: ({ sekai, themeMode, options, onSelect, placeholder, ...rest }: DropdownProps) => React__default.JSX.Element;
+declare const DropdownContent: ({ sekai, themeMode, options, onSelect, placeholder, ref, ...rest }: DropdownProps) => React__default.JSX.Element;
 
 interface DoReMeetEffectProps {
     id?: string;
@@ -468,6 +488,7 @@ interface DoReMeetEffectProps {
     style?: React__default.CSSProperties;
     sekaiKeys: ColorsSekaiKey[];
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLSpanElement>;
     text: string;
     duration?: number;
 }
@@ -497,6 +518,7 @@ interface TextLinkProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLAnchorElement>;
     text: string;
     href: string;
     isExternal?: boolean;
@@ -512,6 +534,7 @@ interface ListProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLUListElement | HTMLOListElement>;
     children: React__default.ReactNode;
     as?: 'ul' | 'ol';
     noBullet?: boolean;
@@ -524,12 +547,13 @@ interface ListItemButtonProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLButtonElement>;
     children: React__default.ReactNode;
     icon?: 'string' | React__default.ReactNode;
     disabled?: boolean;
     onClick?: () => void;
 }
-declare const ListItemButton: ({ id, className, style, sekai, themeMode, children, icon, disabled, onClick, }: ListItemButtonProps) => React__default.JSX.Element;
+declare const ListItemButton: ({ id, className, style, sekai, themeMode, ref, children, icon, disabled, onClick, }: ListItemButtonProps) => React__default.JSX.Element;
 
 interface ListItemTextProps {
     id?: string;
@@ -537,22 +561,31 @@ interface ListItemTextProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLLIElement>;
     children: React__default.ReactNode;
     as?: 'p' | 'span';
     icon?: 'string' | React__default.ReactNode;
 }
 declare const ListItemText: ({ sekai, themeMode, children, as, icon, ...rest }: ListItemTextProps) => React__default.JSX.Element;
 
-interface StickyNoteProps {
+interface BaseProps {
     id?: string;
     className?: string;
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     children: React__default.ReactNode;
-    as?: 'button' | 'text';
     disabled?: boolean;
     onClick?: () => void;
 }
+type StickyNoteProps = ({
+    as?: 'button';
+} & BaseProps & {
+    ref?: React__default.Ref<HTMLButtonElement>;
+}) | ({
+    as?: 'text';
+} & BaseProps & {
+    ref?: React__default.Ref<HTMLLIElement>;
+});
 declare const StickyNote: ({ sekai, children, as, ...rest }: StickyNoteProps) => React__default.JSX.Element;
 
 interface LoadingProps {
@@ -560,8 +593,9 @@ interface LoadingProps {
     className?: string;
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
+    ref?: React__default.Ref<HTMLDivElement>;
 }
-declare const Loading: ({ id, className, style, sekai }: LoadingProps) => React__default.JSX.Element;
+declare const Loading: ({ id, className, style, sekai, ref }: LoadingProps) => React__default.JSX.Element;
 
 type PaginationSize = 'small' | 'medium' | 'large';
 interface PaginationProps {
@@ -570,6 +604,7 @@ interface PaginationProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     count: number;
     page?: number;
     onChangePage?: (page: number) => void;
@@ -638,6 +673,7 @@ type CheckboxProps = {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLInputElement>;
     checked?: boolean;
     disabled?: boolean;
     onChange?: (value: boolean) => void;
@@ -651,6 +687,7 @@ interface ChipProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     label: string;
     onClick?: () => void;
     onDelete?: () => void;
@@ -665,6 +702,7 @@ interface SideMenuProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     open?: boolean;
     onClick?: () => void;
     children?: React__default.ReactNode;
@@ -679,11 +717,12 @@ interface MarqueeTextProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children: React__default.ReactNode;
     duration?: number;
     parentBackgroundColor?: string;
 }
-declare const MarqueeText: ({ sekai, themeMode, children, duration, parentBackgroundColor, ...rest }: MarqueeTextProps) => JSX.Element;
+declare const MarqueeText: ({ sekai, themeMode, ref, children, duration, parentBackgroundColor, ...rest }: MarqueeTextProps) => JSX.Element;
 
 interface NamePlateProps {
     id?: string;
@@ -691,6 +730,7 @@ interface NamePlateProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     text: string;
     colorCount?: number;
 }
@@ -702,6 +742,7 @@ interface OutlineTextProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLSpanElement>;
     text: string;
 }
 declare const OutlineText: ({ sekai, themeMode, text, ...rest }: OutlineTextProps) => React__default.JSX.Element;
@@ -717,6 +758,7 @@ interface TypewriterTextProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     text: string;
     options?: TypewriterTextOptions;
 }
@@ -727,6 +769,7 @@ interface BodyTextProps {
     className?: string;
     style?: React__default.CSSProperties;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLParagraphElement>;
     children?: React__default.ReactNode;
 }
 declare const BodyText: ({ themeMode, children, ...rest }: BodyTextProps) => React__default.JSX.Element;
@@ -766,6 +809,7 @@ interface TextAreaProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     value?: string;
     onChange?: (value: string) => void;
     placeholder?: string;
@@ -781,6 +825,7 @@ interface TextFieldProps extends React__default.InputHTMLAttributes<HTMLInputEle
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     placeholder?: string;
     clearButton?: boolean;
     onChangeInput?: (value: string) => void;
@@ -788,7 +833,7 @@ interface TextFieldProps extends React__default.InputHTMLAttributes<HTMLInputEle
     errorMessage?: string;
     maxLength?: number;
 }
-declare const TextField: ({ id, className, style, sekai, themeMode, clearButton, onChangeInput, isError, errorMessage, ...inputProps }: TextFieldProps) => React__default.JSX.Element;
+declare const TextField: ({ id, className, style, sekai, themeMode, ref, clearButton, onChangeInput, isError, errorMessage, ...inputProps }: TextFieldProps) => React__default.JSX.Element;
 
 type ToastPosition = 'top' | 'bottom';
 interface ToastProps {
@@ -797,6 +842,7 @@ interface ToastProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     open: boolean;
     onClose: () => void;
     pos?: ToastPosition;
@@ -814,6 +860,7 @@ interface TooltipProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     children: React__default.ReactNode;
     text: string;
     pos?: TooltipPosition;
@@ -826,6 +873,7 @@ interface PictureViewerProps {
     style?: React__default.CSSProperties;
     sekai?: ColorsSekaiKey;
     themeMode?: PaletteMode;
+    ref?: React__default.Ref<HTMLDivElement>;
     imgSrc: string;
     alt?: string;
     width?: number;
@@ -970,4 +1018,4 @@ declare const getFormattedTime: (now: Date, format?: string, locale?: string) =>
 declare const getCustomCurrentTime: (now: Date, pattern?: string) => string;
 
 export { Accordion, AnnotationText, Backdrop, BasicButton, BodyText, Breadcrumb, COLORS_SEKAI_KEYS, Card, CardContent, CardTitle, Carousel, Checkbox, Chip, DARK_MODE, DetailText, Dialog, DialogButtons, DialogTitleHeader, Divider, DoReMeetEffect, Drawer, Dropdown, DropdownContent, HamburgerButton, IntoTheSekai, LIGHT_MODE, List, ListContext, ListItemButton, ListItemText, Loading, MarqueeText, MusicBannerCard, NamePlate, ORIENTATION, OutlineText, Pagination, PictureViewer, PrskLinkCard, ScrollTopButton, SekaiAnnotationText, SekaiBackground, SekaiBodyText, SekaiDetailText, SideMenu, StickyNote, StrongButton, StylishButton, TextArea, TextField, TextLink, Toast, Tooltip, TypewriterText, WindowDialog, XoMikuDialog, XxMikuDialog, YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider, colorSekaiKeyList, colorsSekai, convertHexToRgb, convertHexToRgba, convertHexToRgbaMixWithBlackOrWhite, createSekai, createSharedValueProvider, deserializeData, deserializeDataWithTemplate, fireOnEnterKey, fireOnEscapeKey, fireOnSpaceKey, getCurrentTime, getCustomCurrentTime, getFormattedTime, getSekaiCharacterName, isValidDateString, serializeData, shuffleArray, useCreateSekai, useCurrentTime, useInnerSize, useLocalStorage, useOrientation, useSessionStorage, useTabletSize, useThemeMode };
-export type { AccordionProps, AnnotationTextProps, ArrayElement, BackdropProps, BasicButtonProps, BodyTextProps, BreadcrumbProps, CardContentProps, CardProps, CardTitleProps, CarouselProps, CarouselSize, CheckboxProps, ChipProps, ColorsSekai, ColorsSekaiCode, ColorsSekaiKey, DeepPartial, DeepRequired, DetailTextProps, DialogButton, DialogButtonType, DialogButtonsProps, DialogProps, DialogSize, DialogTitleHeaderProps, DividerProps, DoReMeetEffectProps, DrawerPosition, DrawerProps, DropdownOption, DropdownProps, HamburgerButtonProps, IntoTheSekaiProps, ListItemButtonProps, ListItemTextProps, ListProps, LoadingProps, MarqueeTextProps, MusicBannerCardProps, NamePlateProps, Orientation, OutlineTextProps, PaginationProps, PaginationSize, PaletteMode, PartialBy, PictureViewerProps, PrskLinkCardProps, RequiredBy, ScrollTopButtonProps, ScrollTopPos, SekaiAnnotationTextProps, SekaiBackgroundProps, SekaiBodyTextProps, SekaiDetailTextProps, SekaiTheme, SekaiThemeProps, SharedValueContextProps, SharedValueProviderProps, SideMenuProps, StickyNoteProps, StrongButtonProps, StylishButtonProps, TextAreaProps, TextFieldProps, TextLinkProps, ToastPosition, ToastProps, TooltipPosition, TooltipProps, TypewriterTextOptions, TypewriterTextProps, ValueOf, WindowDialogProps, XoMikuDialogProps, XxMikuDialogProps, YourSekaiContextProps, YourSekaiProviderProps };
+export type { AccordionProps, AnnotationTextProps, ArrayElement, BackdropProps, BaseProps, BasicButtonProps, BodyTextProps, BreadcrumbProps, CardContentProps, CardProps, CardTitleProps, CarouselProps, CarouselSize, CheckboxProps, ChipProps, ColorsSekai, ColorsSekaiCode, ColorsSekaiKey, DeepPartial, DeepRequired, DetailTextProps, DialogButton, DialogButtonType, DialogButtonsProps, DialogProps, DialogSize, DialogTitleHeaderProps, DividerProps, DoReMeetEffectProps, DrawerPosition, DrawerProps, DropdownOption, DropdownProps, HamburgerButtonProps, IntoTheSekaiProps, ListItemButtonProps, ListItemTextProps, ListProps, LoadingProps, MarqueeTextProps, MusicBannerCardProps, NamePlateProps, Orientation, OutlineTextProps, PaginationProps, PaginationSize, PaletteMode, PartialBy, PictureViewerProps, PrskLinkCardProps, RequiredBy, ScrollTopButtonProps, ScrollTopPos, SekaiAnnotationTextProps, SekaiBackgroundProps, SekaiBodyTextProps, SekaiDetailTextProps, SekaiTheme, SekaiThemeProps, SharedValueContextProps, SharedValueProviderProps, SideMenuProps, StickyNoteProps, StrongButtonProps, StylishButtonProps, TextAreaProps, TextFieldProps, TextLinkProps, ToastPosition, ToastProps, TooltipPosition, TooltipProps, TypewriterTextOptions, TypewriterTextProps, ValueOf, WindowDialogProps, XoMikuDialogProps, XxMikuDialogProps, YourSekaiContextProps, YourSekaiProviderProps };

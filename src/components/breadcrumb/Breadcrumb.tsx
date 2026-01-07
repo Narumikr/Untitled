@@ -25,6 +25,7 @@ export interface BreadcrumbProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLElement>
   children: React.ReactNode
   separator?: SeparatorVariant
 }
@@ -52,6 +53,7 @@ export const Breadcrumb = ({
   return (
     <nav
       {...rest}
+      ref={rest.ref}
       aria-label={`breadcrumb-${rest.id}`}
       className={clsx(styles['sekai-breadcrumb'], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>

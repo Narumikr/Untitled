@@ -16,6 +16,7 @@ export type CheckboxProps = {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLInputElement>
   checked?: boolean
   disabled?: boolean
   onChange?: (value: boolean) => void
@@ -49,6 +50,7 @@ export const Checkbox = ({
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
       <input
         {...rest}
+        ref={rest.ref}
         tabIndex={Boolean(disabled) ? -1 : 0}
         type="checkbox"
         className={clsx(styles[`sekai-checkbox-${modeTheme}`], {

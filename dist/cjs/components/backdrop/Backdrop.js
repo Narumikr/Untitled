@@ -41,7 +41,8 @@ var Backdrop = function Backdrop(_ref) {
   });
   if (!portalContainer) return null;
   return /*#__PURE__*/reactDom.createPortal(/*#__PURE__*/React.createElement("div", {
-    className: clsx(Backdrop_module[displayBackdrop])
+    className: clsx(Backdrop_module[displayBackdrop]),
+    ref: rest.ref
   }, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: clsx(global_module["sekai-overlay-".concat(modeTheme)], _defineProperty(_defineProperty({}, Backdrop_module['sekai-backdrop-bg'], sekai), Backdrop_module['sekai-backdrop-centered'], centered), rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)

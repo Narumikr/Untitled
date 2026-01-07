@@ -38,6 +38,7 @@ var List = function List(_ref) {
   return /*#__PURE__*/React.createElement(ListContext.Provider, {
     value: true
   }, /*#__PURE__*/React.createElement(Component, _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(global_module["sekai-color-".concat(modeTheme)], List_module['sekai-list'], rest.className),
     style: _objectSpread(_objectSpread({
       listStyleType: listStyleType,

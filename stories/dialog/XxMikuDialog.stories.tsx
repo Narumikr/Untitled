@@ -12,12 +12,6 @@ const meta = {
   parameters: {},
   tags: ['autodocs'],
   argTypes: {
-    open: {
-      description: 'Dialog open',
-      table: {
-        type: { summary: 'boolean' },
-      },
-    },
     id: {
       description: 'Unique Id',
       table: {
@@ -46,6 +40,12 @@ const meta = {
       },
       control: { type: 'select' },
       options: ['light', 'dark'],
+    },
+    open: {
+      description: 'Dialog open',
+      table: {
+        type: { summary: 'boolean' },
+      },
     },
     children: {
       description: 'Dialog contents',
