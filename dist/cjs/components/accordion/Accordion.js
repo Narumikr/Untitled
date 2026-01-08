@@ -87,7 +87,7 @@ var AccordionDetailsContents = function AccordionDetailsContents(_ref2) {
         }
       });
     }
-  }, [open]);
+  }, [open, details]);
   var animationDetailsStyles = _objectSpread(_objectSpread({
     maxHeight: open ? heightDetails ? "".concat(heightDetails, "px") : 'none' : '0px',
     opacity: open ? 1 : 0

@@ -97,7 +97,7 @@ const AccordionDetailsContents = ({ open, details }: AccordionDetailsContentsPro
         }
       })
     }
-  }, [open])
+  }, [open, details])
 
   const animationDetailsStyles = {
     maxHeight: open ? (heightDetails ? `${heightDetails}px` : 'none') : '0px',
