@@ -38,6 +38,7 @@ var Checkbox = function Checkbox(_ref) {
     className: clsx(styles['sekai-checkbox'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }, /*#__PURE__*/React.createElement("input", _extends({}, rest, {
+    ref: rest.ref,
     tabIndex: Boolean(disabled) ? -1 : 0,
     type: "checkbox",
     className: clsx(styles["sekai-checkbox-".concat(modeTheme)], _defineProperty({}, styles['sekai-checkbox-filling'], filling)),

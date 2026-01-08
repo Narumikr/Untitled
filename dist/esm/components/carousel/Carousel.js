@@ -50,6 +50,7 @@ var Carousel = function Carousel(_ref) {
     return child;
   });
   return /*#__PURE__*/React.createElement(Swiper, _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(styles['sekai-carousel'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     modules: swiperModules,

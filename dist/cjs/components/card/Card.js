@@ -11,7 +11,7 @@ var converter = require('../../utils/converter.js');
 var global_module = require('../../styles/global.module.scss.js');
 var Card_module = require('./Card.module.scss.js');
 
-var _excluded = ["id", "className", "style", "sekai", "themeMode", "children"],
+var _excluded = ["id", "className", "style", "sekai", "themeMode", "ref", "children"],
   _excluded2 = ["sekai", "themeMode", "title", "underline"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -21,6 +21,7 @@ var Card = function Card(_ref) {
     style = _ref.style,
     sekai = _ref.sekai,
     themeMode = _ref.themeMode,
+    ref = _ref.ref,
     children = _ref.children,
     divProps = _objectWithoutProperties(_ref, _excluded);
   var _useOptionalSekai = useOptionalSekai.useOptionalSekai({
@@ -36,6 +37,7 @@ var Card = function Card(_ref) {
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, divProps, {
     id: id,
+    ref: ref,
     className: clsx(Card_module['sekai-card'], global_module["sekai-color-".concat(modeTheme)], className),
     style: _objectSpread(_objectSpread({}, optionStyle), style)
   }), children);

@@ -57,6 +57,7 @@ var SideMenu = function SideMenu(_ref) {
   };
   if (!portalContainer) return null;
   return /*#__PURE__*/reactDom.createPortal(/*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(SideMenu_module["sekai-side-menu-".concat(pos)], _defineProperty(_defineProperty({}, SideMenu_module['sekai-side-menu-open'], isOpen), SideMenu_module['sekai-side-menu-closed'], !isOpen), rest.className),
     style: _objectSpread(_objectSpread(_objectSpread({}, optionStyle), posAbsoluteStyle), rest.style)
   }), /*#__PURE__*/React.createElement(HamburgerButton.HamburgerButton, {

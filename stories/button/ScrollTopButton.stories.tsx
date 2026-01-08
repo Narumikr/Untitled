@@ -66,6 +66,13 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLButtonElement>' },
+      },
+      control: false,
+    },
     pos: {
       description: 'Position of the button',
       table: {

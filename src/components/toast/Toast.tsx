@@ -25,6 +25,7 @@ export interface ToastProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   open: boolean
   onClose: () => void
   pos?: ToastPosition
@@ -76,6 +77,7 @@ export const Toast = ({
   return createPortal(
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles[`sekai-toast-${pos}`],
         {

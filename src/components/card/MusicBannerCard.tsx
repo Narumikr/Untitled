@@ -21,6 +21,7 @@ export interface MusicBannerCardProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   musicTitle: string
   artist: string
   selected?: boolean
@@ -58,6 +59,7 @@ export const MusicBannerCard = ({
   return (
     <Card
       {...rest}
+      ref={rest.ref}
       role="button"
       tabIndex={0}
       sekai={sekai}

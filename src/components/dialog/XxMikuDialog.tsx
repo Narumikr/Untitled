@@ -22,6 +22,7 @@ export interface XxMikuDialogProps {
   className?: string
   style?: React.CSSProperties
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   children: React.ReactNode
   size?: DialogSize
   containerComponent?: HTMLElement
@@ -86,6 +87,7 @@ export const XxMikuDialog = ({
       <div
         {...rest}
         role="dialog"
+        ref={rest.ref}
         className={clsx(
           styles[`sekai-container-${size}`],
           styles[`sekai-${modeTheme}`],

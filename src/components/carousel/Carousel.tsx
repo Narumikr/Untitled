@@ -14,6 +14,7 @@ import styles from './Carousel.module.scss'
 
 import type { PaletteMode } from '@/hooks/useThemeMode'
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
+import type { SwiperRef } from 'swiper/react'
 import type { SwiperModule } from 'swiper/types'
 
 export type CarouselSize = 'wide' | 'normal' | 'single'
@@ -24,6 +25,7 @@ export interface CarouselProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<SwiperRef>
   children: React.ReactNode
   size?: CarouselSize
   autoPlay?: boolean
@@ -64,6 +66,7 @@ export const Carousel = ({
   return (
     <Swiper
       {...rest}
+      ref={rest.ref}
       className={clsx(styles['sekai-carousel'], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}
       modules={swiperModules}

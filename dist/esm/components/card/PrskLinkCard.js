@@ -33,6 +33,7 @@ var PrskLinkCard = function PrskLinkCard(_ref) {
     width: "".concat(width, "px")
   };
   return /*#__PURE__*/React.createElement(Card, _extends({}, rest, {
+    ref: rest.ref,
     sekai: sekai,
     themeMode: themeMode
   }), /*#__PURE__*/React.createElement("button", {

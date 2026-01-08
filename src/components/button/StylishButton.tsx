@@ -17,6 +17,7 @@ export interface StylishButtonProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLButtonElement>
   children?: React.ReactNode
   disabled?: boolean
   onClick?: () => void
@@ -43,6 +44,7 @@ export const StylishButton = ({
   return (
     <button
       {...rest}
+      ref={rest.ref}
       type="button"
       className={clsx(styles[`sekai-stylish-button-${modeTheme}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}

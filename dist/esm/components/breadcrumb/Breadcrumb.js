@@ -41,6 +41,7 @@ var Breadcrumb = function Breadcrumb(_ref) {
     '--sekai-color': sekaiColor
   };
   return /*#__PURE__*/React.createElement("nav", _extends({}, rest, {
+    ref: rest.ref,
     "aria-label": "breadcrumb-".concat(rest.id),
     className: clsx(styles['sekai-breadcrumb'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
