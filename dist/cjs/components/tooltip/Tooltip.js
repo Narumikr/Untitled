@@ -39,6 +39,7 @@ var Tooltip = function Tooltip(_ref) {
     visible = _useState2[0],
     setVisible = _useState2[1];
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(Tooltip_module["sekai-tooltip-".concat(modeTheme)], Tooltip_module["sekai-tooltip-".concat(pos)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     onMouseEnter: function onMouseEnter() {

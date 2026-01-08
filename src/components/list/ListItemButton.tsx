@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useCallback, useContext, useRef } from 'react'
 
 import clsx from 'clsx'
 
@@ -19,6 +19,7 @@ export interface ListItemButtonProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLButtonElement>
   children: React.ReactNode
   icon?: 'string' | React.ReactNode
   disabled?: boolean
@@ -33,6 +34,7 @@ export const ListItemButton = ({
   style,
   sekai,
   themeMode,
+  ref,
   children,
   icon,
   disabled = false,
@@ -50,6 +52,20 @@ export const ListItemButton = ({
   }
 
   const listItemButtonRef = useRef<HTMLButtonElement | null>(null)
+
+  // Merge internal ref and forwarded ref
+  const setRefs = useCallback(
+    (element: HTMLButtonElement | null) => {
+      listItemButtonRef.current = element
+
+      if (typeof ref === 'function') {
+        ref(element)
+      } else if (ref) {
+        ;(ref as React.RefObject<HTMLButtonElement | null>).current = element
+      }
+    },
+    [ref],
+  )
 
   const createRipple = (
     event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>,
@@ -88,7 +104,7 @@ export const ListItemButton = ({
       style={{ ...(optionStyle as React.CSSProperties), ...style }}>
       <button
         type="button"
-        ref={listItemButtonRef}
+        ref={setRefs}
         className={styles[`sekai-list-button-${modeTheme}`]}
         disabled={disabled}
         onClick={handleOnClick}>

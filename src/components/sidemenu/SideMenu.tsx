@@ -22,6 +22,7 @@ export interface SideMenuProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   open?: boolean
   onClick?: () => void
   children?: React.ReactNode
@@ -68,6 +69,7 @@ export const SideMenu = ({
   return createPortal(
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles[`sekai-side-menu-${pos}`],
         {

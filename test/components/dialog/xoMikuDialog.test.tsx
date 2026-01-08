@@ -75,7 +75,7 @@ jest.mock('@/components/dialog/Dialog', () => ({
     id?: string
   }) => (
     <div data-testid="dialog-title-header" id={id}>
-      {title && <h2>{title}</h2>}
+      {title ? <h2>{title}</h2> : null}
       <button onClick={onClose}>Close</button>
     </div>
   ),

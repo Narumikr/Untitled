@@ -72,6 +72,7 @@ var TypewriterText = function TypewriterText(_ref) {
     '--sekai-color': sekaiColor
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(TypewriterText_module['sekai-typewrite-text'], _defineProperty({}, TypewriterText_module['sekai-cursor'], viewCursor), rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), displayText);

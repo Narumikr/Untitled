@@ -34,6 +34,7 @@ var StylishButton = function StylishButton(_ref) {
     '--sekai-color-hover': sekaiColorHover
   };
   return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: rest.ref,
     type: "button",
     className: clsx(styles["sekai-stylish-button-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),

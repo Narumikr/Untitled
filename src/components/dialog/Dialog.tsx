@@ -35,8 +35,9 @@ export interface DialogProps {
   className?: string
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
-  open: boolean
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
+  open: boolean
   children: React.ReactNode
   containerComponent?: HTMLElement
   size?: DialogSize
@@ -49,8 +50,8 @@ export interface DialogProps {
 
 export const Dialog = ({
   sekai,
-  open,
   themeMode,
+  open,
   children,
   containerComponent,
   size = 'medium',
@@ -90,6 +91,7 @@ export const Dialog = ({
     <Backdrop {...overlayProps} centered>
       <div
         {...rest}
+        ref={rest.ref}
         role="dialog"
         className={clsx(
           globalStyles[`sekai-color-${modeTheme}`],

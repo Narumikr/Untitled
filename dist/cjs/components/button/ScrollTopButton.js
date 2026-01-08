@@ -58,6 +58,7 @@ var ScrollTopButton = function ScrollTopButton(_ref) {
   };
   if (!isVisible) return null;
   return /*#__PURE__*/reactDom.createPortal(/*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(ScrollTopButton_module["sekai-scroll-top-button-".concat(pos)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     onClick: handleScroll

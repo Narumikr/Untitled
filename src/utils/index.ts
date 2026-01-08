@@ -1,6 +1,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
- * Generated at: 2026-01-06 23:29:11
+ * Generated at: 2026-01-08 20:41:55
  */
 
 export * from './connectSekai'

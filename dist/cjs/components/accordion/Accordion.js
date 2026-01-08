@@ -47,6 +47,7 @@ var Accordion = function Accordion(_ref) {
     });
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(Accordion_module['sekai-accordion-container'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement("button", {

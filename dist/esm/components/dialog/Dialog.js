@@ -15,15 +15,15 @@ import { fireOnEscapeKey } from '../../utils/operation.js';
 import globalStyles from '../../styles/global.module.scss.js';
 import styles from './Dialog.module.scss.js';
 
-var _excluded = ["sekai", "open", "themeMode", "children", "containerComponent", "size", "onClose", "title", "showCloseIcon", "buttons", "dialogButtons"],
+var _excluded = ["sekai", "themeMode", "open", "children", "containerComponent", "size", "onClose", "title", "showCloseIcon", "buttons", "dialogButtons"],
   _excluded2 = ["sekai", "themeMode", "size", "onClose", "title", "showCloseIcon"],
   _excluded3 = ["sekai", "themeMode", "buttons"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 var Dialog = function Dialog(_ref) {
   var sekai = _ref.sekai,
-    open = _ref.open,
     themeMode = _ref.themeMode,
+    open = _ref.open,
     children = _ref.children,
     containerComponent = _ref.containerComponent,
     _ref$size = _ref.size,
@@ -79,6 +79,7 @@ var Dialog = function Dialog(_ref) {
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement(Backdrop, _extends({}, overlayProps, {
     centered: true
   }), /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     role: "dialog",
     className: clsx(globalStyles["sekai-color-".concat(modeTheme)], styles["sekai-container-".concat(size)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),

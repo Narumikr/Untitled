@@ -19,6 +19,7 @@ export interface DividerProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   children?: React.ReactNode
   pairColor?: ColorsSekaiKey
   lineHeight?: number | string
@@ -51,6 +52,7 @@ export const Divider = ({
   return (
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(styles[`sekai-divider-${variant}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
       {children ? (

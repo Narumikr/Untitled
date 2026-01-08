@@ -19,6 +19,7 @@ var ListItemButton = function ListItemButton(_ref) {
     style = _ref.style,
     sekai = _ref.sekai,
     themeMode = _ref.themeMode,
+    ref = _ref.ref,
     children = _ref.children,
     icon = _ref.icon,
     _ref$disabled = _ref.disabled,
@@ -39,6 +40,15 @@ var ListItemButton = function ListItemButton(_ref) {
     '--sekai-color-hover': sekaiColorHover
   };
   var listItemButtonRef = React.useRef(null);
+  // Merge internal ref and forwarded ref
+  var setRefs = React.useCallback(function (element) {
+    listItemButtonRef.current = element;
+    if (typeof ref === 'function') {
+      ref(element);
+    } else if (ref) {
+      ref.current = element;
+    }
+  }, [ref]);
   var createRipple = function createRipple(event) {
     var listItemButton = listItemButtonRef.current;
     if (!listItemButton) return;
@@ -66,7 +76,7 @@ var ListItemButton = function ListItemButton(_ref) {
     style: _objectSpread(_objectSpread({}, optionStyle), style)
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
-    ref: listItemButtonRef,
+    ref: setRefs,
     className: List_module["sekai-list-button-".concat(modeTheme)],
     disabled: disabled,
     onClick: handleOnClick

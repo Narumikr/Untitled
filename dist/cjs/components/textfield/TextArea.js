@@ -39,6 +39,7 @@ var TextArea = function TextArea(_ref) {
     onChange === null || onChange === void 0 || onChange(newValue);
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(TextArea_module['sekai-textarea-wrap'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement("textarea", {

@@ -32,6 +32,7 @@ var StrongButton = function StrongButton(_ref) {
     '--sekai-color-bg': sekaiColorBg
   };
   return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: rest.ref,
     type: "button",
     className: clsx(StrongButton_module["sekai-strong-button-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),

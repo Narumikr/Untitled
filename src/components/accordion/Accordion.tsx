@@ -19,6 +19,7 @@ export interface AccordionProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   summary: string
   summaryStyles?: string
   defaultOpen?: boolean
@@ -48,6 +49,7 @@ export const Accordion = ({
   return (
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(styles['sekai-accordion-container'], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
       <button

@@ -3,7 +3,7 @@ import _extends from '@babel/runtime/helpers/extends';
 import _defineProperty from '@babel/runtime/helpers/defineProperty';
 import _objectWithoutProperties from '@babel/runtime/helpers/objectWithoutProperties';
 import _slicedToArray from '@babel/runtime/helpers/slicedToArray';
-import React, { forwardRef, useContext, createContext, useMemo, useRef, useState, useEffect } from 'react';
+import React, { forwardRef, useContext, createContext, useMemo, useRef, useCallback, useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { ChevronSvg } from '../../img/chevron.js';
 import { useOptionalSekai } from '../../internal/useOptionalSekai.js';
@@ -11,7 +11,7 @@ import { convertHexToRgbaMixWithBlackOrWhite, convertHexToRgba } from '../../uti
 import globalStyles from '../../styles/global.module.scss.js';
 import styles from './Dropdown.module.scss.js';
 
-var _excluded = ["sekai", "themeMode", "options", "onSelect", "placeholder"];
+var _excluded = ["sekai", "themeMode", "options", "onSelect", "placeholder", "ref"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: true } : { done: false, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = true, u = false; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = true, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
@@ -53,6 +53,7 @@ var DropdownContent = function DropdownContent(_ref2) {
     options = _ref2.options,
     onSelect = _ref2.onSelect,
     placeholder = _ref2.placeholder,
+    ref = _ref2.ref,
     rest = _objectWithoutProperties(_ref2, _excluded);
   var _useOptionalSekai = useOptionalSekai({
       sekai: sekai,
@@ -65,6 +66,15 @@ var DropdownContent = function DropdownContent(_ref2) {
   var _ref3 = useContext(DropdownContext) || {},
     openOptions = _ref3.openOptions,
     setOpenOptions = _ref3.setOpenOptions;
+  // Merge internal ref and forwarded ref
+  var setRefs = useCallback(function (element) {
+    wrapDropdownRef.current = element;
+    if (typeof ref === 'function') {
+      ref(element);
+    } else if (ref) {
+      ref.current = element;
+    }
+  }, [ref]);
   var _useState5 = useState(),
     _useState6 = _slicedToArray(_useState5, 2),
     dropdownPosStyle = _useState6[0],
@@ -134,7 +144,7 @@ var DropdownContent = function DropdownContent(_ref2) {
     };
   }, [triggerWidth]);
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    ref: wrapDropdownRef,
+    ref: setRefs,
     className: clsx(styles["sekai-dropdown-".concat(modeTheme)], rest.className),
     style: _objectSpread({
       '--sekai-color': sekaiColor

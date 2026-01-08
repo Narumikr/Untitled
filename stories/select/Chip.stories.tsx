@@ -51,6 +51,13 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLDivElement>' },
+      },
+      control: false,
+    },
     label: {
       description: 'Label text',
       table: {

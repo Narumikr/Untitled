@@ -16,6 +16,7 @@ export interface TextLinkProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLAnchorElement>
   text: string
   href: string
   isExternal?: boolean
@@ -45,6 +46,7 @@ export const TextLink = ({
   return (
     <a
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles[`sekai-text-link-${modeTheme}`],
         disabled && styles['sekai-disabled'],

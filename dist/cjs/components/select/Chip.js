@@ -40,6 +40,7 @@ var Chip = function Chip(_ref) {
     role: "button",
     tabIndex: 0
   }, rest, {
+    ref: rest.ref,
     className: clsx(Chip_module["sekai-chip-".concat(size)], Chip_module["sekai-chip-".concat(variant)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     onClick: onClick
