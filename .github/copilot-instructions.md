@@ -5,7 +5,7 @@
 **What is this?** A TypeScript React component library inspired by Project SEKAI (Hatsune Miku rhythm game), providing 40+ themed UI components with dynamic color system and light/dark mode support. This is a production-ready library distributed via GitHub releases.
 
 **Tech Stack:**
-- React 18 + TypeScript (strict mode enabled)
+- React 19 + TypeScript (strict mode enabled)
 - SCSS + CSS Modules (scoped component styling)
 - Rollup (dual ESM/CJS bundling with type declarations)
 - Storybook (component documentation and development)
@@ -17,7 +17,7 @@
 - 22 component categories (button, card, dialog, dropdown, etc.)
 - 40+ character/unit color constants from Project SEKAI
 - Next.js App Router compatible ('use client' directives auto-injected)
-- ~1.6MB dist output (ESM + CJS + types + CSS)
+- ~1.7MB dist output (ESM + CJS + types + CSS)
 
 ---
 
@@ -27,6 +27,14 @@
 - **Node.js:** v20.x (verified with v20.19.6)
 - **npm:** 10.x (verified with v10.8.2)
 - **Python:** 3.12+ (for scripts/generator.py)
+
+### Peer Dependencies (for library consumers)
+- **React:** ^19.2.3
+- **React-DOM:** ^19.2.3
+- **@types/react:** ^19.2.7
+- **@types/react-dom:** ^19.2.3
+
+**Note:** This library requires React 19. Projects using older React versions are not supported.
 
 ### ALWAYS run these commands in this exact order:
 
@@ -79,10 +87,26 @@ npm run build
 **Output structure:**
 ```
 dist/
-├── cjs/          # CommonJS modules (~780KB)
-├── esm/          # ES modules (~776KB)
-├── color/        # sekai-colors.css
-├── index.d.ts    # TypeScript declarations (~36KB)
+├── cjs/          # CommonJS modules with preserveModules (~824KB)
+│   ├── components/   # Individual component modules
+│   ├── hooks/        # Individual hook modules
+│   ├── utils/        # Individual utility modules
+│   ├── styles/       # Style modules
+│   ├── internal/     # Internal modules
+│   ├── img/          # Image assets
+│   ├── index.js      # Main entry point
+│   └── sekai-style.css  # Bundled styles (~160KB)
+├── esm/          # ES modules with preserveModules (~824KB)
+│   ├── components/   # Individual component modules
+│   ├── hooks/        # Individual hook modules
+│   ├── utils/        # Individual utility modules
+│   ├── styles/       # Style modules
+│   ├── internal/     # Internal modules
+│   ├── img/          # Image assets
+│   ├── index.js      # Main entry point
+│   └── sekai-style.css  # Bundled styles (~160KB)
+├── color/        # sekai-colors.css (~8KB)
+├── index.d.ts    # TypeScript declarations (~40KB)
 └── package.json  # Distribution package.json
 ```
 
@@ -115,9 +139,19 @@ src/
 
 ### Key Configuration Files
 - **package.json** - Scripts, dependencies, export paths
+  - Main entry: `dist/cjs/index.js` (CJS) / `dist/esm/index.js` (ESM)
+  - Types: `dist/index.d.ts`
+  - Exports field defines three paths:
+    - `"."` - Main library exports (components, hooks, utils)
+    - `"./sekai-style.css"` - Bundled component styles (~160KB)
+    - `"./color/sekai-colors.css"` - Color constants only (~8KB)
 - **tsconfig.json** - TypeScript config (strict mode, @/ alias to src/)
 - **tsconfig.build.json** - Build-specific TS config
-- **rollup.config.js** - Bundling config (ESM/CJS, 'use client' injection)
+- **rollup.config.js** - Bundling config (ESM/CJS with preserveModules, 'use client' injection)
+  - preserveModules: true - Maintains original file structure in dist/
+  - Dual output: dist/cjs/ (CommonJS) and dist/esm/ (ES Modules)
+  - Automatic 'use client' directive for components and hooks
+  - CSS bundling via postcss → sekai-style.css
 - **eslint.config.mjs** - ESLint rules (complexity ≤8, max 150 lines/function)
 - **.prettierrc.json** - Prettier config (single quotes, 96 char width, no semicolons)
 - **jest.config.js** - Jest test config
@@ -878,8 +912,9 @@ import { convertHexToRgba } from '@naru/untitled-ui-library'
 // Provider & Theme
 import { YourSekaiProvider, createSekai, LIGHT_MODE, DARK_MODE } from '@naru/untitled-ui-library'
 
-// CSS
-import '@naru/untitled-ui-library/color/sekai-colors.css'
+// CSS (Choose one or both based on your needs)
+import '@naru/untitled-ui-library/color/sekai-colors.css'  // Color constants only
+import '@naru/untitled-ui-library/sekai-style.css'         // All component styles (~160KB)
 ```
 
 **Internal usage (within src/):**
