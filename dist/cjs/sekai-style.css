@@ -140,6 +140,7 @@
   justify-content: space-between;
   width: 100%;
   min-height: 40px;
+  background-color: inherit;
   font-weight: bold;
   border: none;
   padding: 4px 10px;

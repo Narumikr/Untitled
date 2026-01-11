@@ -55,7 +55,7 @@ export const Accordion = ({
       <button
         className={clsx(
           styles['sekai-accordion-summary'],
-          globalStyles[`sekai-color-${modeTheme}`],
+          globalStyles[`sekai-text-${modeTheme}`],
           summaryStyles,
         )}
         onClick={handleOpenClose}
@@ -88,12 +88,16 @@ const AccordionDetailsContents = ({ open, details }: AccordionDetailsContentsPro
   const [heightDetails, setHeightDetails] = useState(0)
 
   useEffect(() => {
-    if (refDetails.current) {
+    if (!refDetails.current) return
+
+    if (open) {
       requestAnimationFrame(() => {
-        setHeightDetails(refDetails.current!.scrollHeight)
+        if (refDetails.current) {
+          setHeightDetails(refDetails.current.scrollHeight)
+        }
       })
     }
-  }, [])
+  }, [open, details])
 
   const animationDetailsStyles = {
     maxHeight: open ? (heightDetails ? `${heightDetails}px` : 'none') : '0px',
