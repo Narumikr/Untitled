@@ -40,7 +40,7 @@ export const List = ({
     '--sekai-color': sekaiColor,
   }
   const listStyleType = noBullet ? 'none' : undefined
-  const paddingLeft = noBullet ? '16px' : '36px'
+  const paddingLeft = noBullet ? '0' : '36px'
 
   return (
     <ListContext.Provider value={true}>
@@ -48,7 +48,7 @@ export const List = ({
         {...rest}
         ref={rest.ref as React.Ref<HTMLUListElement & HTMLOListElement>}
         className={clsx(
-          globalStyles[`sekai-color-${modeTheme}`],
+          globalStyles[`sekai-text-${modeTheme}`],
           styles['sekai-list'],
           rest.className,
         )}

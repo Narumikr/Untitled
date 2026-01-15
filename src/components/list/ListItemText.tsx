@@ -52,7 +52,7 @@ export const ListItemText = ({
       ref={rest.ref}
       className={clsx(
         styles['sekai-list-item-text'],
-        globalStyles[`sekai-color-${modeTheme}`],
+        globalStyles[`sekai-text-${modeTheme}`],
         rest.className,
       )}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
