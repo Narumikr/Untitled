@@ -158,7 +158,7 @@ jobs:
 
   release-draft:
     needs: check-version
-    if: needs.check-version.outputs.version_changed == 'true' && github.event_name == 'pull_request'
+    if: needs.check-version.outputs.version_changed == 'true' && github.event_name == 'push'
     permissions:
       contents: write
       pull-requests: read
