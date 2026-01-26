@@ -77,7 +77,7 @@ export const TopPage = () => {
 
 ルートコンポーネントにimportしてください
 
-unitled-ui-libraryはこのsekai-style.cssのimportがない場合、スタイルが適切に反映されません
+untitled-ui-libraryはこのsekai-style.cssのimportがない場合、スタイルが適切に反映されません
 
 ### sekai-colors.css
 
