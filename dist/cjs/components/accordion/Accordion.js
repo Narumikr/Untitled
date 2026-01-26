@@ -47,10 +47,11 @@ var Accordion = function Accordion(_ref) {
     });
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(Accordion_module['sekai-accordion-container'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement("button", {
-    className: clsx(Accordion_module['sekai-accordion-summary'], global_module["sekai-color-".concat(modeTheme)], summaryStyles),
+    className: clsx(Accordion_module['sekai-accordion-summary'], global_module["sekai-text-".concat(modeTheme)], summaryStyles),
     onClick: handleOpenClose,
     id: "accordion-summary",
     "aria-expanded": openAccordion,
@@ -78,12 +79,15 @@ var AccordionDetailsContents = function AccordionDetailsContents(_ref2) {
     heightDetails = _useState4[0],
     setHeightDetails = _useState4[1];
   React.useEffect(function () {
-    if (refDetails.current) {
+    if (!refDetails.current) return;
+    if (open) {
       requestAnimationFrame(function () {
-        setHeightDetails(refDetails.current.scrollHeight);
+        if (refDetails.current) {
+          setHeightDetails(refDetails.current.scrollHeight);
+        }
       });
     }
-  }, []);
+  }, [open, details]);
   var animationDetailsStyles = _objectSpread(_objectSpread({
     maxHeight: open ? heightDetails ? "".concat(heightDetails, "px") : 'none' : '0px',
     opacity: open ? 1 : 0

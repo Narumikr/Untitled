@@ -42,6 +42,7 @@ var Drawer = function Drawer(_ref) {
   });
   if (!portalContainer) return null;
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement("div", {
+    ref: rest.ref,
     className: clsx(globalStyles["sekai-overlay-".concat(modeTheme)], styles['sekai-drawer'], styles[displayDrawer]),
     style: posAbsoluteStyle,
     "aria-hidden": "true",

@@ -26,10 +26,12 @@ var StickyNote = function StickyNote(_ref) {
     children: children
   };
   return 'button' === as ? /*#__PURE__*/React.createElement(ListItemButton, _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(styles['sekai-sticky-note'], rest.className),
     sekai: sekai,
     themeMode: LIGHT_MODE
   }), /*#__PURE__*/React.createElement(StickyNoteContents, stickyNoteContentsProps)) : /*#__PURE__*/React.createElement(ListItemText, _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(styles['sekai-sticky-note'], rest.className),
     sekai: sekai,
     themeMode: LIGHT_MODE

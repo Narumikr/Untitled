@@ -3,19 +3,20 @@ import _extends from '@babel/runtime/helpers/extends';
 import _defineProperty from '@babel/runtime/helpers/defineProperty';
 import _slicedToArray from '@babel/runtime/helpers/slicedToArray';
 import _objectWithoutProperties from '@babel/runtime/helpers/objectWithoutProperties';
-import React, { useRef, useState, useMemo, Children, useEffect, isValidElement } from 'react';
+import React, { useRef, useState, useCallback, useMemo, Children, useEffect, isValidElement } from 'react';
 import clsx from 'clsx';
 import { LIGHT_MODE } from '../../hooks/useThemeMode.js';
 import { BACKGROUND_LIGHT_MODE, BACKGROUND_DARK_MODE } from '../../internal/color.constant.js';
 import { useOptionalSekai } from '../../internal/useOptionalSekai.js';
 import styles from './MarqueeText.module.scss.js';
 
-var _excluded = ["sekai", "themeMode", "children", "duration", "parentBackgroundColor"];
+var _excluded = ["sekai", "themeMode", "ref", "children", "duration", "parentBackgroundColor"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 var MarqueeText = function MarqueeText(_ref) {
   var sekai = _ref.sekai,
     themeMode = _ref.themeMode,
+    ref = _ref.ref,
     children = _ref.children,
     duration = _ref.duration,
     parentBackgroundColor = _ref.parentBackgroundColor,
@@ -36,6 +37,15 @@ var MarqueeText = function MarqueeText(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     durationState = _useState4[0],
     setDurationState = _useState4[1];
+  // Merge internal ref and forwarded ref
+  var setRefs = useCallback(function (element) {
+    containerRef.current = element;
+    if (typeof ref === 'function') {
+      ref(element);
+    } else if (ref) {
+      ref.current = element;
+    }
+  }, [ref]);
   var containerBackground = useMemo(function () {
     if (parentBackgroundColor) return parentBackgroundColor;
     return getBackgroundColor(containerRef, modeTheme);
@@ -46,13 +56,12 @@ var MarqueeText = function MarqueeText(_ref) {
     '--scroll-duration': "".concat(durationState, "s")
   };
   var clonedChildren = Children.map(children, function (child) {
-    if (/*#__PURE__*/React.isValidElement(child)) {
+    if (/*#__PURE__*/React.isValidElement(child) && typeof child.type === 'string') {
       return /*#__PURE__*/React.cloneElement(child, {
         ref: textWrapRef
       });
-    } else {
-      return child;
     }
+    return child;
   });
   useEffect(function () {
     if (!textWrapRef.current || !containerRef.current) return;
@@ -76,7 +85,7 @@ var MarqueeText = function MarqueeText(_ref) {
     }
   }, [duration, excessiveLength]);
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    ref: containerRef,
+    ref: setRefs,
     className: clsx(styles['sekai-marquee-text'], _defineProperty(_defineProperty({}, styles['sekai-marquee-text-scroll'], excessiveLength), styles['sekai-marquee-text-wrap-comp'], /*#__PURE__*/isValidElement(children)), rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/isValidElement(children) ? /*#__PURE__*/React.createElement("div", {

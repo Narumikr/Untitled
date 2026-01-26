@@ -1,0 +1,24 @@
+@use '../../styles/global.module.scss' as global;
+
+.sekai-carousel {
+  width: 100%;
+  max-width: 100%;
+  height: fit-content;
+  overflow: hidden;
+
+  :global(.swiper-slide) {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    transition: background-color 0.3s ease;
+    background-color: var(--sekai-bullet-color);
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: var(--sekai-color);
+  }
+}

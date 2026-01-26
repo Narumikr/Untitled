@@ -9,6 +9,7 @@ export { StylishButton } from './components/button/StylishButton.js';
 export { Card, CardContent, CardTitle } from './components/card/Card.js';
 export { MusicBannerCard } from './components/card/MusicBannerCard.js';
 export { PrskLinkCard } from './components/card/PrskLinkCard.js';
+export { Carousel } from './components/carousel/Carousel.js';
 export { Dialog, DialogButtons, DialogTitleHeader } from './components/dialog/Dialog.js';
 export { WindowDialog } from './components/dialog/WindowDialog.js';
 export { XoMikuDialog } from './components/dialog/XoMikuDialog.js';

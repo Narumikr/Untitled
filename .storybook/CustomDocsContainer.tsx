@@ -32,7 +32,8 @@ export const CustomDocsContainer = ({ children, context }: CustomDocsContainerPr
   useEffect(() => {
     if (!context.componentStories().length) return
     if (context.componentStories()[0].parameters.invisible) {
-      const target = document.querySelector('.css-1qq744x')
+      // This might break depending on the Storybook version.
+      const target = document.querySelector('.docs-story')
       if (target) {
         const p = document.createElement('p')
         p.textContent = 'こちらのコンポーネントはDocsのプレビューはありません。'

@@ -1,6 +1,7 @@
 import React, {
   createContext,
   forwardRef,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -36,6 +37,7 @@ export interface DropdownProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   options: DropdownOption[]
   defaultValue?: string
   onSelect: (value: string) => void
@@ -83,12 +85,27 @@ export const DropdownContent = ({
   options,
   onSelect,
   placeholder,
+  ref,
   ...rest
 }: DropdownProps) => {
   const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
   const wrapDropdownRef = useRef<HTMLDivElement>(null)
   const triggerButtonRef = useRef<HTMLButtonElement>(null)
   const { openOptions, setOpenOptions } = useContext(DropdownContext) || {}
+
+  // Merge internal ref and forwarded ref
+  const setRefs = useCallback(
+    (element: HTMLDivElement | null) => {
+      wrapDropdownRef.current = element
+
+      if (typeof ref === 'function') {
+        ref(element)
+      } else if (ref) {
+        ;(ref as React.RefObject<HTMLDivElement | null>).current = element
+      }
+    },
+    [ref],
+  )
 
   const [dropdownPosStyle, setDropdownPosStyle] = useState<React.CSSProperties>()
   useEffect(() => {
@@ -156,7 +173,7 @@ export const DropdownContent = ({
   return (
     <div
       {...rest}
-      ref={wrapDropdownRef}
+      ref={setRefs}
       className={clsx(styles[`sekai-dropdown-${modeTheme}`], rest.className)}
       style={{ '--sekai-color': sekaiColor, ...(rest.style || {}) } as React.CSSProperties}>
       <DropdownTriggerButton

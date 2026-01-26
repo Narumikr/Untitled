@@ -20,6 +20,7 @@ export interface ScrollTopButtonProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLButtonElement>
   pos?: ScrollTopPos
 }
 
@@ -63,6 +64,7 @@ export const ScrollTopButton = ({
   return createPortal(
     <button
       {...rest}
+      ref={rest.ref}
       className={clsx(styles[`sekai-scroll-top-button-${pos}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}
       onClick={handleScroll}>

@@ -31,6 +31,7 @@ var NamePlate = function NamePlate(_ref) {
   var colorText = text.slice(0, colorCount);
   var normalText = text.slice(colorCount);
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(NamePlate_module["sekai-name-plate-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement("span", {

@@ -57,6 +57,7 @@ var Toast = function Toast(_ref) {
   });
   if (!portalContainer) return null;
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(styles["sekai-toast-".concat(pos)], _defineProperty({}, styles['sekai-toast-open'], open), rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement("div", {

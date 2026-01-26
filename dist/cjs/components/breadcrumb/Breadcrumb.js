@@ -32,13 +32,18 @@ var Breadcrumb = function Breadcrumb(_ref) {
     }),
     sekaiColor = _useOptionalSekai.sekaiColor,
     modeTheme = _useOptionalSekai.modeTheme;
-  var items = React.Children.toArray(children).flatMap(function (el) {
-    return /*#__PURE__*/React.isValidElement(el) && el.type === React.Fragment ? React.Children.toArray(el.props.children) : [el];
+  var items = React.Children.toArray(children).flatMap(function (child) {
+    if (/*#__PURE__*/React.isValidElement(child) && child.type === React.Fragment) {
+      var el = child;
+      return React.Children.toArray(el.props.children);
+    }
+    return [child];
   });
   var optionStyle = {
     '--sekai-color': sekaiColor
   };
   return /*#__PURE__*/React.createElement("nav", _extends({}, rest, {
+    ref: rest.ref,
     "aria-label": "breadcrumb-".concat(rest.id),
     className: clsx(Breadcrumb_module['sekai-breadcrumb'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)

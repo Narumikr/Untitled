@@ -15,6 +15,7 @@ export interface OutlineTextProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLSpanElement>
   text: string
 }
 
@@ -28,6 +29,7 @@ export const OutlineText = ({ sekai, themeMode, text, ...rest }: OutlineTextProp
   return (
     <span
       {...rest}
+      ref={rest.ref}
       className={clsx(styles[`sekai-outline-text-${modeTheme}`], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}
       data-text={text}

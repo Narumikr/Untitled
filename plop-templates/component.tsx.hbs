@@ -15,6 +15,7 @@ export interface {{pascalCase component}}Props {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
 }
 
 export const {{pascalCase component}} = ({
@@ -31,6 +32,7 @@ export const {{pascalCase component}} = ({
   return (
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(styles['{{pascalCase component}}'], rest.className)}
       style=\{{ ...(optionStyle as React.CSSProperties), ...rest.style }}></div>
   )

@@ -27,6 +27,13 @@ const meta = {
       },
       control: false,
     },
+    style: {
+      description: 'Style object',
+      table: {
+        type: { summary: 'React.CSSProperties' },
+      },
+      control: false,
+    },
     sekai: {
       description: 'What SEKAI color to use',
       table: {
@@ -36,10 +43,19 @@ const meta = {
       control: { type: 'select' },
       options: [...Object.keys(COLORS_SEKAI_KEYS)],
     },
-    style: {
-      description: 'Style object',
+    themeMode: {
+      description: 'Light or Dark mode',
       table: {
-        type: { summary: 'React.CSSProperties' },
+        type: { summary: 'PaletteMode' },
+        defaultValue: { summary: 'light' },
+      },
+      control: { type: 'select' },
+      options: ['light', 'dark'],
+    },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLDivElement>' },
       },
       control: false,
     },
@@ -50,15 +66,6 @@ const meta = {
       table: {
         type: { summary: 'boolean' },
       },
-    },
-    themeMode: {
-      description: 'Light or Dark mode',
-      table: {
-        type: { summary: 'PaletteMode' },
-        defaultValue: { summary: 'light' },
-      },
-      control: { type: 'select' },
-      options: ['light', 'dark'],
     },
     children: {
       description: 'Dialog contents',

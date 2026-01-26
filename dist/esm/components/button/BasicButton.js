@@ -36,6 +36,7 @@ var BasicButton = function BasicButton(_ref) {
     color: sekaiColor
   });
   return /*#__PURE__*/React.createElement("button", _extends({}, rest, {
+    ref: rest.ref,
     type: "button",
     className: clsx(styles["sekai-basic-button-".concat(modeTheme)], globalStyles["sekai-color-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
