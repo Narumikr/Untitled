@@ -2,8 +2,8 @@
   "name": "@naru/untitled-ui-library",
   "version": "2.0.0",
   "description": "TypeScript components library for React and utility functions",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "style": "dist/color/sekai-colors.css",
   "exports": {

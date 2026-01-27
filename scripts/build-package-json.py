@@ -86,6 +86,38 @@ def build_package_dist_json():
     return package_dist_json_path
 
 
+def create_cjs_package_json():
+    """Create package.json in dist/cjs to specify CommonJS module type"""
+
+    # Get paths
+    script_dir = Path(__file__).parent
+    root_dir = script_dir.parent
+    dist_cjs_dir = root_dir / "dist" / "cjs"
+    cjs_package_json_path = dist_cjs_dir / "package.json"
+
+    print("\nCreating package.json in dist/cjs...")
+
+    # Check if dist/cjs exists
+    if not dist_cjs_dir.exists():
+        print(f"Error: dist/cjs directory not found at {dist_cjs_dir}", file=sys.stderr)
+        print("  Please run the build process first to create dist/cjs/", file=sys.stderr)
+        sys.exit(1)
+
+    # Create package.json with type: commonjs
+    cjs_package_data = {
+        "type": "commonjs"
+    }
+
+    try:
+        with open(cjs_package_json_path, "w", encoding="utf-8") as f:
+            json.dump(cjs_package_data, f, indent=2, ensure_ascii=False)
+            f.write("\n")  # Add trailing newline
+        print(f"✓ Successfully created {cjs_package_json_path}")
+    except Exception as e:
+        print(f"Error: Failed to create dist/cjs/package.json: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
 def copy_package_to_dist():
     """Copy package.dist.json to dist/package.json"""
 
@@ -129,3 +161,4 @@ def copy_package_to_dist():
 if __name__ == "__main__":
     build_package_dist_json()
     copy_package_to_dist()
+    create_cjs_package_json()
