@@ -25,6 +25,7 @@ export interface BreadcrumbProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLElement>
   children: React.ReactNode
   separator?: SeparatorVariant
 }
@@ -37,11 +38,13 @@ export const Breadcrumb = ({
   ...rest
 }: BreadcrumbProps) => {
   const { sekaiColor, modeTheme } = useOptionalSekai({ sekai, mode: themeMode })
-  const items = React.Children.toArray(children).flatMap((el) =>
-    React.isValidElement(el) && el.type === React.Fragment
-      ? React.Children.toArray(el.props.children)
-      : [el],
-  )
+  const items = React.Children.toArray(children).flatMap((child) => {
+    if (React.isValidElement(child) && child.type === React.Fragment) {
+      const el = child as React.ReactElement<{ children?: React.ReactNode }>
+      return React.Children.toArray(el.props.children)
+    }
+    return [child]
+  })
 
   const optionStyle = {
     '--sekai-color': sekaiColor,
@@ -50,6 +53,7 @@ export const Breadcrumb = ({
   return (
     <nav
       {...rest}
+      ref={rest.ref}
       aria-label={`breadcrumb-${rest.id}`}
       className={clsx(styles['sekai-breadcrumb'], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>

@@ -63,6 +63,7 @@ var Pagination = function Pagination(_ref) {
     size: size
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(Pagination_module["sekai-pagination-".concat(size)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), /*#__PURE__*/React.createElement(CtrlButton, _extends({}, ctrlButtonProps, {

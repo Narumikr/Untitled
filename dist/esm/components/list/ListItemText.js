@@ -35,7 +35,8 @@ var ListItemText = function ListItemText(_ref) {
     '--sekai-color': sekaiColor
   };
   return /*#__PURE__*/React.createElement("li", _extends({}, rest, {
-    className: clsx(styles['sekai-list-item-text'], globalStyles["sekai-color-".concat(modeTheme)], rest.className),
+    ref: rest.ref,
+    className: clsx(styles['sekai-list-item-text'], globalStyles["sekai-text-".concat(modeTheme)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), getImgComponent(icon), isChildrenElement ? children : /*#__PURE__*/React.createElement(Component, null, children));
 };

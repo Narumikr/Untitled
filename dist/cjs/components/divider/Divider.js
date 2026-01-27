@@ -40,6 +40,7 @@ var Divider = function Divider(_ref) {
     '--divider-line-height': getLineHeightStyle(lineHeight)
   };
   return /*#__PURE__*/React.createElement("div", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(Divider_module["sekai-divider-".concat(variant)], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)
   }), children ? /*#__PURE__*/React.createElement("div", {

@@ -43,13 +43,12 @@ const meta = {
       },
       control: false,
     },
-    open: {
-      description: 'Drawer open',
-      // @ts-expect-error Storybook's typing issue
-      type: { required: true },
+    ref: {
+      description: 'Ref to the root element',
       table: {
-        type: { summary: 'boolean' },
+        type: { summary: 'React.Ref<HTMLDivElement>' },
       },
+      control: false,
     },
     themeMode: {
       description: 'Light or Dark mode',
@@ -60,11 +59,20 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    open: {
+      description: 'Drawer open',
+      // @ts-expect-error Storybook's typing issue
+      type: { required: true },
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     children: {
       description: 'Drawer contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
       table: { type: { summary: 'React.ReactNode' } },
+      control: false,
     },
     containerComponent: {
       description: 'Target element where the portal content will be rendered',

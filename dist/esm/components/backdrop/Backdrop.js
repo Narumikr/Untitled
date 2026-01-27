@@ -11,12 +11,13 @@ import { convertHexToRgbaMixWithBlackOrWhite } from '../../utils/converter.js';
 import globalStyles from '../../styles/global.module.scss.js';
 import styles from './Backdrop.module.scss.js';
 
-var _excluded = ["sekai", "themeMode", "open", "children", "containerComponent", "centered"];
+var _excluded = ["sekai", "themeMode", "ref", "open", "children", "containerComponent", "centered"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 var Backdrop = function Backdrop(_ref) {
   var sekai = _ref.sekai,
     themeMode = _ref.themeMode,
+    ref = _ref.ref,
     open = _ref.open,
     children = _ref.children,
     containerComponent = _ref.containerComponent,
@@ -39,7 +40,8 @@ var Backdrop = function Backdrop(_ref) {
   });
   if (!portalContainer) return null;
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement("div", {
-    className: clsx(styles[displayBackdrop])
+    className: clsx(styles[displayBackdrop]),
+    ref: ref
   }, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     className: clsx(globalStyles["sekai-overlay-".concat(modeTheme)], _defineProperty(_defineProperty({}, styles['sekai-backdrop-bg'], sekai), styles['sekai-backdrop-centered'], centered), rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)

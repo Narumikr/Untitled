@@ -9,6 +9,7 @@ export { StylishButton } from './components/button/StylishButton.js';
 export { Card, CardContent, CardTitle } from './components/card/Card.js';
 export { MusicBannerCard } from './components/card/MusicBannerCard.js';
 export { PrskLinkCard } from './components/card/PrskLinkCard.js';
+export { Carousel } from './components/carousel/Carousel.js';
 export { Dialog, DialogButtons, DialogTitleHeader } from './components/dialog/Dialog.js';
 export { WindowDialog } from './components/dialog/WindowDialog.js';
 export { XoMikuDialog } from './components/dialog/XoMikuDialog.js';
@@ -30,6 +31,7 @@ export { createSharedValueProvider } from './components/provider/StoreValueConte
 export { YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider } from './components/provider/YourSekaiProvider.js';
 export { Checkbox } from './components/select/Checkbox.js';
 export { Chip } from './components/select/Chip.js';
+export { SideMenu } from './components/sidemenu/SideMenu.js';
 export { MarqueeText } from './components/text/MarqueeText.js';
 export { NamePlate } from './components/text/NamePlate.js';
 export { OutlineText } from './components/text/OutlineText.js';

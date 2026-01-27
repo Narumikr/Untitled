@@ -28,7 +28,7 @@ This document provides AI assistants with essential context about the codebase s
 **What is this?** A React component library inspired by Project SEKAI (Hatsune Miku rhythm game), providing themed UI components with dynamic color system and light/dark mode support.
 
 **Tech Stack:**
-- React 18 + TypeScript (Strict mode)
+- React 19 + TypeScript (Strict mode)
 - SCSS + CSS Modules (scoped styling)
 - Rollup (dual ESM/CJS bundling)
 - Storybook (component documentation)

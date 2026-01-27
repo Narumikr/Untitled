@@ -37,6 +37,7 @@ var TextLink = function TextLink(_ref) {
     '--sekai-color-hover': sekaiColorHover
   };
   return /*#__PURE__*/React.createElement("a", _extends({}, rest, {
+    ref: rest.ref,
     className: clsx(TextLink_module["sekai-text-link-".concat(modeTheme)], disabled && TextLink_module['sekai-disabled'], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style),
     href: href,

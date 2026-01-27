@@ -19,6 +19,7 @@ export interface ListProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLUListElement | HTMLOListElement>
   children: React.ReactNode
   as?: 'ul' | 'ol'
   noBullet?: boolean
@@ -39,14 +40,15 @@ export const List = ({
     '--sekai-color': sekaiColor,
   }
   const listStyleType = noBullet ? 'none' : undefined
-  const paddingLeft = noBullet ? '16px' : '36px'
+  const paddingLeft = noBullet ? '0' : '36px'
 
   return (
     <ListContext.Provider value={true}>
       <Component
         {...rest}
+        ref={rest.ref as React.Ref<HTMLUListElement & HTMLOListElement>}
         className={clsx(
-          globalStyles[`sekai-color-${modeTheme}`],
+          globalStyles[`sekai-text-${modeTheme}`],
           styles['sekai-list'],
           rest.className,
         )}

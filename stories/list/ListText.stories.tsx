@@ -52,11 +52,21 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLLIElement>' },
+      },
+      control: false,
+    },
     children: {
       description: 'ListItemText contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
-      table: { type: { summary: 'React.ReactNode' } },
+      table: {
+        type: { summary: 'React.ReactNode' },
+      },
+      control: false,
     },
     as: {
       description: 'ListItemText child component type',

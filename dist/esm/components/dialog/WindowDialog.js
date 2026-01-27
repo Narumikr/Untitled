@@ -14,13 +14,14 @@ import { usePortalContainer } from '../../internal/usePortalContainer.js';
 import { convertHexToRgbaMixWithBlackOrWhite } from '../../utils/converter.js';
 import styles from './WindowDialog.module.scss.js';
 
-var _excluded = ["sekai", "themeMode", "open", "children", "containerComponent", "size", "onClose"],
+var _excluded = ["sekai", "themeMode", "ref", "open", "children", "containerComponent", "size", "onClose"],
   _excluded2 = ["onMouseDown", "isFullscreen", "setIsFullscreen"];
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), true).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 var WindowDialog = function WindowDialog(_ref) {
   var sekai = _ref.sekai,
     themeMode = _ref.themeMode,
+    ref = _ref.ref,
     open = _ref.open,
     children = _ref.children,
     containerComponent = _ref.containerComponent,
@@ -63,6 +64,15 @@ var WindowDialog = function WindowDialog(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     dragging = _useState6[0],
     setDragging = _useState6[1];
+  // Merge internal ref and forwarded ref
+  var setRefs = useCallback(function (element) {
+    modalRef.current = element;
+    if (typeof ref === 'function') {
+      ref(element);
+    } else if (ref) {
+      ref.current = element;
+    }
+  }, [ref]);
   var _useState7 = useState(false),
     _useState8 = _slicedToArray(_useState7, 2),
     isFullscreen = _useState8[0],
@@ -118,7 +128,7 @@ var WindowDialog = function WindowDialog(_ref) {
   }, [containerComponent, isFullscreen, position.x, position.y, sekaiColor, sekaiColorBg, sekaiColorHeader]);
   if (!portalContainer) return null;
   return /*#__PURE__*/createPortal(/*#__PURE__*/React.createElement("div", _extends({}, rest, {
-    ref: modalRef,
+    ref: setRefs,
     role: "dialog",
     className: clsx(styles["sekai-window-dialog-".concat(modeTheme)], _defineProperty(_defineProperty({}, styles["sekai-window-dialog-size-".concat(size)], !isFullscreen), styles['sekai-window-dialog-fullscreen'], isFullscreen), styles[displayDialog], rest.className),
     style: _objectSpread(_objectSpread({}, optionStyle), rest.style)

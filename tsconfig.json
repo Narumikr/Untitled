@@ -14,12 +14,11 @@
     "sourceMap": false,
     "skipLibCheck": true,
     "noEmit": true,
-    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src/**/*", ".storybook/**/*", "stories/**/*", "test/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "test/templates/**/*"]
 }

@@ -32,11 +32,12 @@ var List = function List(_ref) {
     '--sekai-color': sekaiColor
   };
   var listStyleType = noBullet ? 'none' : undefined;
-  var paddingLeft = noBullet ? '16px' : '36px';
+  var paddingLeft = noBullet ? '0' : '36px';
   return /*#__PURE__*/React.createElement(ListContext.Provider, {
     value: true
   }, /*#__PURE__*/React.createElement(Component, _extends({}, rest, {
-    className: clsx(globalStyles["sekai-color-".concat(modeTheme)], styles['sekai-list'], rest.className),
+    ref: rest.ref,
+    className: clsx(globalStyles["sekai-text-".concat(modeTheme)], styles['sekai-list'], rest.className),
     style: _objectSpread(_objectSpread({
       listStyleType: listStyleType,
       paddingLeft: paddingLeft

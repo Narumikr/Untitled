@@ -43,6 +43,13 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLSpanElement>' },
+      },
+      control: false,
+    },
     text: {
       description: 'Text to display',
       // @ts-expect-error Storybook's typing issue

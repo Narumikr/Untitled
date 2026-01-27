@@ -26,6 +26,7 @@ export interface TypewriterTextProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   text: string
   options?: TypewriterTextOptions
 }
@@ -77,6 +78,7 @@ export const TypewriterText = ({
   return (
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(
         styles['sekai-typewrite-text'],
         {

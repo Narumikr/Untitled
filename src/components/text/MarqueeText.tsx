@@ -1,4 +1,12 @@
-import React, { Children, isValidElement, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  Children,
+  isValidElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 import clsx from 'clsx'
 
@@ -9,6 +17,7 @@ import { useOptionalSekai } from '@/internal/useOptionalSekai'
 import styles from './MarqueeText.module.scss'
 
 import type { ColorsSekaiKey } from '@/styles/sekai-colors'
+import type { JSX } from 'react'
 
 export interface MarqueeTextProps {
   id?: string
@@ -16,6 +25,7 @@ export interface MarqueeTextProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   children: React.ReactNode
   duration?: number
   parentBackgroundColor?: string
@@ -24,6 +34,7 @@ export interface MarqueeTextProps {
 export const MarqueeText = ({
   sekai,
   themeMode,
+  ref,
   children,
   duration,
   parentBackgroundColor,
@@ -34,6 +45,20 @@ export const MarqueeText = ({
   const textWrapRef = useRef<HTMLElement | null>(null)
   const [excessiveLength, setExcessiveLength] = useState(false)
   const [durationState, setDurationState] = useState(duration ?? 0)
+
+  // Merge internal ref and forwarded ref
+  const setRefs = useCallback(
+    (element: HTMLDivElement | null) => {
+      containerRef.current = element
+
+      if (typeof ref === 'function') {
+        ref(element)
+      } else if (ref) {
+        ;(ref as React.RefObject<HTMLDivElement | null>).current = element
+      }
+    },
+    [ref],
+  )
 
   const containerBackground = useMemo(() => {
     if (parentBackgroundColor) return parentBackgroundColor
@@ -47,13 +72,16 @@ export const MarqueeText = ({
   }
 
   const clonedChildren = Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, {
+    if (React.isValidElement(child) && typeof child.type === 'string') {
+      type Tag = typeof child.type
+      type Props = JSX.IntrinsicElements[Tag & keyof JSX.IntrinsicElements]
+
+      return React.cloneElement(child as React.ReactElement<React.PropsWithRef<Props>>, {
         ref: textWrapRef,
       })
-    } else {
-      return child
     }
+
+    return child
   })
 
   useEffect(() => {
@@ -83,7 +111,7 @@ export const MarqueeText = ({
   return (
     <div
       {...rest}
-      ref={containerRef}
+      ref={setRefs}
       className={clsx(
         styles['sekai-marquee-text'],
         {

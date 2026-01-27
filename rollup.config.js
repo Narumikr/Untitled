@@ -50,13 +50,6 @@ const setUseClientDirective = () => {
   }
 }
 
-/**
- * Injects the provided CSS string into the document's head using a <style> tag.
- */
-const injectStyles = (css) => {
-  return `if(typeof document!=='undefined'){const s=document.createElement('style');s.innerHTML=${css};document.head.appendChild(s);}`
-}
-
 export default [
   {
     input: 'src/index.ts',
@@ -76,26 +69,32 @@ export default [
         preserveModulesRoot: 'src',
       },
     ],
-    external: [
-      ...Object.keys(pkg.devDependencies || {}),
-      ...Object.keys(pkg.peerDependencies || {}),
-      ...Object.keys(pkg.dependencies || {}),
-      /@babel\/runtime\//,
-      // /style-inject/,
-    ],
+    external: (id) => {
+      if (id.endsWith('.css') || id.endsWith('.scss')) return false
+      return [
+        ...Object.keys(pkg.devDependencies || {}),
+        ...Object.keys(pkg.peerDependencies || {}),
+        ...Object.keys(pkg.dependencies || {}),
+        /@babel\/runtime\//,
+      ].some((dep) => (typeof dep === 'string' ? id.startsWith(dep) : dep.test(id)))
+    },
     plugins: [
       tsconfigPaths(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json', declaration: false }),
+      typescript({ tsconfig: './tsconfig.build.json', declaration: false }),
       babel({
         babelHelpers: 'runtime',
         presets: ['@babel/preset-react'],
         extensions: ['.ts', '.tsx'],
       }),
       postcss({
-        inject: injectStyles,
-        modules: true,
+        extract: 'sekai-style.css',
+        modules: {
+          auto: /\.module\.scss$/,
+        },
+        include: ['**/*.css', '**/*.scss', '**/*.module.scss'],
+        inject: false,
         use: {
           sass: {
             implementation: (await import('sass')).default,
@@ -115,6 +114,21 @@ export default [
   {
     input: 'src/index.ts',
     output: [{ file: pkg.types, format: 'es' }],
-    plugins: [tsconfigPaths(), resolve(), dts()],
+    plugins: [
+      tsconfigPaths(),
+      resolve(),
+      dts({
+        tsconfig: './tsconfig.build.json',
+      }),
+      {
+        name: 'ignore-css',
+        resolveId(source) {
+          if (source.endsWith('.css') || source.endsWith('.scss')) return source
+        },
+        load(id) {
+          if (id.endsWith('.css') || id.endsWith('.scss')) return ''
+        },
+      },
+    ],
   },
 ]

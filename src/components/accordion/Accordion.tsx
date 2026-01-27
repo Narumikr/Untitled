@@ -19,6 +19,7 @@ export interface AccordionProps {
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   summary: string
   summaryStyles?: string
   defaultOpen?: boolean
@@ -48,12 +49,13 @@ export const Accordion = ({
   return (
     <div
       {...rest}
+      ref={rest.ref}
       className={clsx(styles['sekai-accordion-container'], rest.className)}
       style={{ ...(optionStyle as React.CSSProperties), ...rest.style }}>
       <button
         className={clsx(
           styles['sekai-accordion-summary'],
-          globalStyles[`sekai-color-${modeTheme}`],
+          globalStyles[`sekai-text-${modeTheme}`],
           summaryStyles,
         )}
         onClick={handleOpenClose}
@@ -86,12 +88,16 @@ const AccordionDetailsContents = ({ open, details }: AccordionDetailsContentsPro
   const [heightDetails, setHeightDetails] = useState(0)
 
   useEffect(() => {
-    if (refDetails.current) {
+    if (!refDetails.current) return
+
+    if (open) {
       requestAnimationFrame(() => {
-        setHeightDetails(refDetails.current!.scrollHeight)
+        if (refDetails.current) {
+          setHeightDetails(refDetails.current.scrollHeight)
+        }
       })
     }
-  }, [])
+  }, [open, details])
 
   const animationDetailsStyles = {
     maxHeight: open ? (heightDetails ? `${heightDetails}px` : 'none') : '0px',

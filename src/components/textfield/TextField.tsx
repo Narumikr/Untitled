@@ -18,6 +18,7 @@ export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputEleme
   style?: React.CSSProperties
   sekai?: ColorsSekaiKey
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   placeholder?: string
   clearButton?: boolean
   onChangeInput?: (value: string) => void
@@ -32,6 +33,7 @@ export const TextField = ({
   style,
   sekai,
   themeMode,
+  ref,
   clearButton = true,
   onChangeInput,
   isError = false,
@@ -60,6 +62,7 @@ export const TextField = ({
   return (
     <div
       id={id}
+      ref={ref}
       className={clsx(styles['sekai-textfield'], className)}
       style={{ ...(optionStyle as React.CSSProperties), ...style }}>
       <div className={clsx(styles['sekai-textfield-wrapper'])}>

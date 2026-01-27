@@ -12,12 +12,6 @@ const meta = {
   parameters: {},
   tags: ['autodocs'],
   argTypes: {
-    open: {
-      description: 'Dialog open',
-      table: {
-        type: { summary: 'boolean' },
-      },
-    },
     id: {
       description: 'Unique Id',
       table: {
@@ -47,11 +41,25 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLDivElement>' },
+      },
+      control: false,
+    },
+    open: {
+      description: 'Dialog open',
+      table: {
+        type: { summary: 'boolean' },
+      },
+    },
     children: {
       description: 'Dialog contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
       table: { type: { summary: 'React.ReactNode' } },
+      control: false,
     },
     containerComponent: {
       description: 'Target element where the portal content will be rendered',

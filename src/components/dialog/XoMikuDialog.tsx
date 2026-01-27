@@ -21,6 +21,7 @@ export interface XoMikuDialogProps {
   className?: string
   style?: React.CSSProperties
   themeMode?: PaletteMode
+  ref?: React.Ref<HTMLDivElement>
   children: React.ReactNode
   size?: DialogSize
   containerComponent?: HTMLElement
@@ -81,6 +82,7 @@ export const XoMikuDialog = ({
       <div
         {...rest}
         role="dialog"
+        ref={rest.ref}
         className={clsx(styles[`sekai-container-${size}`], rest.className)}
         aria-label={title || 'Dialog'}>
         <XoMikuSvg className={styles[`sekai-xomiku-svg-1-${size}`]} />

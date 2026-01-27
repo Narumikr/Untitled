@@ -64,11 +64,19 @@ const meta = {
       control: { type: 'select' },
       options: ['light', 'dark'],
     },
+    ref: {
+      description: 'Ref to the root element',
+      table: {
+        type: { summary: 'React.Ref<HTMLDivElement>' },
+      },
+      control: false,
+    },
     children: {
       description: 'MarqueeText contents',
       // @ts-expect-error Storybook's typing issue
       type: { required: true },
       table: { type: { summary: 'React.ReactNode' } },
+      control: false,
     },
     duration: {
       description: 'Scroll duration in seconds',

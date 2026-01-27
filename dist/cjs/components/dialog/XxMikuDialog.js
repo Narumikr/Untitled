@@ -71,6 +71,7 @@ var XxMikuDialog = function XxMikuDialog(_ref) {
   if (!portalContainer) return null;
   return /*#__PURE__*/reactDom.createPortal(/*#__PURE__*/React.createElement(Backdrop.Backdrop, overlayProps, /*#__PURE__*/React.createElement("div", _extends({}, rest, {
     role: "dialog",
+    ref: rest.ref,
     className: clsx(XxMikuDialog_module["sekai-container-".concat(size)], XxMikuDialog_module["sekai-".concat(modeTheme)], rest.className),
     "aria-label": title || 'Dialog'
   }), /*#__PURE__*/React.createElement(xxmiku.XxMikuSvg, {
