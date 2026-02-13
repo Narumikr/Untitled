@@ -10,6 +10,45 @@ import shutil
 from pathlib import Path
 
 
+def strip_dist_prefix(path_str):
+    """Remove 'dist/' prefix from a path string for dist/package.json"""
+    if isinstance(path_str, str):
+        if path_str.startswith("./dist/"):
+            return "./" + path_str[len("./dist/"):]
+        if path_str.startswith("dist/"):
+            return path_str[len("dist/"):]
+    return path_str
+
+
+def transform_dist_paths(package_data):
+    """Transform paths in package data to be relative to dist/ directory"""
+    # Transform simple path fields
+    for field in ["main", "module", "types", "style"]:
+        if field in package_data:
+            package_data[field] = strip_dist_prefix(package_data[field])
+
+    # Transform exports field recursively
+    if "exports" in package_data:
+        package_data["exports"] = transform_exports(package_data["exports"])
+
+    # Transform sideEffects array
+    if "sideEffects" in package_data and isinstance(package_data["sideEffects"], list):
+        package_data["sideEffects"] = [
+            strip_dist_prefix(item) for item in package_data["sideEffects"]
+        ]
+
+    return package_data
+
+
+def transform_exports(obj):
+    """Recursively transform path values in exports field"""
+    if isinstance(obj, str):
+        return strip_dist_prefix(obj)
+    if isinstance(obj, dict):
+        return {k: transform_exports(v) for k, v in obj.items()}
+    return obj
+
+
 def build_package_dist_json():
     """Extract distribution fields from package.json and create package.dist.json"""
 
@@ -60,6 +99,11 @@ def build_package_dist_json():
     for field in dist_fields:
         if field in package_data:
             package_dist_data[field] = package_data[field]
+
+    # Transform paths for dist/package.json
+    # Root package.json uses paths like "dist/cjs/index.js" (relative to project root)
+    # dist/package.json needs paths like "cjs/index.js" (relative to dist directory)
+    package_dist_data = transform_dist_paths(package_dist_data)
 
     # Write package.dist.json
     try:
