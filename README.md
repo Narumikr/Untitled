@@ -2,9 +2,9 @@
 
 # **_Untitled_**
 
-![welcome comment](https://readme-typing-svg.herokuapp.com?color=%2333ccba&lines=Welcome+to+Untitled+UI+library!;きっと...;)
+![welcome comment](https://readme-typing-svg.herokuapp.com?color=%2333ccba&lines=いつしか想いは形になる;君と今を紡ぐ未来照らして...;)
 
-<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT" />
+<img src="https://img.shields.io/badge/License-Fan_made-lightgreen" alt="License: Fan-made" />
 
 #### **_Tech Stack_**
 
