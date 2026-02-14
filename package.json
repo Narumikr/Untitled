@@ -44,7 +44,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "Fan-made",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.28.5",
     "@chromatic-com/storybook": "^4.1.3",
