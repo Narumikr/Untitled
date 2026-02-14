@@ -32,7 +32,6 @@ export { YOUR_COLOR_THEME, YOUR_SEKAI_COLOR, YourSekaiContext, YourSekaiProvider
 export { Checkbox } from './components/select/Checkbox.js';
 export { Chip } from './components/select/Chip.js';
 export { SideMenu } from './components/sidemenu/SideMenu.js';
-export { Test } from './components/test/Test.js';
 export { MarqueeText } from './components/text/MarqueeText.js';
 export { NamePlate } from './components/text/NamePlate.js';
 export { OutlineText } from './components/text/OutlineText.js';
