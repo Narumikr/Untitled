@@ -1,6 +1,6 @@
 {
   "name": "@naru/untitled-ui-library",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "TypeScript components library for React and utility functions",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -44,7 +44,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "Fan-made",
+  "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.28.5",
     "@chromatic-com/storybook": "^5.0.1",

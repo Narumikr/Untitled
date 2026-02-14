@@ -4,7 +4,7 @@
 
 ![welcome comment](https://readme-typing-svg.herokuapp.com?color=%2333ccba&lines=いつしか想いは形になる;君と今を紡ぐ未来照らして...;)
 
-<img src="https://img.shields.io/badge/License-Fan_made-light green" alt="License: Fan-made" />
+<img src="https://img.shields.io/badge/License-Fan_made-lightgreen" alt="License: Fan-made" />
 
 #### **_Tech Stack_**
 
