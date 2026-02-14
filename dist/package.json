@@ -2,23 +2,23 @@
   "name": "@naru/untitled-ui-library",
   "version": "2.0.0",
   "description": "TypeScript components library for React and utility functions",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "style": "dist/color/sekai-colors.css",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "style": "color/sekai-colors.css",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "types": "./index.d.ts",
+      "import": "./esm/index.js",
+      "require": "./cjs/index.js"
     },
     "./sekai-style.css": {
-      "import": "./dist/esm/sekai-style.css",
-      "require": "./dist/cjs/sekai-style.css"
+      "import": "./esm/sekai-style.css",
+      "require": "./cjs/sekai-style.css"
     },
     "./color/sekai-colors.css": {
-      "import": "./dist/color/sekai-colors.css",
-      "require": "./dist/color/sekai-colors.css"
+      "import": "./color/sekai-colors.css",
+      "require": "./color/sekai-colors.css"
     }
   },
   "type": "module",
@@ -38,6 +38,6 @@
     "swiper": "^12.0.3"
   },
   "sideEffects": [
-    "dist/*.css"
+    "*.css"
   ]
 }

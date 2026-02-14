@@ -5414,6 +5414,138 @@
 /* Styles for common color */
 /* Styles for z-index */
 /* Styles for common classes */
+.Test-module_sekai-text-light__twGSh {
+  color: #212121;
+}
+
+.Test-module_sekai-text-dark__cQnBF {
+  color: #e0e0e0;
+}
+
+.Test-module_sekai-color-light__7RfQK {
+  color: #212121;
+  background-color: #ffffff;
+}
+
+.Test-module_sekai-color-dark__S59Yy {
+  color: #e0e0e0;
+  background-color: #121212;
+}
+
+.Test-module_sekai-overlay__6SPIm, .Test-module_sekai-overlay-dark__rCdKw, .Test-module_sekai-overlay-light__FG6Df {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.Test-module_sekai-overlay-light__FG6Df {
+  background-color: rgba(0, 0, 0, 0.3882352941);
+}
+
+.Test-module_sekai-overlay-dark__rCdKw {
+  background-color: rgba(255, 255, 255, 0.3019607843);
+}
+
+/* Styles for positioning */
+.Test-module_sekai-flex-center__Du21X {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Test-module_sekai-absolute-center__OsnBs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Styles for scroll */
+.Test-module_sekai-invisible-scroll__V37T4 {
+  overflow-y: scroll;
+}
+.Test-module_sekai-invisible-scroll__V37T4::-webkit-scrollbar {
+  display: none;
+}
+.Test-module_sekai-invisible-scroll__V37T4 {
+  scrollbar-width: none;
+}
+
+/* Styles for margin space */
+.Test-module_sekai-mb-8__vP-qk {
+  margin-bottom: 8px;
+}
+
+.Test-module_sekai-mb-16__Qf3fc {
+  margin-bottom: 16px;
+}
+
+.Test-module_sekai-mb-24__k1Yqe {
+  margin-bottom: 24px;
+}
+
+.Test-module_text-responsible-body__7jfyw {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .Test-module_text-responsible-body__7jfyw {
+    font-size: 14px;
+  }
+}
+.Test-module_text-xs__ryJ1x {
+  font-size: 12px;
+}
+
+.Test-module_text-sm__XNTfh {
+  font-size: 14px;
+}
+
+.Test-module_text-base__nQPzv {
+  font-size: 16px;
+}
+
+.Test-module_text-lg__W2grz {
+  font-size: 18px;
+}
+
+.Test-module_text-xl__YlgQH {
+  font-size: 20px;
+}
+
+.Test-module_text-2xl__iySKv {
+  font-size: 24px;
+}
+
+.Test-module_text-base-bold__5SX7t {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Test-module_text-lg-bold__dqQOI {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Test-module_text-xl-bold__7rTLJ {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.Test-module_text-2xl-bold__dgHkZ {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.Test-module_font-bold__HxKBm {
+  font-weight: bold;
+}
+/* Styles for common color */
+/* Styles for z-index */
+/* Styles for common classes */
 .TypewriterText-module_sekai-text-light__Sx-n9 {
   color: #212121;
 }
